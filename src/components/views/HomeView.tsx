@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { getAvailableTopicRefs, getQuestionIds, getTopic } from "@/content";
+import { getAllFlashcards, getAvailableTopicRefs, getQuestionIds, getTopic } from "@/content";
 import { countPendingErrors, getContinueTopicId, getTopicSteps, getWeekSummary } from "@/lib/learning";
 import { useProgress } from "@/lib/progress-store";
-import { ArrowRightIcon, ChevronRightIcon, RedoIcon } from "../icons";
+import { getReviewQueue, getUnlockedTopics } from "@/lib/spaced-repetition";
+import { ArrowRightIcon, CardsIcon, ChevronRightIcon, RedoIcon } from "../icons";
 import { Card, Segments, Skeleton } from "../ui";
 
 const STEP_TEXT = {
@@ -35,6 +36,8 @@ export function HomeView() {
   const isFirstVisit = state.attempts.length === 0 && state.visitedTopics.length === 0;
   const pending = countPendingErrors(state);
   const week = getWeekSummary(state);
+  const cardQueue = getReviewQueue(state, getAllFlashcards());
+  const cardsToReview = cardQueue.due.length + cardQueue.fresh.length;
 
   return (
     <>
@@ -75,6 +78,28 @@ export function HomeView() {
               : pending === 1
                 ? "1 erro esperando para ser refeito"
                 : `${pending} erros esperando para serem refeitos`}
+          </span>
+        </span>
+        <ChevronRightIcon size={20} className="text-muted" />
+      </Link>
+
+      <Link
+        href="/cartoes"
+        className="flex items-center gap-3.5 rounded-2xl border border-line bg-surface p-4 hover:border-line-strong"
+      >
+        <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary">
+          <CardsIcon size={22} />
+        </span>
+        <span className="flex flex-1 flex-col gap-0.5">
+          <span className="text-base font-bold">Cartões de memória</span>
+          <span className="text-sm text-muted">
+            {cardsToReview === 0
+              ? getUnlockedTopics(state).length === 0
+                ? "Abra um tópico para liberar os cartões dele."
+                : "Nenhum cartão para hoje. Você está em dia!"
+              : cardsToReview === 1
+                ? "1 cartão para revisar hoje"
+                : `${cardsToReview} cartões para revisar hoje`}
           </span>
         </span>
         <ChevronRightIcon size={20} className="text-muted" />

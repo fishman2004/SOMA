@@ -1,5 +1,5 @@
 import matematicaData from "./data/matematica.json";
-import type { Question, Subject, Topic } from "./types";
+import type { Flashcard, Question, Subject, Topic } from "./types";
 
 export type * from "./types";
 
@@ -49,6 +49,21 @@ export function getAllQuestions(): Question[] {
 /** Um tópico está disponível quando tem explicação e pelo menos uma questão. */
 export function isTopicAvailable(topic: Topic): boolean {
   return Boolean(topic.content) && getQuestionsForTopic(topic.id).length > 0;
+}
+
+export function getAllFlashcards(): Flashcard[] {
+  const order = new Map(getAllSubjects().flatMap((s) => s.topics.map((t) => [t.id, t.order] as const)));
+  return subjects
+    .flatMap((s) => s.flashcards)
+    .sort((a, b) => (order.get(a.topicId) ?? 0) - (order.get(b.topicId) ?? 0));
+}
+
+export function getFlashcardsForTopic(topicId: string): Flashcard[] {
+  return getAllFlashcards().filter((c) => c.topicId === topicId);
+}
+
+export function getFlashcard(cardId: string): Flashcard | undefined {
+  return getAllFlashcards().find((c) => c.id === cardId);
 }
 
 export function getQuestionIds(topicId: string): string[] {

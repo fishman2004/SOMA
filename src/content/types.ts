@@ -93,10 +93,20 @@ export interface Topic {
   source?: Source;
 }
 
+/** Cartão de memória: uma pergunta curta e sua resposta. */
+export interface Flashcard {
+  id: string;
+  topicId: string;
+  front: string;
+  back: string;
+  source: Source;
+}
+
 export interface Subject {
   id: string;
   name: string;
   area: string;
   topics: Topic[];
   questions: Question[];
+  flashcards: Flashcard[];
 }

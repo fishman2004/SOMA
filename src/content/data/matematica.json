@@ -1147,5 +1147,282 @@
         "reviewStatus": "aguardando-revisao"
       }
     }
+  ],
+  "flashcards": [
+    {
+      "id": "pc-01",
+      "topicId": "porcentagem",
+      "front": "Qual fator aplica um aumento de 15%?",
+      "back": "× 1,15",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "pc-02",
+      "topicId": "porcentagem",
+      "front": "Qual fator aplica um desconto de 30%?",
+      "back": "× 0,70",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "pc-03",
+      "topicId": "porcentagem",
+      "front": "Um aumento de 10% seguido de um desconto de 10% volta ao valor original?",
+      "back": "Não. 1,10 × 0,90 = 0,99: o valor final fica 1% menor.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "pc-04",
+      "topicId": "porcentagem",
+      "front": "Como calcular a variação percentual de um valor A para um valor B?",
+      "back": "(B − A) ÷ A × 100. A base é sempre o valor inicial.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "pc-05",
+      "topicId": "porcentagem",
+      "front": "Quanto é 25% em fração?",
+      "back": "1/4",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "rp-c1",
+      "topicId": "razao-e-proporcao",
+      "front": "O que é uma proporção?",
+      "back": "Uma igualdade entre duas razões: a/b = c/d.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "rp-c2",
+      "topicId": "razao-e-proporcao",
+      "front": "Qual é a propriedade fundamental das proporções?",
+      "back": "Se a/b = c/d, então a × d = b × c.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "rp-c3",
+      "topicId": "razao-e-proporcao",
+      "front": "O que significa uma escala 1 : 100?",
+      "back": "1 unidade no desenho vale 100 unidades na realidade.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "rp-c4",
+      "topicId": "razao-e-proporcao",
+      "front": "Como dividir um total na razão 3 : 2?",
+      "back": "Some as partes (3 + 2 = 5), divida o total por 5 e multiplique por 3 e por 2.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "rp-c5",
+      "topicId": "razao-e-proporcao",
+      "front": "Quantos centímetros tem 1 km?",
+      "back": "100.000 cm",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "r3-c1",
+      "topicId": "regra-de-tres",
+      "front": "Como saber se uma regra de três é direta?",
+      "back": "Quando uma grandeza aumenta, a outra também aumenta na mesma razão.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "r3-c2",
+      "topicId": "regra-de-tres",
+      "front": "Dê um exemplo de grandezas inversamente proporcionais.",
+      "back": "Velocidade e tempo de viagem: mais velocidade, menos tempo.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "r3-c3",
+      "topicId": "regra-de-tres",
+      "front": "Como se monta uma regra de três inversa?",
+      "back": "Multiplicando em linha: a × b = c × x.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "r3-c4",
+      "topicId": "regra-de-tres",
+      "front": "Número de trabalhadores e dias para terminar uma obra: direta ou inversa?",
+      "back": "Inversa: mais trabalhadores, menos dias.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "r3-c5",
+      "topicId": "regra-de-tres",
+      "front": "Quantidade comprada e preço total: direta ou inversa?",
+      "back": "Direta: o dobro de produto custa o dobro.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "f1-c1",
+      "topicId": "funcoes-1-grau",
+      "front": "Em f(x) = a·x + b, o que o b representa?",
+      "back": "O valor inicial: quanto vale f quando x = 0. É onde a reta corta o eixo y.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "f1-c2",
+      "topicId": "funcoes-1-grau",
+      "front": "Em f(x) = a·x + b, o que o a representa?",
+      "back": "A taxa de variação: quanto f(x) muda quando x aumenta 1.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "f1-c3",
+      "topicId": "funcoes-1-grau",
+      "front": "Como achar a raiz de f(x) = a·x + b?",
+      "back": "Iguale a zero e isole x: x = −b ÷ a.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "f1-c4",
+      "topicId": "funcoes-1-grau",
+      "front": "Se o a de uma função do 1º grau é negativo, a reta...",
+      "back": "Desce: a função é decrescente.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "f1-c5",
+      "topicId": "funcoes-1-grau",
+      "front": "Como calcular a taxa de variação a partir de dois pontos?",
+      "back": "a = (y₂ − y₁) ÷ (x₂ − x₁)",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "gt-c1",
+      "topicId": "graficos-e-tabelas",
+      "front": "O que ler primeiro em um gráfico ou tabela?",
+      "back": "Título, unidades, legenda e escala dos eixos.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "gt-c2",
+      "topicId": "graficos-e-tabelas",
+      "front": "Como calcular a média de uma lista de valores?",
+      "back": "Soma dos valores ÷ quantidade de valores.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "gt-c3",
+      "topicId": "graficos-e-tabelas",
+      "front": "Em uma tabela \"em milhares\", o valor 8 significa...",
+      "back": "8.000",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "gt-c4",
+      "topicId": "graficos-e-tabelas",
+      "front": "Para comparar grupos de tamanhos diferentes, use número absoluto ou taxa?",
+      "back": "A taxa. Por exemplo: aprovados ÷ total de cada grupo.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "gt-c5",
+      "topicId": "graficos-e-tabelas",
+      "front": "O que um eixo vertical que não começa no zero pode causar?",
+      "back": "Pode exagerar visualmente as diferenças entre os valores.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    }
   ]
 }

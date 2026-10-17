@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getAllQuestions, getAllSubjects, getTopic } from "./index";
+import { getAllFlashcards, getAllQuestions, getAllSubjects, getTopic } from "./index";
 
 /**
  * Testes de qualidade do conteúdo. Rodam sempre que alguém altera
@@ -11,6 +11,17 @@ describe("integridade do conteúdo", () => {
   it("não repete identificadores de questão", () => {
     const ids = questions.map((q) => q.id);
     expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("cartões têm id único, tópico existente e textos preenchidos", () => {
+    const cards = getAllFlashcards();
+    expect(cards.length).toBeGreaterThan(0);
+    expect(new Set(cards.map((c) => c.id)).size).toBe(cards.length);
+    for (const c of cards) {
+      expect(getTopic(c.topicId), `${c.id}: tópico inexistente`).toBeDefined();
+      expect(c.front.trim().length, `${c.id}: frente vazia`).toBeGreaterThan(0);
+      expect(c.back.trim().length, `${c.id}: verso vazio`).toBeGreaterThan(0);
+    }
   });
 
   it("não repete identificadores de tópico", () => {

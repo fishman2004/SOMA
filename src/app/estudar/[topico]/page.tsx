@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import { AppShell } from "@/components/AppShell";
 import { BackLink, Card, PageTitle, SectionTitle, SourceBadge } from "@/components/ui";
 import { TopicAction, TopicSteps } from "@/components/views/TopicProgress";
-import { getTopic, getTopics, isTopicAvailable } from "@/content";
+import Link from "next/link";
+import { CardsIcon, ChevronRightIcon } from "@/components/icons";
+import { getFlashcardsForTopic, getTopic, getTopics, isTopicAvailable } from "@/content";
 
 export function generateStaticParams() {
   return getTopics().map((t) => ({ topico: t.id }));
@@ -36,6 +38,7 @@ export default async function TopicPage({ params }: PageProps<"/estudar/[topico]
   }
 
   const { content } = topic;
+  const cardCount = getFlashcardsForTopic(topic.id).length;
 
   return (
     <AppShell footer={<TopicAction topicId={topic.id} />}>
@@ -72,6 +75,22 @@ export default async function TopicPage({ params }: PageProps<"/estudar/[topico]
           <p className="text-base leading-normal">{content.example.statement}</p>
           <p className="font-display text-[17px] font-bold">{content.example.solution}</p>
         </Card>
+      ) : null}
+
+      {cardCount > 0 ? (
+        <Link
+          href={`/cartoes/${topic.id}`}
+          className="flex items-center gap-3.5 rounded-2xl border border-line bg-surface p-4 hover:border-line-strong"
+        >
+          <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary">
+            <CardsIcon size={22} />
+          </span>
+          <span className="flex flex-1 flex-col gap-0.5">
+            <span className="text-base font-bold">Cartões de memória</span>
+            <span className="text-sm text-muted">{cardCount} cartões para fixar as ideias deste tópico</span>
+          </span>
+          <ChevronRightIcon size={20} className="text-muted" />
+        </Link>
       ) : null}
     </AppShell>
   );

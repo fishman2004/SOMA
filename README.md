@@ -16,7 +16,9 @@ Esta é a **v0.1**: uma fatia vertical de Matemática que entrega o ciclo comple
 | Prática | `/praticar/[topico]` | Questões com feedback, raciocínio, armadilha comum e causa do erro |
 | Caderno de erros | `/erros` | Erros para refazer e erros resolvidos |
 | Refazer | `/revisar/[questao]` | Refaz uma questão do caderno |
-| Progresso | `/progresso` | Domínio por tópico, questões da semana e XP |
+| Progresso | `/progresso` | Domínio por tópico, questões da semana, cartões aprendidos e XP |
+| Cartões | `/cartoes` | Revisão espaçada dos cartões de memória vencidos e novos |
+| Cartões do tópico | `/cartoes/[topico]` | Revisa os cartões de um tópico específico |
 
 A trilha de Matemática tem **5 tópicos com 20 questões**: Porcentagem, Razão e proporção, Regra de três, Funções do 1º grau e Leitura de gráficos e tabelas. As questões de tabela mostram os dados numa tabela acessível.
 
@@ -76,7 +78,8 @@ Princípios por trás dessa divisão:
   - *Praticando*: começou o tópico.
   - *Consolidando*: respondeu todas as questões e acertou pelo menos 75% de primeira.
   - *Dominado*: consolidando, sem erros pendentes e com acertos em dois dias diferentes.
-- **XP mede esforço, não domínio:** +5 por resposta, +5 por acertar de primeira, +5 por registrar a causa de um erro e +10 por corrigir um erro.
+- **Cartões de memória (caixas de Leitner):** cada cartão fica numa caixa de 1 a 5. "Fácil" sobe de caixa, "Difícil" mantém e "Errei" volta para a caixa 1 e repete na mesma sessão. As revisões voltam em 1, 3, 7, 16 e 35 dias. Cartões novos só aparecem de tópicos já abertos ou praticados, no máximo 10 por dia. Regras em `src/lib/spaced-repetition.ts`.
+- **XP mede esforço, não domínio:** +5 por resposta, +5 por acertar de primeira, +5 por registrar a causa de um erro, +10 por corrigir um erro e +2 por cartão revisado.
 - **Meta semanal:** 5 dias de estudo por semana. Perder um dia não zera nada.
 
 ## Conteúdo e direitos autorais
@@ -93,4 +96,3 @@ Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind 
 - Mais questões por tópico (o ideal é ter questões novas para revisar depois de alguns dias)
 - Publicação gratuita (ex.: Vercel) para testar com estudantes reais
 - Layout próprio para telas grandes e modo escuro
-- Flashcards com repetição espaçada

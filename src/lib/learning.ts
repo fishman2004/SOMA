@@ -47,16 +47,33 @@ export interface Attempt {
   cause?: ErrorCause;
 }
 
+/** Situação de um cartão de memória para o estudante (veja `spaced-repetition.ts`). */
+export interface CardState {
+  /** Caixa de 1 a 5: quanto maior, mais espaçadas as revisões. */
+  box: number;
+  /** Quando o cartão volta a aparecer (ISO 8601). */
+  dueAt: string;
+  /** Primeira revisão (ISO 8601). */
+  firstReviewedAt: string;
+  lastReviewedAt: string;
+  reviews: number;
+  /** Quantas vezes o estudante marcou "Errei". */
+  lapses: number;
+}
+
 export interface ProgressState {
   version: 1;
   attempts: Attempt[];
   visitedTopics: string[];
+  /** Cartões já revisados, por id. Cartões nunca vistos não aparecem aqui. */
+  cards: Record<string, CardState>;
 }
 
 export const EMPTY_PROGRESS: ProgressState = {
   version: 1,
   attempts: [],
   visitedTopics: [],
+  cards: {},
 };
 
 /* ------------------------------------------------------------------ */
@@ -289,6 +306,7 @@ export const XP_RULES = {
   firstTryCorrect: 5, // bônus por acertar de primeira
   causeRegistered: 5, // refletir sobre a causa de um erro
   errorFixed: 10, // acertar uma questão que tinha errado
+  cardReview: 2, // revisar um cartão de memória
 } as const;
 
 export const XP_PER_LEVEL = 100;
@@ -309,6 +327,9 @@ export function getXp(state: ProgressState): XpSummary {
       if (a.cause) xp += XP_RULES.causeRegistered;
       if (i > 0 && a.correct && !list[i - 1].correct) xp += XP_RULES.errorFixed;
     });
+  }
+  for (const card of Object.values(state.cards)) {
+    xp += card.reviews * XP_RULES.cardReview;
   }
   return { xp, level: Math.floor(xp / XP_PER_LEVEL) + 1, intoLevel: xp % XP_PER_LEVEL };
 }

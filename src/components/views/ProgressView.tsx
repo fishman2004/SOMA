@@ -1,6 +1,7 @@
 "use client";
 
-import { getQuestionIds, getTopics, isTopicAvailable } from "@/content";
+import { getAllFlashcards, getQuestionIds, getTopics, isTopicAvailable } from "@/content";
+import { countLearnedCards } from "@/lib/spaced-repetition";
 import {
   getTopicMastery,
   getWeekSummary,
@@ -43,6 +44,9 @@ export function ProgressView() {
   const maxCount = Math.max(1, ...week.days.map((d) => d.count));
   const xp = getXp(state);
   const weekTotal = week.days.reduce((sum, d) => sum + d.count, 0);
+  const totalCards = getAllFlashcards().length;
+  const startedCards = Object.keys(state.cards).length;
+  const learnedCards = countLearnedCards(state);
 
   return (
     <>
@@ -123,6 +127,19 @@ export function ProgressView() {
         {weekTotal === 0 ? <p className="text-sm text-muted">Nenhuma questão respondida nesta semana ainda.</p> : null}
       </Card>
 
+      <Card className="gap-2 p-[18px]">
+        <SectionTitle>Cartões de memória</SectionTitle>
+        <p className="text-[15px] leading-relaxed">
+          <strong className="font-display text-2xl">{learnedCards}</strong>{" "}
+          <span className="text-muted">
+            de {totalCards} cartões aprendidos · {startedCards} já vistos
+          </span>
+        </p>
+        <p className="text-[13px] text-muted">
+          Um cartão conta como aprendido quando você o lembra com facilidade em revisões espaçadas (caixa 3 ou mais).
+        </p>
+      </Card>
+
       <section className="flex items-center gap-3.5 rounded-2xl bg-ink px-[18px] py-4 text-white">
         <div className="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-[#2B2F3A] font-display text-xl font-bold">
           {xp.level}
@@ -133,7 +150,7 @@ export function ProgressView() {
           </span>
           <span className="text-sm text-[#C7CAD3]">
             Faltam {XP_PER_LEVEL - xp.intoLevel} XP para o próximo nível. XP mede esforço: responder, refletir sobre
-            erros e corrigi-los.
+            erros, corrigi-los e revisar cartões.
           </span>
         </div>
       </section>

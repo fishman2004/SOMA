@@ -79,6 +79,13 @@ export const RedoIcon = (p: IconProps) => (
   </Base>
 );
 
+export const CardsIcon = (p: IconProps) => (
+  <Base {...p}>
+    <rect x="7" y="3" width="13" height="15" rx="2" />
+    <path d="M4 7v12a2 2 0 0 0 2 2h10" />
+  </Base>
+);
+
 export function LogoMark({ size = 32 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" focusable="false">
