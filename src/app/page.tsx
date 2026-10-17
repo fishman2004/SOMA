@@ -7,7 +7,7 @@ const UPCOMING_AREAS = ["Linguagens", "Ciências Humanas", "Ciências da Naturez
 export default function HomePage() {
   return (
     <AppShell nav="inicio">
-      <header className="flex items-center justify-between">
+      <header className="flex items-center justify-between md:hidden">
         <div className="flex items-center gap-2.5">
           <LogoMark />
           <span className="font-display text-xl font-bold tracking-[0.08em]">SOMA</span>
@@ -26,7 +26,7 @@ export default function HomePage() {
         <h2 id="outras-areas" className="font-display text-lg font-bold">
           Outras áreas
         </h2>
-        <ul className="grid grid-cols-2 gap-2.5">
+        <ul className="grid grid-cols-2 gap-2.5 md:grid-cols-4">
           {UPCOMING_AREAS.map((area) => (
             <li key={area} className="rounded-[14px] border border-dashed border-line-strong p-3.5 text-sm text-muted">
               {area}

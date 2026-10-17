@@ -20,7 +20,7 @@ export default async function PracticePage({ params }: PageProps<"/praticar/[top
   if (!topic || !isTopicAvailable(topic)) notFound();
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col bg-ground md:border-x md:border-line">
+    <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col bg-ground md:max-w-2xl">
       <main id="conteudo" className="flex flex-1 flex-col">
         <PracticeSession topicId={topic.id} topicName={topic.name} questions={getQuestionsForTopic(topic.id)} />
       </main>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { BookIcon, BookmarkIcon, ChartIcon, HomeIcon } from "./icons";
+import { BookIcon, BookmarkIcon, ChartIcon, HomeIcon, LogoMark } from "./icons";
 
 export type NavKey = "inicio" | "estudar" | "erros" | "progresso";
 
@@ -15,7 +15,7 @@ function BottomNav({ active }: { active: NavKey }) {
   return (
     <nav
       aria-label="Navegação principal"
-      className="sticky bottom-0 z-10 grid h-[72px] shrink-0 grid-cols-4 border-t border-line bg-surface pb-[env(safe-area-inset-bottom)]"
+      className="sticky bottom-0 z-10 grid h-[72px] shrink-0 grid-cols-4 border-t border-line bg-surface pb-[env(safe-area-inset-bottom)] md:hidden"
     >
       {NAV_ITEMS.map(({ key, href, label, Icon }) => {
         const isActive = key === active;
@@ -37,10 +37,43 @@ function BottomNav({ active }: { active: NavKey }) {
   );
 }
 
+/** Navegação lateral, só em telas largas (computador e tablet deitado). */
+function SideNav({ active }: { active: NavKey }) {
+  return (
+    <aside className="sticky top-0 hidden h-dvh w-52 shrink-0 flex-col gap-8 py-10 md:flex">
+      <Link href="/" className="flex items-center gap-2.5 self-start rounded-lg">
+        <LogoMark />
+        <span className="font-display text-xl font-bold tracking-[0.08em]">SOMA</span>
+      </Link>
+      <nav aria-label="Navegação principal">
+        <ul className="flex flex-col gap-1">
+          {NAV_ITEMS.map(({ key, href, label, Icon }) => {
+            const isActive = key === active;
+            return (
+              <li key={key}>
+                <Link
+                  href={href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`flex min-h-11 items-center gap-3 rounded-xl px-3 text-[15px] ${
+                    isActive ? "bg-primary-soft font-bold text-primary-strong" : "text-muted hover:bg-surface hover:text-ink"
+                  }`}
+                >
+                  <Icon size={22} />
+                  {label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    </aside>
+  );
+}
+
 /**
- * Moldura de todas as telas: coluna centralizada (pensada primeiro para o
- * celular), conteúdo principal e, opcionalmente, navegação inferior ou uma
- * barra de ação fixa no rodapé.
+ * Moldura de todas as telas. No celular: uma coluna com navegação inferior.
+ * Em telas largas: navegação lateral e coluna de leitura mais larga.
+ * Opcionalmente, uma barra de ação fixa no rodapé.
  */
 export function AppShell({
   children,
@@ -54,15 +87,17 @@ export function AppShell({
   header?: ReactNode;
 }) {
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col bg-ground md:border-x md:border-line">
+    <div className="md:flex md:justify-center md:gap-10 md:px-8">
       <a
         href="#conteudo"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-20 focus:rounded-lg focus:bg-surface focus:px-4 focus:py-2"
       >
         Pular para o conteúdo
       </a>
+      {nav ? <SideNav active={nav} /> : null}
+      <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col bg-ground md:mx-0 md:max-w-2xl">
       {header}
-      <main id="conteudo" className="flex flex-1 flex-col gap-4 px-5 pb-6 pt-5">
+      <main id="conteudo" className="flex flex-1 flex-col gap-4 px-5 pb-6 pt-5 md:pb-12 md:pt-10">
         {children}
       </main>
       {footer ? (
@@ -71,6 +106,7 @@ export function AppShell({
         </footer>
       ) : null}
       {nav ? <BottomNav active={nav} /> : null}
+      </div>
     </div>
   );
 }
