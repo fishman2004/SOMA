@@ -42,8 +42,8 @@ export interface Attempt {
   correct: boolean;
   /** Data e hora no formato ISO 8601. Também serve de identificador. */
   at: string;
-  /** "pratica" = primeira passagem pelo tópico; "revisao" = refazendo um erro. */
-  mode: "pratica" | "revisao";
+  /** "pratica" = sessão do tópico; "revisao" = refazendo um erro; "simulado" = prova sem feedback imediato. */
+  mode: "pratica" | "revisao" | "simulado";
   cause?: ErrorCause;
 }
 
@@ -67,6 +67,17 @@ export interface ProgressState {
   visitedTopics: string[];
   /** Cartões já revisados, por id. Cartões nunca vistos não aparecem aqui. */
   cards: Record<string, CardState>;
+  /** Histórico de simulados concluídos (veja `exam.ts`). */
+  exams: ExamSummary[];
+}
+
+/** Resumo de um simulado concluído. */
+export interface ExamSummary {
+  at: string;
+  total: number;
+  correct: number;
+  durationSeconds: number;
+  timed: boolean;
 }
 
 export const EMPTY_PROGRESS: ProgressState = {
@@ -74,6 +85,7 @@ export const EMPTY_PROGRESS: ProgressState = {
   attempts: [],
   visitedTopics: [],
   cards: {},
+  exams: [],
 };
 
 /* ------------------------------------------------------------------ */

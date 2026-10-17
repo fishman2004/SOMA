@@ -86,6 +86,13 @@ export const CardsIcon = (p: IconProps) => (
   </Base>
 );
 
+export const ClockIcon = (p: IconProps) => (
+  <Base {...p}>
+    <circle cx="12" cy="13" r="8" />
+    <path d="M12 9v4l2.5 2.5M9 2h6" />
+  </Base>
+);
+
 export function LogoMark({ size = 32 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" focusable="false">

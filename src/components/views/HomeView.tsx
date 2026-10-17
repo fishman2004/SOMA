@@ -5,7 +5,7 @@ import { getAllFlashcards, getAvailableTopicRefs, getQuestionIds, getTopic } fro
 import { countPendingErrors, getContinueTopicId, getTopicSteps, getWeekSummary } from "@/lib/learning";
 import { useProgress } from "@/lib/progress-store";
 import { getReviewQueue, getUnlockedTopics } from "@/lib/spaced-repetition";
-import { ArrowRightIcon, CardsIcon, ChevronRightIcon, RedoIcon } from "../icons";
+import { ArrowRightIcon, CardsIcon, ChevronRightIcon, ClockIcon, RedoIcon } from "../icons";
 import { Card, Segments, Skeleton } from "../ui";
 
 const STEP_TEXT = {
@@ -38,6 +38,7 @@ export function HomeView() {
   const week = getWeekSummary(state);
   const cardQueue = getReviewQueue(state, getAllFlashcards());
   const cardsToReview = cardQueue.due.length + cardQueue.fresh.length;
+  const lastExam = state.exams[state.exams.length - 1];
 
   return (
     <>
@@ -100,6 +101,24 @@ export function HomeView() {
               : cardsToReview === 1
                 ? "1 cartão para revisar hoje"
                 : `${cardsToReview} cartões para revisar hoje`}
+          </span>
+        </span>
+        <ChevronRightIcon size={20} className="text-muted" />
+      </Link>
+
+      <Link
+        href="/simulado"
+        className="flex items-center gap-3.5 rounded-2xl border border-line bg-surface p-4 hover:border-line-strong"
+      >
+        <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-success-soft text-success">
+          <ClockIcon size={22} />
+        </span>
+        <span className="flex flex-1 flex-col gap-0.5">
+          <span className="text-base font-bold">Simulado</span>
+          <span className="text-sm text-muted">
+            {lastExam
+              ? `Último: ${lastExam.correct} de ${lastExam.total}. Que tal outro?`
+              : "Questões misturadas, com correção só no final."}
           </span>
         </span>
         <ChevronRightIcon size={20} className="text-muted" />

@@ -1,6 +1,9 @@
 "use client";
 
 import { getAllFlashcards, getQuestionIds, getTopics, isTopicAvailable } from "@/content";
+import Link from "next/link";
+import { relativeDay } from "@/lib/dates";
+import { formatDuration } from "@/lib/exam";
 import { countLearnedCards } from "@/lib/spaced-repetition";
 import {
   getTopicMastery,
@@ -47,6 +50,7 @@ export function ProgressView() {
   const totalCards = getAllFlashcards().length;
   const startedCards = Object.keys(state.cards).length;
   const learnedCards = countLearnedCards(state);
+  const recentExams = [...state.exams].reverse().slice(0, 3);
 
   return (
     <>
@@ -138,6 +142,32 @@ export function ProgressView() {
         <p className="text-[13px] text-muted">
           Um cartão conta como aprendido quando você o lembra com facilidade em revisões espaçadas (caixa 3 ou mais).
         </p>
+      </Card>
+
+      <Card className="gap-2.5 p-[18px]">
+        <SectionTitle>Simulados</SectionTitle>
+        {recentExams.length === 0 ? (
+          <p className="text-[15px] text-muted">
+            Nenhum simulado ainda.{" "}
+            <Link href="/simulado" className="font-bold text-primary underline underline-offset-2">
+              Fazer o primeiro
+            </Link>
+          </p>
+        ) : (
+          <ul className="flex flex-col divide-y divide-line">
+            {recentExams.map((e) => (
+              <li key={e.at} className="flex items-baseline justify-between gap-2 py-2 text-[15px]">
+                <span>
+                  <strong className="font-display text-lg">
+                    {e.correct}/{e.total}
+                  </strong>{" "}
+                  <span className="text-muted">acertos · {formatDuration(e.durationSeconds)}</span>
+                </span>
+                <span className="text-sm text-muted">{relativeDay(e.at)}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </Card>
 
       <section className="flex items-center gap-3.5 rounded-2xl bg-inverse px-[18px] py-4 text-on-inverse">

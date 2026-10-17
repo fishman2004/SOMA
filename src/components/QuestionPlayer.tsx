@@ -399,7 +399,7 @@ export function FeedbackBody({
       </div>
 
       {pitfall ? (
-        <div className="flex flex-col gap-1 rounded-xl bg-surface px-3.5 py-3">
+        <div className="flex flex-col gap-1 rounded-xl border border-line bg-surface px-3.5 py-3">
           <span className="text-sm font-bold">{pitfall.title}</span>
           <span className="text-sm leading-normal text-muted">{pitfall.text}</span>
         </div>
