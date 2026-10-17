@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
+/*
+ * Identidade visual do SOMA (tokens).
+ * Use sempre estas cores pelas classes do Tailwind (ex.: bg-primary, text-muted)
+ * em vez de escrever códigos hexadecimais nos componentes.
+ */
+@theme {
+  --color-ground: #f4f5f0;
+  --color-surface: #ffffff;
+  --color-ink: #15181f;
+  --color-muted: #565c6b;
+  --color-line: #e2e4dc;
+  --color-line-strong: #c9ccc2;
+  --color-track: #dcdfd5;
+
+  --color-primary: #3b36d1;
+  --color-primary-strong: #2a2699;
+  --color-primary-soft: #ecebfd;
+  --color-primary-tint: #9c99ea;
+
+  --color-success: #17784c;
+  --color-success-strong: #11593a;
+  --color-success-soft: #e5f4ec;
+
+  --color-error: #b4500a;
+  --color-error-strong: #7a3606;
+  --color-error-soft: #fcefe4;
+
+  --font-sans: "Atkinson Hyperlegible", system-ui, sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Foco sempre visível para quem navega pelo teclado. */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

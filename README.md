@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SOMA
 
-## Getting Started
+**Sistema de Organização, Memorização e Aprendizagem**: uma plataforma gratuita de estudos que começa pelo ENEM.
 
-First, run the development server:
+Esta é a **v0.1**: uma fatia vertical de Matemática que entrega o ciclo completo de aprendizagem.
+
+> estudar → praticar → entender o erro → guardar no caderno → refazer depois → ver a evolução
+
+## O que já funciona
+
+| Tela | Rota | O que faz |
+| --- | --- | --- |
+| Início | `/` | Continua de onde o estudante parou, mostra erros pendentes e a meta semanal |
+| Trilha | `/estudar` | Tópicos de Matemática em ordem sugerida, sem bloqueios |
+| Tópico | `/estudar/[topico]` | Ideia-chave, fórmulas, alerta de erro comum e exemplo resolvido |
+| Prática | `/praticar/[topico]` | Questões com feedback, raciocínio, armadilha comum e causa do erro |
+| Caderno de erros | `/erros` | Erros para refazer e erros resolvidos |
+| Refazer | `/revisar/[questao]` | Refaz uma questão do caderno |
+| Progresso | `/progresso` | Domínio por tópico, questões da semana e XP |
+
+Só o tópico **Porcentagem** tem conteúdo (4 questões). Os outros aparecem como "em preparação".
+
+## Como rodar no seu computador
+
+Pré-requisito: [Node.js](https://nodejs.org) 20.9 ou mais novo.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install      # instala as dependências (só na primeira vez)
+npm run dev      # abre o modo de desenvolvimento
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Depois abra <http://localhost:3000> no navegador. Para simular um celular, use as ferramentas de desenvolvedor do navegador (F12) e ative o modo de dispositivo.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Outros comandos
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm test         # roda os testes das regras de aprendizagem e do conteúdo
+npm run lint     # procura problemas no código
+npm run build    # gera a versão de produção (também confere os tipos)
+```
 
-## Learn More
+## Como o projeto está organizado
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                  Telas (cada pasta é uma rota)
+├── components/           Peças de interface reutilizáveis
+│   └── views/            Partes das telas que dependem do progresso salvo
+├── content/
+│   ├── data/             Conteúdo em JSON (tópicos e questões)
+│   ├── types.ts          Formato esperado do conteúdo
+│   └── index.ts          Único ponto de acesso ao conteúdo
+└── lib/
+    ├── learning.ts       Regras de aprendizagem (domínio, erros, XP, meta semanal)
+    └── progress-store.ts Onde o progresso é salvo (navegador)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Princípios por trás dessa divisão:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Regras separadas da interface.** `learning.ts` só tem funções puras e testadas. As telas apenas exibem o resultado.
+- **Conteúdo separado do código.** Para adicionar uma questão, edite o JSON. A origem dos dados pode virar um banco no futuro mudando só `content/index.ts`.
+- **Progresso local.** Na v0.1, tudo fica no `localStorage` do navegador. Não há login nem coleta de dados pessoais.
 
-## Deploy on Vercel
+## Como adicionar uma questão
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Abra `src/content/data/matematica.json`.
+2. Copie uma questão existente dentro de `"questions"` e mude o `id` (ex.: `porc-005`).
+3. Preencha enunciado, alternativas, `correctId`, raciocínio e explicação.
+4. Mantenha `"reviewStatus": "aguardando-revisao"` até uma pessoa revisar.
+5. Adicione a conta do gabarito em `src/content/content.test.ts` e rode `npm test`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Regras de aprendizagem (v0.1)
+
+- **Caderno de erros:** toda questão errada entra. Ela fica "resolvida" quando a tentativa mais recente acerta.
+- **Domínio do tópico:**
+  - *Praticando*: começou o tópico.
+  - *Consolidando*: respondeu todas as questões e acertou pelo menos 75% de primeira.
+  - *Dominado*: consolidando, sem erros pendentes e com acertos em dois dias diferentes.
+- **XP mede esforço, não domínio:** +5 por resposta, +5 por acertar de primeira, +5 por registrar a causa de um erro e +10 por corrigir um erro.
+- **Meta semanal:** 5 dias de estudo por semana. Perder um dia não zera nada.
+
+## Conteúdo e direitos autorais
+
+Todas as questões e explicações atuais são **autorais do SOMA** e estão marcadas como **aguardando revisão humana**. Nenhum conteúdo é apresentado como oficial do INEP.
+
+## Stack
+
+Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind CSS 4 · Vitest · fontes Atkinson Hyperlegible e Space Grotesk servidas localmente via Fontsource.
+
+## Próximos passos sugeridos
+
+- Revisão humana das questões de Porcentagem
+- Conteúdo dos próximos tópicos da trilha
+- Publicação gratuita (ex.: Vercel) para testar com estudantes reais
+- Layout próprio para telas grandes e modo escuro
+- Flashcards com repetição espaçada

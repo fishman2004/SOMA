@@ -1,0 +1,145 @@
+{
+  "id": "matematica",
+  "name": "Matemática",
+  "area": "Matemática e suas Tecnologias",
+  "topics": [
+    {
+      "id": "porcentagem",
+      "name": "Porcentagem",
+      "description": "Aumentos, descontos e variações sucessivas",
+      "order": 1,
+      "content": {
+        "keyIdea": "p% significa p partes em cada 100. Para aplicar uma porcentagem, transforme-a em um fator e multiplique.",
+        "formulas": [
+          { "label": "Aumento de p%", "expression": "valor × (1 + p/100)" },
+          { "label": "Desconto de p%", "expression": "valor × (1 − p/100)" },
+          { "label": "Variação percentual", "expression": "(novo − antigo) ÷ antigo × 100" }
+        ],
+        "warning": "Aumentos e descontos seguidos se multiplicam, não se somam.",
+        "example": {
+          "statement": "Um tênis de R$ 200,00 tem 15% de desconto.",
+          "solution": "200 × 0,85 = R$ 170,00"
+        }
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Explicação autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "razao-e-proporcao",
+      "name": "Razão e proporção",
+      "description": "Escalas, receitas e comparações",
+      "order": 2
+    },
+    {
+      "id": "regra-de-tres",
+      "name": "Regra de três",
+      "description": "Grandezas diretas e inversas",
+      "order": 3
+    },
+    {
+      "id": "funcoes-1-grau",
+      "name": "Funções do 1º grau",
+      "description": "Taxa de variação e leitura de retas",
+      "order": 4
+    },
+    {
+      "id": "graficos-e-tabelas",
+      "name": "Leitura de gráficos e tabelas",
+      "description": "Problemas contextualizados",
+      "order": 5
+    }
+  ],
+  "questions": [
+    {
+      "id": "porc-001",
+      "topicId": "porcentagem",
+      "statement": "Uma camiseta custava R$ 80,00. A loja aumentou o preço em 25% e, um mês depois, anunciou um desconto de 20% sobre o novo preço.",
+      "prompt": "Qual é o preço final da camiseta?",
+      "alternatives": [
+        { "id": "A", "text": "R$ 84,00" },
+        { "id": "B", "text": "R$ 80,00" },
+        { "id": "C", "text": "R$ 76,00" },
+        { "id": "D", "text": "R$ 85,00" },
+        { "id": "E", "text": "R$ 96,00" }
+      ],
+      "correctId": "B",
+      "difficulty": "media",
+      "reasoning": ["80 × 1,25 = 100", "100 × 0,80 = 80"],
+      "explanation": "O preço volta a R$ 80,00. Os 20% de desconto incidem sobre R$ 100, uma base maior que a original.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "Somar +25% e −20% dá +5%, mas os percentuais se multiplicam: 1,25 × 0,80 = 1."
+      },
+      "source": { "origin": "soma", "label": "Questão autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+    },
+    {
+      "id": "porc-002",
+      "topicId": "porcentagem",
+      "statement": "Em uma turma de 40 estudantes, 35% foram aprovados na primeira fase de uma olimpíada de Matemática.",
+      "prompt": "Quantos estudantes foram aprovados?",
+      "alternatives": [
+        { "id": "A", "text": "12" },
+        { "id": "B", "text": "16" },
+        { "id": "C", "text": "14" },
+        { "id": "D", "text": "26" },
+        { "id": "E", "text": "35" }
+      ],
+      "correctId": "C",
+      "difficulty": "facil",
+      "reasoning": ["35% = 0,35", "40 × 0,35 = 14"],
+      "explanation": "Foram aprovados 14 estudantes.",
+      "trap": {
+        "alternativeId": "D",
+        "explanation": "26 é o número de estudantes que não foram aprovados: 40 − 14. Releia o que a pergunta pede."
+      },
+      "source": { "origin": "soma", "label": "Questão autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+    },
+    {
+      "id": "porc-003",
+      "topicId": "porcentagem",
+      "statement": "O preço de um quilo de feijão passou de R$ 5,00 para R$ 6,50.",
+      "prompt": "Qual foi o aumento percentual?",
+      "alternatives": [
+        { "id": "A", "text": "15%" },
+        { "id": "B", "text": "23%" },
+        { "id": "C", "text": "65%" },
+        { "id": "D", "text": "30%" },
+        { "id": "E", "text": "130%" }
+      ],
+      "correctId": "D",
+      "difficulty": "media",
+      "reasoning": ["Aumento: 6,50 − 5,00 = 1,50", "1,50 ÷ 5,00 = 0,30 = 30%"],
+      "explanation": "A variação é sempre calculada em relação ao valor antigo.",
+      "trap": {
+        "alternativeId": "B",
+        "explanation": "1,50 ÷ 6,50 ≈ 23% divide pelo valor novo. A base da variação é o valor antigo."
+      },
+      "source": { "origin": "soma", "label": "Questão autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+    },
+    {
+      "id": "porc-004",
+      "topicId": "porcentagem",
+      "statement": "Uma loja deu dois descontos seguidos de 10% no preço de uma mochila.",
+      "prompt": "Qual foi o desconto total sobre o preço original?",
+      "alternatives": [
+        { "id": "A", "text": "19%" },
+        { "id": "B", "text": "20%" },
+        { "id": "C", "text": "18%" },
+        { "id": "D", "text": "21%" },
+        { "id": "E", "text": "10%" }
+      ],
+      "correctId": "A",
+      "difficulty": "media",
+      "reasoning": ["0,90 × 0,90 = 0,81", "1 − 0,81 = 0,19 = 19%"],
+      "explanation": "Depois dos dois descontos, a mochila custa 81% do preço original: um desconto total de 19%.",
+      "trap": {
+        "alternativeId": "B",
+        "explanation": "O segundo desconto incide sobre um preço já reduzido, por isso o total é menor que 10% + 10%."
+      },
+      "source": { "origin": "soma", "label": "Questão autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+    }
+  ]
+}
