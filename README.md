@@ -22,7 +22,7 @@ Esta é a **v0.1**: uma fatia vertical de Matemática que entrega o ciclo comple
 
 O app segue o **modo claro ou escuro** do aparelho e pode ser **adicionado à tela inicial** do celular (manifesto e ícones em `src/app/manifest.ts` e `public/icons/`).
 
-A trilha de Matemática tem **5 tópicos com 20 questões**: Porcentagem, Razão e proporção, Regra de três, Funções do 1º grau e Leitura de gráficos e tabelas. As questões de tabela mostram os dados numa tabela acessível.
+A trilha de Matemática tem **5 tópicos com 25 questões**: 20 de múltipla escolha e 5 de **resposta numérica**, em que o estudante digita o número (aceita vírgula, ponto e "R$"). Os tópicos são Porcentagem, Razão e proporção, Regra de três, Funções do 1º grau e Leitura de gráficos e tabelas. As questões de tabela mostram os dados numa tabela acessível.
 
 ## Como rodar no seu computador
 
@@ -71,6 +71,8 @@ Princípios por trás dessa divisão:
 2. Copie uma questão existente dentro de `"questions"` e mude o `id` (ex.: `porc-005`).
 3. Preencha enunciado, alternativas, `correctId`, raciocínio e explicação.
 4. Mantenha `"reviewStatus": "aguardando-revisao"` até uma pessoa revisar.
+   - Múltipla escolha: `"kind": "multipla-escolha"`, com `alternatives`, `correctId` e, se quiser, `trap`.
+   - Resposta numérica: `"kind": "numerica"`, com `answer`, `tolerance`, `prefix` ou `unit` e `commonMistakes` (erros previsíveis com explicação própria).
 5. Adicione a conta do gabarito em `src/content/content.test.ts` e rode `npm test`.
 
 ## Regras de aprendizagem (v0.1)
@@ -94,7 +96,7 @@ Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind 
 
 ## Próximos passos sugeridos
 
-- Revisão humana das 20 questões e das explicações
+- Revisão humana das 25 questões, dos 25 cartões e das explicações
 - Mais questões por tópico (o ideal é ter questões novas para revisar depois de alguns dias)
 - Publicação gratuita (ex.: Vercel) para testar com estudantes reais
 - Layout próprio para telas grandes

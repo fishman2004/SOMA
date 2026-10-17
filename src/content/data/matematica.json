@@ -169,6 +169,7 @@
     {
       "id": "porc-001",
       "topicId": "porcentagem",
+      "kind": "multipla-escolha",
       "statement": "Uma camiseta custava R$ 80,00. A loja aumentou o preço em 25% e, um mês depois, anunciou um desconto de 20% sobre o novo preço.",
       "prompt": "Qual é o preço final da camiseta?",
       "alternatives": [
@@ -213,6 +214,7 @@
     {
       "id": "porc-002",
       "topicId": "porcentagem",
+      "kind": "multipla-escolha",
       "statement": "Em uma turma de 40 estudantes, 35% foram aprovados na primeira fase de uma olimpíada de Matemática.",
       "prompt": "Quantos estudantes foram aprovados?",
       "alternatives": [
@@ -257,6 +259,7 @@
     {
       "id": "porc-003",
       "topicId": "porcentagem",
+      "kind": "multipla-escolha",
       "statement": "O preço de um quilo de feijão passou de R$ 5,00 para R$ 6,50.",
       "prompt": "Qual foi o aumento percentual?",
       "alternatives": [
@@ -301,6 +304,7 @@
     {
       "id": "porc-004",
       "topicId": "porcentagem",
+      "kind": "multipla-escolha",
       "statement": "Uma loja deu dois descontos seguidos de 10% no preço de uma mochila.",
       "prompt": "Qual foi o desconto total sobre o preço original?",
       "alternatives": [
@@ -345,6 +349,7 @@
     {
       "id": "rp-001",
       "topicId": "razao-e-proporcao",
+      "kind": "multipla-escolha",
       "statement": "Uma receita de bolo usa 2 xícaras de farinha para cada 3 ovos.",
       "prompt": "Mantendo a proporção, quantas xícaras de farinha são necessárias para 9 ovos?",
       "alternatives": [
@@ -389,6 +394,7 @@
     {
       "id": "rp-002",
       "topicId": "razao-e-proporcao",
+      "kind": "multipla-escolha",
       "statement": "Um mapa foi desenhado na escala 1 : 50.000. Nele, a distância entre duas cidades é de 4 cm.",
       "prompt": "Qual é a distância real entre as cidades?",
       "alternatives": [
@@ -433,6 +439,7 @@
     {
       "id": "rp-003",
       "topicId": "razao-e-proporcao",
+      "kind": "multipla-escolha",
       "statement": "Em uma escola com 300 estudantes, a razão entre meninas e meninos é de 3 para 2.",
       "prompt": "Quantas meninas estudam nessa escola?",
       "alternatives": [
@@ -478,6 +485,7 @@
     {
       "id": "rp-004",
       "topicId": "razao-e-proporcao",
+      "kind": "multipla-escolha",
       "statement": "Um carro percorre 240 km com 20 litros de combustível.",
       "prompt": "Com o mesmo consumo, quantos quilômetros ele percorre com 35 litros?",
       "alternatives": [
@@ -522,6 +530,7 @@
     {
       "id": "r3-001",
       "topicId": "regra-de-tres",
+      "kind": "multipla-escolha",
       "statement": "Três torneiras iguais, abertas juntas, enchem um tanque em 12 horas.",
       "prompt": "Em quanto tempo nove torneiras iguais enchem o mesmo tanque?",
       "alternatives": [
@@ -567,6 +576,7 @@
     {
       "id": "r3-002",
       "topicId": "regra-de-tres",
+      "kind": "multipla-escolha",
       "statement": "Com 5 kg de café, uma cafeteria serve 400 xícaras.",
       "prompt": "Quantos quilos de café são necessários para servir 1.000 xícaras?",
       "alternatives": [
@@ -612,6 +622,7 @@
     {
       "id": "r3-003",
       "topicId": "regra-de-tres",
+      "kind": "multipla-escolha",
       "statement": "A 60 km/h, um ônibus faz um percurso em 4 horas.",
       "prompt": "Quanto tempo ele leva no mesmo percurso a 80 km/h?",
       "alternatives": [
@@ -657,6 +668,7 @@
     {
       "id": "r3-004",
       "topicId": "regra-de-tres",
+      "kind": "multipla-escolha",
       "statement": "Uma impressora imprime 150 páginas em 6 minutos, sempre no mesmo ritmo.",
       "prompt": "Em quanto tempo ela imprime 400 páginas?",
       "alternatives": [
@@ -702,6 +714,7 @@
     {
       "id": "f1-001",
       "topicId": "funcoes-1-grau",
+      "kind": "multipla-escolha",
       "statement": "Um plano de celular cobra R$ 30,00 fixos por mês mais R$ 0,50 por minuto de ligação.",
       "prompt": "Quanto paga quem fala 100 minutos no mês?",
       "alternatives": [
@@ -746,6 +759,7 @@
     {
       "id": "f1-002",
       "topicId": "funcoes-1-grau",
+      "kind": "multipla-escolha",
       "statement": "Considere a função f(x) = 3x − 12.",
       "prompt": "Para qual valor de x a função vale zero?",
       "alternatives": [
@@ -791,6 +805,7 @@
     {
       "id": "f1-003",
       "topicId": "funcoes-1-grau",
+      "kind": "multipla-escolha",
       "statement": "Uma vela de 20 cm fica acesa e queima em ritmo constante. Depois de 3 horas, ela mede 14 cm.",
       "prompt": "Qual função dá a altura h da vela, em cm, após t horas?",
       "alternatives": [
@@ -836,6 +851,7 @@
     {
       "id": "f1-004",
       "topicId": "funcoes-1-grau",
+      "kind": "multipla-escolha",
       "statement": "Uma caixa d'água com 500 litros tem um vazamento que tira 25 litros por hora.",
       "prompt": "Em quantas horas a caixa fica vazia?",
       "alternatives": [
@@ -881,6 +897,7 @@
     {
       "id": "gt-001",
       "topicId": "graficos-e-tabelas",
+      "kind": "multipla-escolha",
       "statement": "A tabela mostra a chuva registrada em uma cidade durante quatro meses.",
       "table": {
         "caption": "Chuva mensal (em milímetros)",
@@ -950,6 +967,7 @@
     {
       "id": "gt-002",
       "topicId": "graficos-e-tabelas",
+      "kind": "multipla-escolha",
       "statement": "A tabela mostra quantas pessoas usaram a biblioteca de um bairro em três anos.",
       "table": {
         "caption": "Usuários da biblioteca por ano",
@@ -1015,6 +1033,7 @@
     {
       "id": "gt-003",
       "topicId": "graficos-e-tabelas",
+      "kind": "multipla-escolha",
       "statement": "A tabela mostra o consumo de água de três casas em um mês.",
       "table": {
         "caption": "Consumo de água (em milhares de litros)",
@@ -1080,6 +1099,7 @@
     {
       "id": "gt-004",
       "topicId": "graficos-e-tabelas",
+      "kind": "multipla-escolha",
       "statement": "A tabela mostra o resultado de três turmas em uma prova.",
       "table": {
         "caption": "Aprovados por turma",
@@ -1141,6 +1161,173 @@
         "alternativeId": "C",
         "explanation": "A turma C tem mais aprovados (27), mas também é a maior turma. Em taxa, ela fica em último."
       },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "porc-005",
+      "topicId": "porcentagem",
+      "kind": "numerica",
+      "statement": "Um celular custava R$ 1.200,00 e foi vendido com 15% de desconto.",
+      "prompt": "Qual foi o preço com desconto?",
+      "answer": 1020,
+      "tolerance": 0.01,
+      "prefix": "R$",
+      "difficulty": "facil",
+      "reasoning": [
+        "Desconto de 15%: fator 0,85",
+        "1.200 × 0,85 = 1.020"
+      ],
+      "explanation": "O preço final é R$ 1.020,00.",
+      "commonMistakes": [
+        {
+          "value": 180,
+          "explanation": "R$ 180,00 é o valor do desconto, não o preço final. Falta subtrair: 1.200 − 180."
+        },
+        {
+          "value": 1380,
+          "explanation": "R$ 1.380,00 é o preço com aumento de 15%. Num desconto, o fator é 0,85, não 1,15."
+        }
+      ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "rp-005",
+      "topicId": "razao-e-proporcao",
+      "kind": "numerica",
+      "statement": "A planta de uma casa foi desenhada na escala 1 : 200. No desenho, a largura de uma sala mede 2,5 cm.",
+      "prompt": "Qual é a largura real da sala, em metros?",
+      "answer": 5,
+      "tolerance": 0.01,
+      "unit": "m",
+      "difficulty": "media",
+      "reasoning": [
+        "2,5 × 200 = 500 cm",
+        "500 cm ÷ 100 = 5 m"
+      ],
+      "explanation": "Cada centímetro do desenho vale 200 cm na realidade. Depois, converta para metros.",
+      "commonMistakes": [
+        {
+          "value": 500,
+          "explanation": "500 é a medida em centímetros. A pergunta pede metros: 500 ÷ 100 = 5."
+        },
+        {
+          "value": 0.0125,
+          "explanation": "Dividir 2,5 por 200 inverte a escala. A medida real é maior que a do desenho."
+        }
+      ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "r3-005",
+      "topicId": "regra-de-tres",
+      "kind": "numerica",
+      "statement": "8 operários terminam uma obra em 15 dias, trabalhando no mesmo ritmo.",
+      "prompt": "Em quantos dias 12 operários terminariam a mesma obra?",
+      "answer": 10,
+      "unit": "dias",
+      "difficulty": "media",
+      "reasoning": [
+        "Mais operários, menos dias: relação inversa",
+        "8 × 15 = 12 × x",
+        "x = 120 ÷ 12 = 10 dias"
+      ],
+      "explanation": "Com 50% mais operários, a obra leva menos tempo.",
+      "commonMistakes": [
+        {
+          "value": 22.5,
+          "explanation": "22,5 dias vem de tratar a relação como direta. Mais operários terminam mais rápido, não mais devagar."
+        }
+      ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "f1-005",
+      "topicId": "funcoes-1-grau",
+      "kind": "numerica",
+      "statement": "Uma academia cobra R$ 80,00 de matrícula, paga uma única vez, e mensalidade de R$ 60,00.",
+      "prompt": "Quanto uma pessoa paga, no total, em 6 meses?",
+      "answer": 440,
+      "tolerance": 0.01,
+      "prefix": "R$",
+      "difficulty": "facil",
+      "reasoning": [
+        "f(x) = 60x + 80",
+        "f(6) = 60 × 6 + 80 = 440"
+      ],
+      "explanation": "A matrícula é o valor fixo (b) e a mensalidade é a taxa por mês (a).",
+      "commonMistakes": [
+        {
+          "value": 360,
+          "explanation": "R$ 360,00 são só as mensalidades. Falta somar a matrícula de R$ 80,00."
+        },
+        {
+          "value": 840,
+          "explanation": "R$ 840,00 cobra a matrícula todo mês. Ela é paga uma única vez."
+        }
+      ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "gt-005",
+      "topicId": "graficos-e-tabelas",
+      "kind": "numerica",
+      "statement": "A tabela mostra os ingressos vendidos em um festival de três dias.",
+      "table": {
+        "caption": "Ingressos vendidos por dia",
+        "headers": [
+          "Dia",
+          "Ingressos"
+        ],
+        "rows": [
+          [
+            "Sexta",
+            "320"
+          ],
+          [
+            "Sábado",
+            "480"
+          ],
+          [
+            "Domingo",
+            "400"
+          ]
+        ]
+      },
+      "prompt": "Qual foi a média de ingressos vendidos por dia?",
+      "answer": 400,
+      "unit": "ingressos",
+      "difficulty": "facil",
+      "reasoning": [
+        "320 + 480 + 400 = 1.200",
+        "1.200 ÷ 3 = 400"
+      ],
+      "explanation": "A média é o total dividido pelo número de dias.",
+      "commonMistakes": [
+        {
+          "value": 1200,
+          "explanation": "1.200 é o total dos três dias. Para a média, divida por 3."
+        }
+      ],
       "source": {
         "origin": "soma",
         "label": "Questão autoral do SOMA",

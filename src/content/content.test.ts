@@ -31,6 +31,18 @@ describe("integridade do conteúdo", () => {
 
   it.each(questions.map((q) => [q.id, q] as const))("%s está bem formada", (_id, q) => {
     expect(getTopic(q.topicId), "tópico inexistente").toBeDefined();
+    expect(q.source.label.length).toBeGreaterThan(0);
+    expect(q.reasoning.length, "sem raciocínio").toBeGreaterThan(0);
+
+    if (q.kind === "numerica") {
+      expect(Number.isFinite(q.answer), "resposta não é número").toBe(true);
+      for (const m of q.commonMistakes ?? []) {
+        expect(Math.abs(m.value - q.answer), "erro comum igual à resposta").toBeGreaterThan(q.tolerance ?? 0);
+      }
+      return;
+    }
+
+    expect(q.kind, "formato desconhecido").toBe("multipla-escolha");
     const letters = q.alternatives.map((a) => a.id);
     expect(new Set(letters).size, "letras repetidas").toBe(letters.length);
     expect(letters, "gabarito fora das alternativas").toContain(q.correctId);
@@ -40,7 +52,6 @@ describe("integridade do conteúdo", () => {
       expect(letters).toContain(q.trap.alternativeId);
       expect(q.trap.alternativeId, "armadilha não pode ser o gabarito").not.toBe(q.correctId);
     }
-    expect(q.source.label.length).toBeGreaterThan(0);
   });
 });
 
@@ -49,8 +60,10 @@ describe("integridade do conteúdo", () => {
  * Ao criar uma questão nova de Matemática, adicione a conta aqui.
  */
 describe("contas dos gabaritos", () => {
+  /** Texto da alternativa correta, ou o número esperado nas questões numéricas. */
   const answerOf = (id: string) => {
     const q = getAllQuestions().find((x) => x.id === id)!;
+    if (q.kind === "numerica") return String(q.answer);
     return q.alternatives.find((a) => a.id === q.correctId)!.text;
   };
   const brl = (n: number) => `R$ ${n.toFixed(2).replace(".", ",")}`;
@@ -128,6 +141,23 @@ describe("contas dos gabaritos", () => {
   it("gt-003: 15 − 9 mil litros", () => {
     expect(answerOf("gt-003")).toBe(`${((15 - 9) * 1000).toLocaleString("pt-BR")} litros`);
   });
+  /* Questões de resposta numérica */
+  it("porc-005: R$ 1.200,00 com 15% de desconto", () => {
+    expect(answerOf("porc-005")).toBe(String(1200 * 0.85));
+  });
+  it("rp-005: 2,5 cm na escala 1:200, em metros", () => {
+    expect(answerOf("rp-005")).toBe(String((2.5 * 200) / 100));
+  });
+  it("r3-005: 8 operários em 15 dias, 12 operários (inversa)", () => {
+    expect(answerOf("r3-005")).toBe(String((8 * 15) / 12));
+  });
+  it("f1-005: R$ 80 de matrícula + R$ 60 por mês, 6 meses", () => {
+    expect(answerOf("f1-005")).toBe(String(60 * 6 + 80));
+  });
+  it("gt-005: média de 320, 480 e 400 ingressos", () => {
+    expect(answerOf("gt-005")).toBe(String((320 + 480 + 400) / 3));
+  });
+
   it("gt-004: maior taxa entre 18/24, 21/30 e 27/40", () => {
     const rates = { A: 18 / 24, B: 21 / 30, C: 27 / 40 };
     const best = Object.entries(rates).sort((x, y) => y[1] - x[1])[0][0];

@@ -52,7 +52,8 @@ export interface DataTable {
   rows: string[][];
 }
 
-export interface Question {
+/** Campos comuns a todos os formatos de questão. */
+interface QuestionBase {
   id: string;
   topicId: string;
   statement: string;
@@ -60,20 +61,40 @@ export interface Question {
   table?: DataTable;
   /** Pergunta final, exibida em destaque após o enunciado. */
   prompt: string;
-  alternatives: Alternative[];
-  correctId: string;
   difficulty: "facil" | "media" | "dificil";
   /** Linhas do raciocínio, exibidas na ordem. */
   reasoning: string[];
   /** Fechamento curto que explica o resultado. */
   explanation: string;
+  source: Source;
+}
+
+export interface MultipleChoiceQuestion extends QuestionBase {
+  kind: "multipla-escolha";
+  alternatives: Alternative[];
+  correctId: string;
   /** Erro comum ligado a uma alternativa incorreta. */
   trap?: {
     alternativeId: string;
     explanation: string;
   };
-  source: Source;
 }
+
+/** O estudante digita um número. Evita o chute e treina o cálculo de verdade. */
+export interface NumericQuestion extends QuestionBase {
+  kind: "numerica";
+  answer: number;
+  /** Diferença aceita em relação à resposta (padrão: 0). */
+  tolerance?: number;
+  /** Texto antes do campo, ex.: "R$". */
+  prefix?: string;
+  /** Unidade depois do campo, ex.: "m", "dias". */
+  unit?: string;
+  /** Respostas erradas previsíveis, com explicação específica para cada uma. */
+  commonMistakes?: { value: number; explanation: string }[];
+}
+
+export type Question = MultipleChoiceQuestion | NumericQuestion;
 
 export interface TopicContent {
   keyIdea: string;

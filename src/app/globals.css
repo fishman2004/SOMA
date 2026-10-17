@@ -107,6 +107,11 @@ body {
   border-radius: 6px;
 }
 
+/* Títulos que recebem foco por código (para leitores de tela) não precisam de contorno. */
+[tabindex="-1"]:focus {
+  outline: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

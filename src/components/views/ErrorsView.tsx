@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { getQuestion, getTopic } from "@/content";
+import { correctAnswerText, givenAnswerText } from "@/lib/answers";
 import { relativeDay } from "@/lib/dates";
 import { causeLabel, getErrorEntries, type ErrorEntry } from "@/lib/learning";
 import { useProgress } from "@/lib/progress-store";
@@ -15,8 +16,6 @@ function ErrorCard({ entry }: { entry: ErrorEntry }) {
   const question = getQuestion(entry.questionId);
   if (!question) return null; // questão removida do conteúdo
   const topic = getTopic(entry.topicId);
-  const chosen = question.alternatives.find((a) => a.id === entry.lastWrong.chosenId);
-  const correct = question.alternatives.find((a) => a.id === question.correctId)!;
   const cause = causeLabel(entry.lastWrong.cause);
   const resolved = entry.status === "resolvido";
 
@@ -28,19 +27,16 @@ function ErrorCard({ entry }: { entry: ErrorEntry }) {
       </div>
       <p className="text-base leading-snug">
         {question.statement} <strong>{question.prompt}</strong>
+        {question.table ? <span className="text-muted"> (com tabela de dados)</span> : null}
       </p>
       <dl className="flex flex-col gap-1 text-sm">
         <div className="flex gap-1 text-error-strong">
           <dt>Sua resposta:</dt>
-          <dd>
-            {chosen?.id}) {chosen?.text}
-          </dd>
+          <dd>{entry.lastWrong.chosenId ? givenAnswerText(question, entry.lastWrong.chosenId) : "sem resposta"}</dd>
         </div>
         <div className="flex gap-1 font-bold text-success-strong">
           <dt>Correta:</dt>
-          <dd>
-            {correct.id}) {correct.text}
-          </dd>
+          <dd>{correctAnswerText(question)}</dd>
         </div>
         {cause ? (
           <div className="flex gap-1 text-muted">
