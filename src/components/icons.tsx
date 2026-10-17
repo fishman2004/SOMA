@@ -89,8 +89,9 @@ export const CardsIcon = (p: IconProps) => (
 export function LogoMark({ size = 32 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-      <rect width="32" height="32" rx="9" fill="#15181F" />
-      <path d="M16 9v14M9 16h14" stroke="#F4F5F0" strokeWidth="3.2" strokeLinecap="round" />
+      {/* Cores pelos tokens, para o logo se inverter no modo escuro. */}
+      <rect width="32" height="32" rx="9" style={{ fill: "var(--color-ink)" }} />
+      <path d="M16 9v14M9 16h14" style={{ stroke: "var(--color-ground)" }} strokeWidth="3.2" strokeLinecap="round" />
     </svg>
   );
 }

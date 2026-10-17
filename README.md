@@ -20,6 +20,8 @@ Esta é a **v0.1**: uma fatia vertical de Matemática que entrega o ciclo comple
 | Cartões | `/cartoes` | Revisão espaçada dos cartões de memória vencidos e novos |
 | Cartões do tópico | `/cartoes/[topico]` | Revisa os cartões de um tópico específico |
 
+O app segue o **modo claro ou escuro** do aparelho e pode ser **adicionado à tela inicial** do celular (manifesto e ícones em `src/app/manifest.ts` e `public/icons/`).
+
 A trilha de Matemática tem **5 tópicos com 20 questões**: Porcentagem, Razão e proporção, Regra de três, Funções do 1º grau e Leitura de gráficos e tabelas. As questões de tabela mostram os dados numa tabela acessível.
 
 ## Como rodar no seu computador
@@ -95,4 +97,5 @@ Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind 
 - Revisão humana das 20 questões e das explicações
 - Mais questões por tópico (o ideal é ter questões novas para revisar depois de alguns dias)
 - Publicação gratuita (ex.: Vercel) para testar com estudantes reais
-- Layout próprio para telas grandes e modo escuro
+- Layout próprio para telas grandes
+- Funcionamento offline (service worker)

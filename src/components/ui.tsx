@@ -106,10 +106,10 @@ export function Skeleton({ className = "h-24" }: { className?: string }) {
 }
 
 export const buttonPrimary =
-  "inline-flex min-h-[52px] items-center justify-center gap-2 rounded-[14px] bg-primary px-5 text-[17px] font-bold text-white hover:bg-primary-strong disabled:cursor-not-allowed disabled:bg-track disabled:text-muted";
+  "inline-flex min-h-[52px] items-center justify-center gap-2 rounded-[14px] bg-primary px-5 text-[17px] font-bold text-on-strong hover:bg-primary-strong disabled:cursor-not-allowed disabled:bg-track disabled:text-muted";
 
 export const buttonSecondary =
   "inline-flex min-h-[52px] items-center justify-center gap-2 rounded-[14px] border-2 border-primary bg-surface px-5 text-base font-bold text-primary hover:bg-primary-soft";
 
 export const buttonSmall =
-  "inline-flex min-h-11 items-center gap-1.5 self-start rounded-xl bg-primary px-4 text-[15px] font-bold text-white hover:bg-primary-strong";
+  "inline-flex min-h-11 items-center gap-1.5 self-start rounded-xl bg-primary px-4 text-[15px] font-bold text-on-strong hover:bg-primary-strong";

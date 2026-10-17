@@ -90,7 +90,7 @@ export function ErrorsView() {
 
   return (
     <>
-      <div role="tablist" aria-label="Filtrar erros" className="grid grid-cols-2 gap-1 rounded-[14px] bg-[#E5E8DF] p-1">
+      <div role="tablist" aria-label="Filtrar erros" className="grid grid-cols-2 gap-1 rounded-[14px] bg-sunken p-1">
         {tabs.map((t) => {
           const selected = t.id === tab;
           return (

@@ -28,7 +28,7 @@ export default function TrailPage() {
               <div className="flex w-8 shrink-0 flex-col items-center" aria-hidden="true">
                 <div
                   className={`flex size-8 items-center justify-center rounded-full font-display text-[15px] font-bold ${
-                    available ? "bg-primary text-white" : "border-2 border-line-strong bg-surface text-muted"
+                    available ? "bg-primary text-on-strong" : "border-2 border-line-strong bg-surface text-muted"
                   }`}
                 >
                   {topic.order}

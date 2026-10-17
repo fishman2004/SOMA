@@ -42,20 +42,20 @@ export function HomeView() {
   return (
     <>
       {topic && steps ? (
-        <section className="flex flex-col gap-3.5 rounded-[20px] bg-primary p-5 text-white">
-          <span className="text-[13px] font-bold uppercase tracking-[0.06em] text-[#D9D8FA]">
+        <section className="flex flex-col gap-3.5 rounded-[20px] bg-primary p-5 text-on-strong">
+          <span className="text-[13px] font-bold uppercase tracking-[0.06em] text-hero-muted">
             {isFirstVisit ? "Comece por aqui" : "Continuar de onde parou"}
           </span>
           <div className="flex flex-col gap-1">
             <h2 className="font-display text-[26px] font-bold">{topic.name}</h2>
-            <p className="text-[15px] text-[#E4E3FC]">{STEP_TEXT[steps.current]}</p>
+            <p className="text-[15px] text-hero-soft">{STEP_TEXT[steps.current]}</p>
           </div>
           <div role="img" aria-label={`${doneSteps} de 3 etapas concluídas`}>
-            <Segments total={3} done={doneSteps} doneClass="bg-white" restClass="bg-[#7C78E3]" />
+            <Segments total={3} done={doneSteps} doneClass="bg-on-strong" restClass="bg-hero-track" />
           </div>
           <Link
             href={`/estudar/${topic.id}`}
-            className="inline-flex min-h-11 items-center gap-2 self-start rounded-xl bg-white px-5 text-base font-bold text-primary hover:bg-primary-soft"
+            className="inline-flex min-h-11 items-center gap-2 self-start rounded-xl bg-surface px-5 text-base font-bold text-primary hover:bg-primary-soft"
           >
             {isFirstVisit ? "Começar" : "Continuar"}
             <ArrowRightIcon size={18} />
@@ -118,7 +118,7 @@ export function HomeView() {
           className="flex gap-2"
         >
           {Array.from({ length: week.goal }, (_, i) => (
-            <div key={i} className={`h-8 flex-1 rounded-lg ${i < week.studyDays ? "bg-success" : "bg-[#E5E8DF]"}`} />
+            <div key={i} className={`h-8 flex-1 rounded-lg ${i < week.studyDays ? "bg-success" : "bg-sunken"}`} />
           ))}
         </div>
         <p className="text-sm text-muted">

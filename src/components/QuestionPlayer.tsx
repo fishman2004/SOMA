@@ -142,16 +142,16 @@ export function QuestionPlayer({
             let status = "";
             if (!confirmed && isPicked) {
               box = "border-primary bg-primary-soft";
-              badge = "bg-primary text-white";
+              badge = "bg-primary text-on-strong";
             }
             if (confirmed) {
               if (isCorrect) {
                 box = "border-success bg-success-soft";
-                badge = "bg-success text-white";
+                badge = "bg-success text-on-strong";
                 status = " (resposta correta)";
               } else if (isPicked) {
                 box = "border-error bg-error-soft";
-                badge = "bg-error text-white";
+                badge = "bg-error text-on-strong";
                 status = " (sua resposta)";
               } else {
                 box = "border-line bg-surface opacity-55";
@@ -250,7 +250,7 @@ export function QuestionPlayer({
                       aria-pressed={on}
                       onClick={() => chooseCause(c.id)}
                       className={`min-h-11 rounded-full border-2 px-3.5 text-sm ${
-                        on ? "border-ink bg-ink text-white" : "border-line bg-surface text-ink hover:border-line-strong"
+                        on ? "border-ink bg-ink text-on-strong" : "border-line bg-surface text-ink hover:border-line-strong"
                       }`}
                     >
                       {c.label}

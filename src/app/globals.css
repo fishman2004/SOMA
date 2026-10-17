@@ -27,12 +27,70 @@
   --color-error-strong: #7a3606;
   --color-error-soft: #fcefe4;
 
+  /* Superfície rebaixada (trilhos de abas, metas vazias). */
+  --color-sunken: #e5e8df;
+  /* Texto sobre preenchimentos fortes (primary, success, error). */
+  --color-on-strong: #ffffff;
+
+  /* Cartão de destaque do Início, sobre bg-primary. */
+  --color-hero-muted: #d9d8fa;
+  --color-hero-soft: #e4e3fc;
+  --color-hero-track: #7c78e3;
+
+  /* Cartão invertido (XP). */
+  --color-inverse: #15181f;
+  --color-inverse-raised: #2b2f3a;
+  --color-on-inverse: #ffffff;
+  --color-on-inverse-muted: #c7cad3;
+
   --font-sans: "Atkinson Hyperlegible", system-ui, sans-serif;
   --font-display: "Space Grotesk", system-ui, sans-serif;
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
+}
+
+/*
+ * Modo escuro: segue a preferência do aparelho.
+ * Os mesmos tokens ganham outros valores, então os componentes não mudam.
+ * Contraste conferido para texto normal (AA, 4,5:1) nas combinações usadas.
+ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-ground: #111318;
+    --color-surface: #1a1d24;
+    --color-ink: #ecedef;
+    --color-muted: #a3a8b4;
+    --color-line: #2a2e37;
+    --color-line-strong: #3d424d;
+    --color-track: #2f333d;
+    --color-sunken: #0b0d11;
+
+    --color-primary: #8b87f5;
+    --color-primary-strong: #b3b0fa;
+    --color-primary-soft: #26254f;
+    --color-primary-tint: #5d58c9;
+
+    --color-success: #4cc38a;
+    --color-success-strong: #86dcb2;
+    --color-success-soft: #15302a;
+
+    --color-error: #f08a4b;
+    --color-error-strong: #f6b48a;
+    --color-error-soft: #3a2416;
+
+    --color-on-strong: #0f1115;
+
+    --color-hero-muted: #1e1c55;
+    --color-hero-soft: #24216a;
+    --color-hero-track: #6e69e0;
+
+    --color-inverse: #26254f;
+    --color-inverse-raised: #34337a;
+    --color-on-inverse: #ecedef;
+    --color-on-inverse-muted: #c9c8f0;
+  }
 }
 
 body {

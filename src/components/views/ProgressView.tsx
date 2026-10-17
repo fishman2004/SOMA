@@ -140,15 +140,15 @@ export function ProgressView() {
         </p>
       </Card>
 
-      <section className="flex items-center gap-3.5 rounded-2xl bg-ink px-[18px] py-4 text-white">
-        <div className="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-[#2B2F3A] font-display text-xl font-bold">
+      <section className="flex items-center gap-3.5 rounded-2xl bg-inverse px-[18px] py-4 text-on-inverse">
+        <div className="flex size-12 shrink-0 items-center justify-center rounded-[14px] bg-inverse-raised font-display text-xl font-bold">
           {xp.level}
         </div>
         <div className="flex flex-col gap-0.5">
           <span className="text-base font-bold">
             Nível {xp.level} · {xp.xp} XP
           </span>
-          <span className="text-sm text-[#C7CAD3]">
+          <span className="text-sm text-on-inverse-muted">
             Faltam {XP_PER_LEVEL - xp.intoLevel} XP para o próximo nível. XP mede esforço: responder, refletir sobre
             erros, corrigi-los e revisar cartões.
           </span>
