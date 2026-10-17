@@ -66,9 +66,9 @@ export function AppShell({
         {children}
       </main>
       {footer ? (
-        <div className="sticky bottom-0 z-10 border-t border-line bg-ground px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3">
+        <footer className="sticky bottom-0 z-10 border-t border-line bg-ground px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-3">
           {footer}
-        </div>
+        </footer>
       ) : null}
       {nav ? <BottomNav active={nav} /> : null}
     </div>

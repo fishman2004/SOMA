@@ -95,6 +95,9 @@ export function PracticeSession({
   return (
     <div className="flex min-h-full flex-col">
       {header}
+      <h1 className="sr-only">
+        Praticar {topicName}: questão {index + 1} de {total}
+      </h1>
       <div className="px-5 pb-6 pt-4">
         <QuestionPlayer
           key={`${question.id}-${results.length}`}
