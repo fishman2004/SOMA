@@ -16,7 +16,7 @@ Esta é a **v0.1**: uma fatia vertical de Matemática que entrega o ciclo comple
 | Prática | `/praticar/[topico]` | Questões com feedback, raciocínio, armadilha comum e causa do erro |
 | Caderno de erros | `/erros` | Erros para refazer e erros resolvidos |
 | Refazer | `/revisar/[questao]` | Refaz uma questão do caderno |
-| Progresso | `/progresso` | Domínio por tópico, questões da semana, cartões aprendidos e XP |
+| Progresso | `/progresso` | Domínio por tópico, questões da semana, cartões aprendidos, conquistas, simulados e XP |
 | Simulado | `/simulado` | Questões misturadas por tópico, cronômetro opcional, correção só no final e relatório por tópico |
 | Cartões | `/cartoes` | Revisão espaçada dos cartões de memória vencidos e novos |
 | Cartões do tópico | `/cartoes/[topico]` | Revisa os cartões de um tópico específico |
@@ -86,6 +86,7 @@ Princípios por trás dessa divisão:
 - **Cartões de memória (caixas de Leitner):** cada cartão fica numa caixa de 1 a 5. "Fácil" sobe de caixa, "Difícil" mantém e "Errei" volta para a caixa 1 e repete na mesma sessão. As revisões voltam em 1, 3, 7, 16 e 35 dias. Cartões novos só aparecem de tópicos já abertos ou praticados, no máximo 10 por dia. Regras em `src/lib/spaced-repetition.ts`.
 - **XP mede esforço, não domínio:** +5 por resposta, +5 por acertar de primeira, +5 por registrar a causa de um erro, +10 por corrigir um erro e +2 por cartão revisado.
 - **Simulado:** as questões são sorteadas equilibrando os tópicos escolhidos (5, 10 ou 15). Com cronômetro, são 3 minutos por questão e o simulado é entregue quando o tempo acaba. As respondidas viram tentativas (as erradas vão para o caderno de erros); as em branco não contam. Regras em `src/lib/exam.ts`.
+- **Conquistas:** 9 marcos calculados a partir do progresso (sem nada guardado à parte), que premiam hábitos de aprendizagem: registrar a causa de um erro, corrigi-lo, levar um cartão à caixa 3, dominar um tópico. Regras em `src/lib/achievements.ts`.
 - **Meta semanal:** 5 dias de estudo por semana. Perder um dia não zera nada.
 
 ## Conteúdo e direitos autorais

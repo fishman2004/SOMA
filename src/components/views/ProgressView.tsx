@@ -1,6 +1,8 @@
 "use client";
 
-import { getAllFlashcards, getQuestionIds, getTopics, isTopicAvailable } from "@/content";
+import { getAllFlashcards, getAvailableTopicRefs, getQuestionIds, getTopics, isTopicAvailable } from "@/content";
+import { getAchievements } from "@/lib/achievements";
+import { CheckIcon } from "../icons";
 import Link from "next/link";
 import { relativeDay } from "@/lib/dates";
 import { formatDuration } from "@/lib/exam";
@@ -10,6 +12,7 @@ import {
   getWeekSummary,
   getXp,
   MASTERY_LABELS,
+  WEEKLY_GOAL_DAYS,
   XP_PER_LEVEL,
   type MasteryLevel,
 } from "@/lib/learning";
@@ -51,6 +54,7 @@ export function ProgressView() {
   const startedCards = Object.keys(state.cards).length;
   const learnedCards = countLearnedCards(state);
   const recentExams = [...state.exams].reverse().slice(0, 3);
+  const achievements = getAchievements(state, getAvailableTopicRefs(), WEEKLY_GOAL_DAYS);
 
   return (
     <>
@@ -142,6 +146,32 @@ export function ProgressView() {
         <p className="text-[13px] text-muted">
           Um cartão conta como aprendido quando você o lembra com facilidade em revisões espaçadas (caixa 3 ou mais).
         </p>
+      </Card>
+
+      <Card className="gap-3 p-[18px]">
+        <div className="flex items-baseline justify-between">
+          <SectionTitle>Conquistas</SectionTitle>
+          <span className="text-sm text-muted">
+            {achievements.filter((a) => a.earned).length} de {achievements.length}
+          </span>
+        </div>
+        <ul className="grid grid-cols-1 gap-2 min-[360px]:grid-cols-2">
+          {achievements.map((a) => (
+            <li
+              key={a.id}
+              className={`flex flex-col gap-1 rounded-xl border p-3 ${
+                a.earned ? "border-success/40 bg-success-soft" : "border-dashed border-line-strong"
+              }`}
+            >
+              <span className={`flex items-center gap-1.5 text-sm font-bold ${a.earned ? "text-success-strong" : "text-muted"}`}>
+                {a.earned ? <CheckIcon size={14} /> : null}
+                {a.title}
+                <span className="sr-only">{a.earned ? " (conquistada)" : " (ainda não)"}</span>
+              </span>
+              <span className="text-[13px] leading-snug text-muted">{a.description}</span>
+            </li>
+          ))}
+        </ul>
       </Card>
 
       <Card className="gap-2.5 p-[18px]">
