@@ -11,9 +11,18 @@
       "content": {
         "keyIdea": "p% significa p partes em cada 100. Para aplicar uma porcentagem, transforme-a em um fator e multiplique.",
         "formulas": [
-          { "label": "Aumento de p%", "expression": "valor × (1 + p/100)" },
-          { "label": "Desconto de p%", "expression": "valor × (1 − p/100)" },
-          { "label": "Variação percentual", "expression": "(novo − antigo) ÷ antigo × 100" }
+          {
+            "label": "Aumento de p%",
+            "expression": "valor × (1 + p/100)"
+          },
+          {
+            "label": "Desconto de p%",
+            "expression": "valor × (1 − p/100)"
+          },
+          {
+            "label": "Variação percentual",
+            "expression": "(novo − antigo) ÷ antigo × 100"
+          }
         ],
         "warning": "Aumentos e descontos seguidos se multiplicam, não se somam.",
         "example": {
@@ -31,25 +40,129 @@
       "id": "razao-e-proporcao",
       "name": "Razão e proporção",
       "description": "Escalas, receitas e comparações",
-      "order": 2
+      "order": 2,
+      "content": {
+        "keyIdea": "Razão compara duas grandezas por divisão. Proporção é a igualdade entre duas razões: quando uma grandeza muda, a outra muda na mesma razão.",
+        "formulas": [
+          {
+            "label": "Razão entre a e b",
+            "expression": "a ÷ b   (ou a : b)"
+          },
+          {
+            "label": "Proporção",
+            "expression": "a/b = c/d  →  a × d = b × c"
+          },
+          {
+            "label": "Escala",
+            "expression": "medida no desenho ÷ medida real"
+          }
+        ],
+        "warning": "Em escalas, coloque as duas medidas na mesma unidade antes de comparar.",
+        "example": {
+          "statement": "Uma receita usa 2 xícaras de farinha para 12 biscoitos. Quantas xícaras para 30 biscoitos?",
+          "solution": "2/12 = x/30  →  12x = 60  →  x = 5 xícaras"
+        }
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Explicação autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
     },
     {
       "id": "regra-de-tres",
       "name": "Regra de três",
       "description": "Grandezas diretas e inversas",
-      "order": 3
+      "order": 3,
+      "content": {
+        "keyIdea": "Antes de calcular, decida o tipo de relação. Diretamente proporcionais: uma aumenta, a outra aumenta. Inversamente proporcionais: uma aumenta, a outra diminui.",
+        "formulas": [
+          {
+            "label": "Regra de três direta",
+            "expression": "a/b = c/x  →  x = b × c ÷ a"
+          },
+          {
+            "label": "Regra de três inversa",
+            "expression": "a × b = c × x  →  x = a × b ÷ c"
+          }
+        ],
+        "warning": "O erro mais comum é tratar uma relação inversa como direta. Pergunte sempre: se uma grandeza aumenta, a outra aumenta ou diminui?",
+        "example": {
+          "statement": "6 pedreiros constroem um muro em 10 dias. Em quantos dias 12 pedreiros constroem o mesmo muro?",
+          "solution": "Mais pedreiros, menos dias (inversa): 6 × 10 = 12 × x  →  x = 5 dias"
+        }
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Explicação autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
     },
     {
       "id": "funcoes-1-grau",
       "name": "Funções do 1º grau",
       "description": "Taxa de variação e leitura de retas",
-      "order": 4
+      "order": 4,
+      "content": {
+        "keyIdea": "Uma função do 1º grau tem a forma f(x) = a·x + b. O b é o valor inicial (quando x = 0). O a é a taxa de variação: quanto y muda a cada unidade de x.",
+        "formulas": [
+          {
+            "label": "Forma geral",
+            "expression": "f(x) = a·x + b"
+          },
+          {
+            "label": "Taxa de variação",
+            "expression": "a = (y₂ − y₁) ÷ (x₂ − x₁)"
+          },
+          {
+            "label": "Raiz (onde f(x) = 0)",
+            "expression": "x = −b ÷ a"
+          }
+        ],
+        "warning": "Se a é positivo, a reta sobe; se é negativo, desce. Leia o sinal de a antes de interpretar o problema.",
+        "example": {
+          "statement": "Um táxi cobra R$ 5,00 de bandeirada mais R$ 2,50 por km. Quanto custa uma corrida de 8 km?",
+          "solution": "f(x) = 2,5x + 5  →  f(8) = 2,5 × 8 + 5 = R$ 25,00"
+        }
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Explicação autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
     },
     {
       "id": "graficos-e-tabelas",
       "name": "Leitura de gráficos e tabelas",
       "description": "Problemas contextualizados",
-      "order": 5
+      "order": 5,
+      "content": {
+        "keyIdea": "Antes de calcular, leia título, unidades, legenda e escala. A maioria dos erros em gráficos e tabelas vem de uma unidade lida errado, não de conta errada.",
+        "formulas": [
+          {
+            "label": "Variação absoluta",
+            "expression": "valor final − valor inicial"
+          },
+          {
+            "label": "Variação percentual",
+            "expression": "(final − inicial) ÷ inicial × 100"
+          },
+          {
+            "label": "Média",
+            "expression": "soma dos valores ÷ quantidade de valores"
+          }
+        ],
+        "warning": "Confira se os valores estão em milhares, em porcentagem ou em outra unidade. Isso muda a resposta inteira.",
+        "example": {
+          "statement": "Uma loja vendeu 120 peças em janeiro e 150 em fevereiro. Qual foi a variação percentual?",
+          "solution": "150 − 120 = 30  →  30 ÷ 120 = 0,25 = 25%"
+        }
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Explicação autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
     }
   ],
   "questions": [
@@ -59,21 +172,43 @@
       "statement": "Uma camiseta custava R$ 80,00. A loja aumentou o preço em 25% e, um mês depois, anunciou um desconto de 20% sobre o novo preço.",
       "prompt": "Qual é o preço final da camiseta?",
       "alternatives": [
-        { "id": "A", "text": "R$ 84,00" },
-        { "id": "B", "text": "R$ 80,00" },
-        { "id": "C", "text": "R$ 76,00" },
-        { "id": "D", "text": "R$ 85,00" },
-        { "id": "E", "text": "R$ 96,00" }
+        {
+          "id": "A",
+          "text": "R$ 84,00"
+        },
+        {
+          "id": "B",
+          "text": "R$ 80,00"
+        },
+        {
+          "id": "C",
+          "text": "R$ 76,00"
+        },
+        {
+          "id": "D",
+          "text": "R$ 85,00"
+        },
+        {
+          "id": "E",
+          "text": "R$ 96,00"
+        }
       ],
       "correctId": "B",
       "difficulty": "media",
-      "reasoning": ["80 × 1,25 = 100", "100 × 0,80 = 80"],
+      "reasoning": [
+        "80 × 1,25 = 100",
+        "100 × 0,80 = 80"
+      ],
       "explanation": "O preço volta a R$ 80,00. Os 20% de desconto incidem sobre R$ 100, uma base maior que a original.",
       "trap": {
         "alternativeId": "A",
         "explanation": "Somar +25% e −20% dá +5%, mas os percentuais se multiplicam: 1,25 × 0,80 = 1."
       },
-      "source": { "origin": "soma", "label": "Questão autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
     },
     {
       "id": "porc-002",
@@ -81,21 +216,43 @@
       "statement": "Em uma turma de 40 estudantes, 35% foram aprovados na primeira fase de uma olimpíada de Matemática.",
       "prompt": "Quantos estudantes foram aprovados?",
       "alternatives": [
-        { "id": "A", "text": "12" },
-        { "id": "B", "text": "16" },
-        { "id": "C", "text": "14" },
-        { "id": "D", "text": "26" },
-        { "id": "E", "text": "35" }
+        {
+          "id": "A",
+          "text": "12"
+        },
+        {
+          "id": "B",
+          "text": "16"
+        },
+        {
+          "id": "C",
+          "text": "14"
+        },
+        {
+          "id": "D",
+          "text": "26"
+        },
+        {
+          "id": "E",
+          "text": "35"
+        }
       ],
       "correctId": "C",
       "difficulty": "facil",
-      "reasoning": ["35% = 0,35", "40 × 0,35 = 14"],
+      "reasoning": [
+        "35% = 0,35",
+        "40 × 0,35 = 14"
+      ],
       "explanation": "Foram aprovados 14 estudantes.",
       "trap": {
         "alternativeId": "D",
         "explanation": "26 é o número de estudantes que não foram aprovados: 40 − 14. Releia o que a pergunta pede."
       },
-      "source": { "origin": "soma", "label": "Questão autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
     },
     {
       "id": "porc-003",
@@ -103,21 +260,43 @@
       "statement": "O preço de um quilo de feijão passou de R$ 5,00 para R$ 6,50.",
       "prompt": "Qual foi o aumento percentual?",
       "alternatives": [
-        { "id": "A", "text": "15%" },
-        { "id": "B", "text": "23%" },
-        { "id": "C", "text": "65%" },
-        { "id": "D", "text": "30%" },
-        { "id": "E", "text": "130%" }
+        {
+          "id": "A",
+          "text": "15%"
+        },
+        {
+          "id": "B",
+          "text": "23%"
+        },
+        {
+          "id": "C",
+          "text": "65%"
+        },
+        {
+          "id": "D",
+          "text": "30%"
+        },
+        {
+          "id": "E",
+          "text": "130%"
+        }
       ],
       "correctId": "D",
       "difficulty": "media",
-      "reasoning": ["Aumento: 6,50 − 5,00 = 1,50", "1,50 ÷ 5,00 = 0,30 = 30%"],
+      "reasoning": [
+        "Aumento: 6,50 − 5,00 = 1,50",
+        "1,50 ÷ 5,00 = 0,30 = 30%"
+      ],
       "explanation": "A variação é sempre calculada em relação ao valor antigo.",
       "trap": {
         "alternativeId": "B",
         "explanation": "1,50 ÷ 6,50 ≈ 23% divide pelo valor novo. A base da variação é o valor antigo."
       },
-      "source": { "origin": "soma", "label": "Questão autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
     },
     {
       "id": "porc-004",
@@ -125,21 +304,848 @@
       "statement": "Uma loja deu dois descontos seguidos de 10% no preço de uma mochila.",
       "prompt": "Qual foi o desconto total sobre o preço original?",
       "alternatives": [
-        { "id": "A", "text": "19%" },
-        { "id": "B", "text": "20%" },
-        { "id": "C", "text": "18%" },
-        { "id": "D", "text": "21%" },
-        { "id": "E", "text": "10%" }
+        {
+          "id": "A",
+          "text": "19%"
+        },
+        {
+          "id": "B",
+          "text": "20%"
+        },
+        {
+          "id": "C",
+          "text": "18%"
+        },
+        {
+          "id": "D",
+          "text": "21%"
+        },
+        {
+          "id": "E",
+          "text": "10%"
+        }
       ],
       "correctId": "A",
       "difficulty": "media",
-      "reasoning": ["0,90 × 0,90 = 0,81", "1 − 0,81 = 0,19 = 19%"],
+      "reasoning": [
+        "0,90 × 0,90 = 0,81",
+        "1 − 0,81 = 0,19 = 19%"
+      ],
       "explanation": "Depois dos dois descontos, a mochila custa 81% do preço original: um desconto total de 19%.",
       "trap": {
         "alternativeId": "B",
         "explanation": "O segundo desconto incide sobre um preço já reduzido, por isso o total é menor que 10% + 10%."
       },
-      "source": { "origin": "soma", "label": "Questão autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "rp-001",
+      "topicId": "razao-e-proporcao",
+      "statement": "Uma receita de bolo usa 2 xícaras de farinha para cada 3 ovos.",
+      "prompt": "Mantendo a proporção, quantas xícaras de farinha são necessárias para 9 ovos?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "4,5"
+        },
+        {
+          "id": "B",
+          "text": "6"
+        },
+        {
+          "id": "C",
+          "text": "8"
+        },
+        {
+          "id": "D",
+          "text": "3"
+        },
+        {
+          "id": "E",
+          "text": "18"
+        }
+      ],
+      "correctId": "B",
+      "difficulty": "facil",
+      "reasoning": [
+        "9 ovos = 3 × 3 ovos",
+        "2 × 3 = 6 xícaras"
+      ],
+      "explanation": "Se os ovos triplicam, a farinha também triplica.",
+      "trap": {
+        "alternativeId": "E",
+        "explanation": "18 = 9 × 2: multiplicou pelo número de xícaras, mas esqueceu de dividir pelos 3 ovos da receita original."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "rp-002",
+      "topicId": "razao-e-proporcao",
+      "statement": "Um mapa foi desenhado na escala 1 : 50.000. Nele, a distância entre duas cidades é de 4 cm.",
+      "prompt": "Qual é a distância real entre as cidades?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "20 km"
+        },
+        {
+          "id": "B",
+          "text": "200 m"
+        },
+        {
+          "id": "C",
+          "text": "2 km"
+        },
+        {
+          "id": "D",
+          "text": "0,2 km"
+        },
+        {
+          "id": "E",
+          "text": "12,5 km"
+        }
+      ],
+      "correctId": "C",
+      "difficulty": "media",
+      "reasoning": [
+        "4 × 50.000 = 200.000 cm",
+        "200.000 cm = 2.000 m = 2 km"
+      ],
+      "explanation": "Cada 1 cm no mapa vale 50.000 cm na realidade. Depois, é só converter a unidade.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "20 km aparece quando a conversão de centímetros para quilômetros divide por 10.000 em vez de 100.000."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "rp-003",
+      "topicId": "razao-e-proporcao",
+      "statement": "Em uma escola com 300 estudantes, a razão entre meninas e meninos é de 3 para 2.",
+      "prompt": "Quantas meninas estudam nessa escola?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "120"
+        },
+        {
+          "id": "B",
+          "text": "200"
+        },
+        {
+          "id": "C",
+          "text": "150"
+        },
+        {
+          "id": "D",
+          "text": "180"
+        },
+        {
+          "id": "E",
+          "text": "450"
+        }
+      ],
+      "correctId": "D",
+      "difficulty": "media",
+      "reasoning": [
+        "3 + 2 = 5 partes",
+        "300 ÷ 5 = 60 estudantes por parte",
+        "3 × 60 = 180 meninas"
+      ],
+      "explanation": "A razão 3 para 2 divide o total em 5 partes iguais. As meninas ficam com 3 delas.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "120 é o número de meninos: as outras 2 partes de 60."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "rp-004",
+      "topicId": "razao-e-proporcao",
+      "statement": "Um carro percorre 240 km com 20 litros de combustível.",
+      "prompt": "Com o mesmo consumo, quantos quilômetros ele percorre com 35 litros?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "420 km"
+        },
+        {
+          "id": "B",
+          "text": "360 km"
+        },
+        {
+          "id": "C",
+          "text": "480 km"
+        },
+        {
+          "id": "D",
+          "text": "700 km"
+        },
+        {
+          "id": "E",
+          "text": "255 km"
+        }
+      ],
+      "correctId": "A",
+      "difficulty": "facil",
+      "reasoning": [
+        "240 ÷ 20 = 12 km por litro",
+        "12 × 35 = 420 km"
+      ],
+      "explanation": "Primeiro descubra quanto o carro faz com 1 litro. Depois multiplique.",
+      "trap": {
+        "alternativeId": "E",
+        "explanation": "255 = 240 + 15: somar a diferença de litros não respeita a proporção. A distância cresce na mesma razão que os litros."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "r3-001",
+      "topicId": "regra-de-tres",
+      "statement": "Três torneiras iguais, abertas juntas, enchem um tanque em 12 horas.",
+      "prompt": "Em quanto tempo nove torneiras iguais enchem o mesmo tanque?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "36 horas"
+        },
+        {
+          "id": "B",
+          "text": "4 horas"
+        },
+        {
+          "id": "C",
+          "text": "6 horas"
+        },
+        {
+          "id": "D",
+          "text": "3 horas"
+        },
+        {
+          "id": "E",
+          "text": "8 horas"
+        }
+      ],
+      "correctId": "B",
+      "difficulty": "media",
+      "reasoning": [
+        "Mais torneiras, menos tempo: relação inversa",
+        "3 × 12 = 9 × x",
+        "x = 36 ÷ 9 = 4 horas"
+      ],
+      "explanation": "Com o triplo de torneiras, o tanque enche em um terço do tempo.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "36 horas é o resultado de montar a regra de três como direta. Mais torneiras não podem levar mais tempo."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "r3-002",
+      "topicId": "regra-de-tres",
+      "statement": "Com 5 kg de café, uma cafeteria serve 400 xícaras.",
+      "prompt": "Quantos quilos de café são necessários para servir 1.000 xícaras?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "2 kg"
+        },
+        {
+          "id": "B",
+          "text": "10 kg"
+        },
+        {
+          "id": "C",
+          "text": "12,5 kg"
+        },
+        {
+          "id": "D",
+          "text": "15 kg"
+        },
+        {
+          "id": "E",
+          "text": "25 kg"
+        }
+      ],
+      "correctId": "C",
+      "difficulty": "facil",
+      "reasoning": [
+        "Mais xícaras, mais café: relação direta",
+        "5/400 = x/1.000",
+        "x = 5 × 1.000 ÷ 400 = 12,5 kg"
+      ],
+      "explanation": "1.000 xícaras são 2,5 vezes 400 xícaras, então o café também é 2,5 vezes maior.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "2 kg vem de montar a conta como inversa (5 × 400 ÷ 1.000). Servir mais xícaras exige mais café, não menos."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "r3-003",
+      "topicId": "regra-de-tres",
+      "statement": "A 60 km/h, um ônibus faz um percurso em 4 horas.",
+      "prompt": "Quanto tempo ele leva no mesmo percurso a 80 km/h?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "5 h 20 min"
+        },
+        {
+          "id": "B",
+          "text": "3 h 20 min"
+        },
+        {
+          "id": "C",
+          "text": "2 h 40 min"
+        },
+        {
+          "id": "D",
+          "text": "3 h"
+        },
+        {
+          "id": "E",
+          "text": "3 h 30 min"
+        }
+      ],
+      "correctId": "D",
+      "difficulty": "media",
+      "reasoning": [
+        "Mais velocidade, menos tempo: relação inversa",
+        "60 × 4 = 80 × x",
+        "x = 240 ÷ 80 = 3 horas"
+      ],
+      "explanation": "O percurso tem 240 km. A 80 km/h, ele é feito em 3 horas.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "5 h 20 min aparece ao tratar a relação como direta (4 × 80 ÷ 60). Andar mais rápido não pode aumentar o tempo."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "r3-004",
+      "topicId": "regra-de-tres",
+      "statement": "Uma impressora imprime 150 páginas em 6 minutos, sempre no mesmo ritmo.",
+      "prompt": "Em quanto tempo ela imprime 400 páginas?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "16 minutos"
+        },
+        {
+          "id": "B",
+          "text": "2,25 minutos"
+        },
+        {
+          "id": "C",
+          "text": "20 minutos"
+        },
+        {
+          "id": "D",
+          "text": "12 minutos"
+        },
+        {
+          "id": "E",
+          "text": "25 minutos"
+        }
+      ],
+      "correctId": "A",
+      "difficulty": "facil",
+      "reasoning": [
+        "Mais páginas, mais tempo: relação direta",
+        "150/6 = 400/x",
+        "x = 6 × 400 ÷ 150 = 16 minutos"
+      ],
+      "explanation": "A impressora faz 25 páginas por minuto: 400 ÷ 25 = 16 minutos.",
+      "trap": {
+        "alternativeId": "B",
+        "explanation": "2,25 minutos vem da conta inversa (6 × 150 ÷ 400). Imprimir mais páginas leva mais tempo."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "f1-001",
+      "topicId": "funcoes-1-grau",
+      "statement": "Um plano de celular cobra R$ 30,00 fixos por mês mais R$ 0,50 por minuto de ligação.",
+      "prompt": "Quanto paga quem fala 100 minutos no mês?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "R$ 50,00"
+        },
+        {
+          "id": "B",
+          "text": "R$ 80,00"
+        },
+        {
+          "id": "C",
+          "text": "R$ 30,50"
+        },
+        {
+          "id": "D",
+          "text": "R$ 130,00"
+        },
+        {
+          "id": "E",
+          "text": "R$ 65,00"
+        }
+      ],
+      "correctId": "B",
+      "difficulty": "facil",
+      "reasoning": [
+        "f(x) = 0,5x + 30",
+        "f(100) = 0,5 × 100 + 30 = 80"
+      ],
+      "explanation": "O valor fixo é o b da função; o preço por minuto é o a.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "R$ 50,00 é só o valor dos minutos. Faltou somar os R$ 30,00 fixos."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "f1-002",
+      "topicId": "funcoes-1-grau",
+      "statement": "Considere a função f(x) = 3x − 12.",
+      "prompt": "Para qual valor de x a função vale zero?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "−4"
+        },
+        {
+          "id": "B",
+          "text": "12"
+        },
+        {
+          "id": "C",
+          "text": "4"
+        },
+        {
+          "id": "D",
+          "text": "−36"
+        },
+        {
+          "id": "E",
+          "text": "9"
+        }
+      ],
+      "correctId": "C",
+      "difficulty": "facil",
+      "reasoning": [
+        "3x − 12 = 0",
+        "3x = 12",
+        "x = 4"
+      ],
+      "explanation": "Para achar a raiz, iguale a função a zero e isole o x.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "−4 aparece quando o sinal do 12 não é trocado ao passar para o outro lado da igualdade."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "f1-003",
+      "topicId": "funcoes-1-grau",
+      "statement": "Uma vela de 20 cm fica acesa e queima em ritmo constante. Depois de 3 horas, ela mede 14 cm.",
+      "prompt": "Qual função dá a altura h da vela, em cm, após t horas?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "h(t) = 20 − 2t"
+        },
+        {
+          "id": "B",
+          "text": "h(t) = 14 − 2t"
+        },
+        {
+          "id": "C",
+          "text": "h(t) = 20 − 6t"
+        },
+        {
+          "id": "D",
+          "text": "h(t) = 20 + 2t"
+        },
+        {
+          "id": "E",
+          "text": "h(t) = 2t − 20"
+        }
+      ],
+      "correctId": "A",
+      "difficulty": "media",
+      "reasoning": [
+        "Taxa: (14 − 20) ÷ (3 − 0) = −2 cm por hora",
+        "Valor inicial: 20 cm",
+        "h(t) = 20 − 2t"
+      ],
+      "explanation": "A vela começa com 20 cm (o b) e perde 2 cm por hora (o a, negativo porque diminui).",
+      "trap": {
+        "alternativeId": "C",
+        "explanation": "6 cm é o total queimado em 3 horas. A taxa é por hora: 6 ÷ 3 = 2 cm."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "f1-004",
+      "topicId": "funcoes-1-grau",
+      "statement": "Uma caixa d'água com 500 litros tem um vazamento que tira 25 litros por hora.",
+      "prompt": "Em quantas horas a caixa fica vazia?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "25 horas"
+        },
+        {
+          "id": "B",
+          "text": "12,5 horas"
+        },
+        {
+          "id": "C",
+          "text": "475 horas"
+        },
+        {
+          "id": "D",
+          "text": "20 horas"
+        },
+        {
+          "id": "E",
+          "text": "525 horas"
+        }
+      ],
+      "correctId": "D",
+      "difficulty": "facil",
+      "reasoning": [
+        "V(t) = 500 − 25t",
+        "500 − 25t = 0",
+        "t = 500 ÷ 25 = 20 horas"
+      ],
+      "explanation": "A caixa fica vazia na raiz da função: quando o volume chega a zero.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "25 é quantos litros saem por hora, não o tempo. O tempo é 500 ÷ 25."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "gt-001",
+      "topicId": "graficos-e-tabelas",
+      "statement": "A tabela mostra a chuva registrada em uma cidade durante quatro meses.",
+      "table": {
+        "caption": "Chuva mensal (em milímetros)",
+        "headers": [
+          "Mês",
+          "Chuva (mm)"
+        ],
+        "rows": [
+          [
+            "Janeiro",
+            "180"
+          ],
+          [
+            "Fevereiro",
+            "150"
+          ],
+          [
+            "Março",
+            "210"
+          ],
+          [
+            "Abril",
+            "90"
+          ]
+        ]
+      },
+      "prompt": "Qual foi a média mensal de chuva nesse período?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "157,5 mm"
+        },
+        {
+          "id": "B",
+          "text": "150 mm"
+        },
+        {
+          "id": "C",
+          "text": "630 mm"
+        },
+        {
+          "id": "D",
+          "text": "210 mm"
+        },
+        {
+          "id": "E",
+          "text": "165 mm"
+        }
+      ],
+      "correctId": "A",
+      "difficulty": "facil",
+      "reasoning": [
+        "180 + 150 + 210 + 90 = 630",
+        "630 ÷ 4 = 157,5 mm"
+      ],
+      "explanation": "A média é a soma dos valores dividida pela quantidade de meses.",
+      "trap": {
+        "alternativeId": "C",
+        "explanation": "630 mm é o total dos quatro meses. Para a média, ainda falta dividir por 4."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "gt-002",
+      "topicId": "graficos-e-tabelas",
+      "statement": "A tabela mostra quantas pessoas usaram a biblioteca de um bairro em três anos.",
+      "table": {
+        "caption": "Usuários da biblioteca por ano",
+        "headers": [
+          "Ano",
+          "Usuários"
+        ],
+        "rows": [
+          [
+            "2022",
+            "800"
+          ],
+          [
+            "2023",
+            "1.000"
+          ],
+          [
+            "2024",
+            "1.250"
+          ]
+        ]
+      },
+      "prompt": "De 2023 para 2024, qual foi o aumento percentual no número de usuários?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "20%"
+        },
+        {
+          "id": "B",
+          "text": "25%"
+        },
+        {
+          "id": "C",
+          "text": "250%"
+        },
+        {
+          "id": "D",
+          "text": "56,25%"
+        },
+        {
+          "id": "E",
+          "text": "12,5%"
+        }
+      ],
+      "correctId": "B",
+      "difficulty": "media",
+      "reasoning": [
+        "1.250 − 1.000 = 250",
+        "250 ÷ 1.000 = 0,25 = 25%"
+      ],
+      "explanation": "A variação percentual usa como base o valor do ano inicial, 2023.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "20% vem de 250 ÷ 1.250: dividir pelo valor final em vez do inicial."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "gt-003",
+      "topicId": "graficos-e-tabelas",
+      "statement": "A tabela mostra o consumo de água de três casas em um mês.",
+      "table": {
+        "caption": "Consumo de água (em milhares de litros)",
+        "headers": [
+          "Casa",
+          "Consumo"
+        ],
+        "rows": [
+          [
+            "A",
+            "12"
+          ],
+          [
+            "B",
+            "9"
+          ],
+          [
+            "C",
+            "15"
+          ]
+        ]
+      },
+      "prompt": "Quantos litros a casa C consumiu a mais que a casa B?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "6 litros"
+        },
+        {
+          "id": "B",
+          "text": "600 litros"
+        },
+        {
+          "id": "C",
+          "text": "6.000 litros"
+        },
+        {
+          "id": "D",
+          "text": "60.000 litros"
+        },
+        {
+          "id": "E",
+          "text": "24.000 litros"
+        }
+      ],
+      "correctId": "C",
+      "difficulty": "media",
+      "reasoning": [
+        "15 − 9 = 6 (milhares de litros)",
+        "6 × 1.000 = 6.000 litros"
+      ],
+      "explanation": "Os valores da tabela estão em milhares de litros, como diz o título.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "6 litros ignora a unidade da tabela. Cada valor está em milhares de litros."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "gt-004",
+      "topicId": "graficos-e-tabelas",
+      "statement": "A tabela mostra o resultado de três turmas em uma prova.",
+      "table": {
+        "caption": "Aprovados por turma",
+        "headers": [
+          "Turma",
+          "Aprovados",
+          "Total de estudantes"
+        ],
+        "rows": [
+          [
+            "A",
+            "18",
+            "24"
+          ],
+          [
+            "B",
+            "21",
+            "30"
+          ],
+          [
+            "C",
+            "27",
+            "40"
+          ]
+        ]
+      },
+      "prompt": "Qual turma teve a maior taxa de aprovação?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "Turma A"
+        },
+        {
+          "id": "B",
+          "text": "Turma B"
+        },
+        {
+          "id": "C",
+          "text": "Turma C"
+        },
+        {
+          "id": "D",
+          "text": "Turmas A e B, empatadas"
+        },
+        {
+          "id": "E",
+          "text": "Turmas B e C, empatadas"
+        }
+      ],
+      "correctId": "A",
+      "difficulty": "media",
+      "reasoning": [
+        "A: 18 ÷ 24 = 75%",
+        "B: 21 ÷ 30 = 70%",
+        "C: 27 ÷ 40 = 67,5%"
+      ],
+      "explanation": "Taxa compara aprovados com o total de cada turma, não o número absoluto de aprovados.",
+      "trap": {
+        "alternativeId": "C",
+        "explanation": "A turma C tem mais aprovados (27), mas também é a maior turma. Em taxa, ela fica em último."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
     }
   ]
 }

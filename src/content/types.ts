@@ -45,10 +45,19 @@ export interface Alternative {
   text: string;
 }
 
+/** Tabela de dados exibida junto ao enunciado. */
+export interface DataTable {
+  caption: string;
+  headers: string[];
+  rows: string[][];
+}
+
 export interface Question {
   id: string;
   topicId: string;
   statement: string;
+  /** Tabela opcional com os dados do problema. */
+  table?: DataTable;
   /** Pergunta final, exibida em destaque após o enunciado. */
   prompt: string;
   alternatives: Alternative[];

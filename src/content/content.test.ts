@@ -60,4 +60,78 @@ describe("contas dos gabaritos", () => {
   it("porc-004: dois descontos seguidos de 10%", () => {
     expect(answerOf("porc-004")).toBe(pct(1 - 0.9 * 0.9));
   });
+
+  /* Razão e proporção */
+  it("rp-001: 2 xícaras para 3 ovos, quantas para 9", () => {
+    expect(answerOf("rp-001")).toBe(String((2 / 3) * 9));
+  });
+  it("rp-002: escala 1:50.000, 4 cm no mapa", () => {
+    const km = (4 * 50_000) / 100_000; // cm → km
+    expect(answerOf("rp-002")).toBe(`${km} km`);
+  });
+  it("rp-003: razão 3 para 2 em 300 estudantes", () => {
+    expect(answerOf("rp-003")).toBe(String((300 / 5) * 3));
+  });
+  it("rp-004: 240 km com 20 L, quanto com 35 L", () => {
+    expect(answerOf("rp-004")).toBe(`${(240 / 20) * 35} km`);
+  });
+
+  /* Regra de três */
+  it("r3-001: 3 torneiras em 12 h, 9 torneiras (inversa)", () => {
+    expect(answerOf("r3-001")).toBe(`${(3 * 12) / 9} horas`);
+  });
+  it("r3-002: 5 kg para 400 xícaras, quanto para 1.000 (direta)", () => {
+    expect(answerOf("r3-002")).toBe(`${String((5 * 1000) / 400).replace(".", ",")} kg`);
+  });
+  it("r3-003: 60 km/h em 4 h, tempo a 80 km/h (inversa)", () => {
+    expect(answerOf("r3-003")).toBe(`${(60 * 4) / 80} h`);
+  });
+  it("r3-004: 150 páginas em 6 min, tempo para 400 (direta)", () => {
+    expect(answerOf("r3-004")).toBe(`${(6 * 400) / 150} minutos`);
+  });
+
+  /* Funções do 1º grau */
+  it("f1-001: R$ 30 fixos + R$ 0,50 por minuto, 100 minutos", () => {
+    expect(answerOf("f1-001")).toBe(brl(0.5 * 100 + 30));
+  });
+  it("f1-002: raiz de f(x) = 3x − 12", () => {
+    expect(answerOf("f1-002")).toBe(String(12 / 3));
+  });
+  it("f1-003: vela de 20 cm que mede 14 cm após 3 h", () => {
+    const rate = (14 - 20) / (3 - 0);
+    expect(rate).toBe(-2);
+    expect(answerOf("f1-003")).toBe(`h(t) = 20 − ${Math.abs(rate)}t`);
+  });
+  it("f1-004: 500 L perdendo 25 L por hora", () => {
+    expect(answerOf("f1-004")).toBe(`${500 / 25} horas`);
+  });
+
+  /* Leitura de gráficos e tabelas */
+  it("gt-001: média de 180, 150, 210 e 90 mm", () => {
+    const avg = (180 + 150 + 210 + 90) / 4;
+    expect(answerOf("gt-001")).toBe(`${String(avg).replace(".", ",")} mm`);
+  });
+  it("gt-002: variação de 1.000 para 1.250", () => {
+    expect(answerOf("gt-002")).toBe(pct((1250 - 1000) / 1000));
+  });
+  it("gt-003: 15 − 9 mil litros", () => {
+    expect(answerOf("gt-003")).toBe(`${((15 - 9) * 1000).toLocaleString("pt-BR")} litros`);
+  });
+  it("gt-004: maior taxa entre 18/24, 21/30 e 27/40", () => {
+    const rates = { A: 18 / 24, B: 21 / 30, C: 27 / 40 };
+    const best = Object.entries(rates).sort((x, y) => y[1] - x[1])[0][0];
+    expect(answerOf("gt-004")).toBe(`Turma ${best}`);
+  });
+});
+
+/** Toda questão do conteúdo precisa ter a conta conferida acima. */
+describe("cobertura das contas", () => {
+  it("cada questão tem um teste de gabarito", async () => {
+    const { readFileSync } = await import("node:fs");
+    const source = readFileSync(new URL(import.meta.url), "utf8");
+    const missing = getAllQuestions()
+      .map((q) => q.id)
+      .filter((id) => !source.includes(`answerOf("${id}")`));
+    expect(missing).toEqual([]);
+  });
 });

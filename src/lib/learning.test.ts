@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  causeLabel,
   EMPTY_PROGRESS,
   getContinueTopicId,
   getErrorEntries,
@@ -58,6 +59,14 @@ describe("caderno de erros", () => {
     const at = "2026-10-12T10:00:00";
     const s = setAttemptCause(withAttempts(attempt("q1", false, at)), at, "errei-conta");
     expect(s.attempts[0].cause).toBe("errei-conta");
+  });
+});
+
+describe("causas de erro", () => {
+  it("mostra o nome das causas atuais e das antigas já salvas", () => {
+    expect(causeLabel("errei-conta")).toBe("Errei o cálculo");
+    expect(causeLabel("somei-percentuais")).toBe("Somei os percentuais");
+    expect(causeLabel(undefined)).toBeUndefined();
   });
 });
 

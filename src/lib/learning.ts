@@ -7,22 +7,32 @@
  */
 
 export type ErrorCause =
-  | "somei-percentuais"
-  | "errei-conta"
-  | "li-rapido"
   | "nao-lembrava"
-  | "chutei";
+  | "montei-errado"
+  | "errei-conta"
+  | "unidade-ou-base"
+  | "li-rapido"
+  | "chutei"
+  /** Opção antiga, específica de Porcentagem. Mantida para progresso já salvo. */
+  | "somei-percentuais";
 
+/** Causas oferecidas ao estudante. Valem para qualquer tópico. */
 export const ERROR_CAUSES: { id: ErrorCause; label: string }[] = [
   { id: "nao-lembrava", label: "Não lembrava a regra" },
-  { id: "errei-conta", label: "Errei a conta" },
+  { id: "montei-errado", label: "Montei a conta errado" },
+  { id: "errei-conta", label: "Errei o cálculo" },
+  { id: "unidade-ou-base", label: "Confundi unidade ou base" },
   { id: "li-rapido", label: "Li rápido demais" },
-  { id: "somei-percentuais", label: "Somei os percentuais" },
   { id: "chutei", label: "Chutei" },
 ];
 
+const LEGACY_CAUSE_LABELS: Partial<Record<ErrorCause, string>> = {
+  "somei-percentuais": "Somei os percentuais",
+};
+
 export function causeLabel(cause: ErrorCause | undefined): string | undefined {
-  return ERROR_CAUSES.find((c) => c.id === cause)?.label;
+  if (!cause) return undefined;
+  return ERROR_CAUSES.find((c) => c.id === cause)?.label ?? LEGACY_CAUSE_LABELS[cause];
 }
 
 export interface Attempt {

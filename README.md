@@ -18,7 +18,7 @@ Esta é a **v0.1**: uma fatia vertical de Matemática que entrega o ciclo comple
 | Refazer | `/revisar/[questao]` | Refaz uma questão do caderno |
 | Progresso | `/progresso` | Domínio por tópico, questões da semana e XP |
 
-Só o tópico **Porcentagem** tem conteúdo (4 questões). Os outros aparecem como "em preparação".
+A trilha de Matemática tem **5 tópicos com 20 questões**: Porcentagem, Razão e proporção, Regra de três, Funções do 1º grau e Leitura de gráficos e tabelas. As questões de tabela mostram os dados numa tabela acessível.
 
 ## Como rodar no seu computador
 
@@ -89,8 +89,8 @@ Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind 
 
 ## Próximos passos sugeridos
 
-- Revisão humana das questões de Porcentagem
-- Conteúdo dos próximos tópicos da trilha
+- Revisão humana das 20 questões e das explicações
+- Mais questões por tópico (o ideal é ter questões novas para revisar depois de alguns dias)
 - Publicação gratuita (ex.: Vercel) para testar com estudantes reais
 - Layout próprio para telas grandes e modo escuro
 - Flashcards com repetição espaçada
