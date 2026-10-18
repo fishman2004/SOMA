@@ -114,6 +114,12 @@ export const SheetIcon = (p: IconProps) => (
   </Base>
 );
 
+export const InfinityIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M12 12c-2-2.7-3.6-4-5.5-4a4 4 0 0 0 0 8c1.9 0 3.5-1.3 5.5-4Zm0 0c2 2.7 3.6 4 5.5 4a4 4 0 0 0 0-8c-1.9 0-3.5 1.3-5.5 4Z" />
+  </Base>
+);
+
 export function LogoMark({ size = 32 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" focusable="false">

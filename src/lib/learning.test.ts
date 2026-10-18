@@ -9,6 +9,7 @@ import {
   getErrorEntries,
   getTopicMastery,
   getTopicSteps,
+  getTwinStats,
   getWeekSummary,
   getXp,
   markTopicVisited,
@@ -249,5 +250,18 @@ describe("causas de erro mais comuns", () => {
 
   it("toda causa oferecida tem uma dica", () => {
     for (const c of ERROR_CAUSES) expect(CAUSE_TIPS[c.id], c.id).toBeTruthy();
+  });
+});
+
+describe("questões gêmeas no progresso", () => {
+  it("não entram no caderno de erros e contam a sequência de acertos", () => {
+    let s = EMPTY_PROGRESS;
+    s = recordAttempt(s, attempt("gemea:raiz:1", false, "2026-10-12T10:00:00", { mode: "gemea" }));
+    s = recordAttempt(s, attempt("gemea:raiz:2", true, "2026-10-12T10:01:00", { mode: "gemea" }));
+    s = recordAttempt(s, attempt("gemea:raiz:3", true, "2026-10-12T10:02:00", { mode: "gemea" }));
+    s = recordAttempt(s, attempt("gemea:media:9", false, "2026-10-12T10:03:00", { mode: "gemea" }));
+    expect(getErrorEntries(s)).toEqual([]);
+    expect(getTwinStats(s, "raiz")).toEqual({ answered: 3, correct: 2, streak: 2 });
+    expect(getTwinStats(s, "media")).toEqual({ answered: 1, correct: 0, streak: 0 });
   });
 });

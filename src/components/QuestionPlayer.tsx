@@ -13,7 +13,9 @@ import {
 import { formatWithUnit, parseNumber } from "@/lib/numeric-answer";
 import { useProgress } from "@/lib/progress-store";
 import { DataTableView } from "./DataTableView";
-import { BookmarkIcon } from "./icons";
+import Link from "next/link";
+import { getTwinGeneratorFor } from "@/content";
+import { BookmarkIcon, InfinityIcon } from "./icons";
 import { SourceBadge, buttonPrimary } from "./ui";
 
 export const DIFFICULTY_LABEL: Record<Question["difficulty"], string> = {
@@ -208,6 +210,7 @@ export function QuestionPlayer({
   const [attemptAt, setAttemptAt] = useState<string | null>(null);
   const [cause, setCause] = useState<ErrorCause | undefined>(undefined);
   const feedbackRef = useRef<HTMLHeadingElement>(null);
+  const twin = getTwinGeneratorFor(question.id);
 
   const confirmed = attemptAt !== null && given !== null;
   const correct = confirmed && isAnswerCorrect(question, given);
@@ -307,11 +310,28 @@ export function QuestionPlayer({
                   );
                 })}
               </div>
-              <p className="flex items-center gap-1.5 text-sm font-bold text-success-strong">
-                <BookmarkIcon size={16} strokeWidth={2.4} />
-                Salva no seu caderno de erros
-              </p>
+              {mode !== "gemea" ? (
+                <p className="flex items-center gap-1.5 text-sm font-bold text-success-strong">
+                  <BookmarkIcon size={16} strokeWidth={2.4} />
+                  Salva no seu caderno de erros
+                </p>
+              ) : null}
             </div>
+          ) : null}
+
+          {!correct && mode !== "gemea" && twin ? (
+            <Link
+              href={`/gemea/${twin.id}`}
+              className="flex items-center gap-3 rounded-xl border-2 border-primary-tint bg-surface p-3.5 hover:border-primary"
+            >
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary-soft text-primary">
+                <InfinityIcon size={22} />
+              </span>
+              <span className="flex flex-1 flex-col">
+                <span className="text-[15px] font-bold text-primary-strong">Treinar com questões gêmeas</span>
+                <span className="text-sm text-muted">A mesma ideia com números novos, até você pegar o jeito.</span>
+              </span>
+            </Link>
           ) : null}
         </section>
       ) : null}

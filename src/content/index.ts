@@ -1,6 +1,9 @@
 import matematicaData from "./data/matematica.json";
 import tecnicasData from "./data/tecnicas.json";
+import { getTwinGenerator, isTwinId, resolveTwin, TWIN_GENERATORS, type TwinGenerator } from "./twins";
 import type { Flashcard, Question, Subject, TechniqueText, Topic } from "./types";
+
+export { isTwinId, makeTwin, randomSeed, type TwinGenerator } from "./twins";
 
 export type * from "./types";
 
@@ -39,7 +42,9 @@ export function getQuestionsForTopic(topicId: string): Question[] {
   return subjects.flatMap((s) => s.questions).filter((q) => q.topicId === topicId);
 }
 
+/** Também gera questões gêmeas a partir do id ("gemea:molde:semente"). */
 export function getQuestion(questionId: string): Question | undefined {
+  if (isTwinId(questionId)) return resolveTwin(questionId);
   return subjects.flatMap((s) => s.questions).find((q) => q.id === questionId);
 }
 
@@ -90,4 +95,20 @@ export function getTechniqueTexts(): TechniqueText[] {
 
 export function getTechniqueText(id: string): TechniqueText | undefined {
   return getTechniqueTexts().find((t) => t.id === id);
+}
+
+/* Questões gêmeas. */
+
+export function getTwinGenerators(topicId?: string): TwinGenerator[] {
+  return topicId ? TWIN_GENERATORS.filter((g) => g.topicId === topicId) : TWIN_GENERATORS;
+}
+
+export function getTwinGeneratorById(id: string): TwinGenerator | undefined {
+  return getTwinGenerator(id);
+}
+
+/** Molde que gera gêmeas de uma questão (fixa ou já gêmea). */
+export function getTwinGeneratorFor(questionId: string): TwinGenerator | undefined {
+  if (isTwinId(questionId)) return getTwinGenerator(questionId.split(":")[1]);
+  return TWIN_GENERATORS.find((g) => g.sourceIds.includes(questionId));
 }

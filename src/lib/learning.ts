@@ -42,8 +42,11 @@ export interface Attempt {
   correct: boolean;
   /** Data e hora no formato ISO 8601. Também serve de identificador. */
   at: string;
-  /** "pratica" = sessão do tópico; "revisao" = refazendo um erro; "simulado" = prova sem feedback imediato. */
-  mode: "pratica" | "revisao" | "simulado";
+  /**
+   * "pratica" = sessão do tópico; "revisao" = refazendo um erro; "simulado" = prova sem
+   * feedback imediato; "gemea" = questão gerada com números novos (não entra no caderno de erros).
+   */
+  mode: "pratica" | "revisao" | "simulado" | "gemea";
   cause?: ErrorCause;
 }
 
@@ -179,6 +182,11 @@ export interface ErrorEntry {
   status: "pendente" | "resolvido";
 }
 
+/** Questões gêmeas são geradas sob demanda: um erro nelas não vira item do caderno. */
+function isTwinAttempt(a: Attempt): boolean {
+  return a.mode === "gemea";
+}
+
 function attemptsByQuestion(state: ProgressState): Map<string, Attempt[]> {
   const map = new Map<string, Attempt[]>();
   for (const a of state.attempts) {
@@ -194,6 +202,7 @@ function attemptsByQuestion(state: ProgressState): Map<string, Attempt[]> {
 export function getErrorEntries(state: ProgressState): ErrorEntry[] {
   const entries: ErrorEntry[] = [];
   for (const [questionId, list] of attemptsByQuestion(state)) {
+    if (list.some(isTwinAttempt)) continue;
     const wrongs = list.filter((a) => !a.correct);
     if (wrongs.length === 0) continue;
     const lastWrong = wrongs[wrongs.length - 1];
@@ -485,4 +494,20 @@ export function getContinueTopicId(state: ProgressState, topics: TopicRef[]): st
   const last = topics.find((t) => t.id === lastTopicId);
   if (last && notDone(last)) return last.id;
   return topics.find(notDone)?.id;
+}
+
+/* ------------------------------------------------------------------ */
+/* Questões gêmeas                                                     */
+/* ------------------------------------------------------------------ */
+
+/** Acertos seguidos que indicam que o estudante pegou a ideia. */
+export const TWIN_STREAK_GOAL = 3;
+
+/** Resumo das gêmeas respondidas de um molde (o id da gêmea começa com "gemea:molde:"). */
+export function getTwinStats(state: ProgressState, generatorId: string) {
+  const prefix = `gemea:${generatorId}:`;
+  const list = state.attempts.filter((a) => a.questionId.startsWith(prefix)).sort((x, y) => x.at.localeCompare(y.at));
+  let streak = 0;
+  for (let i = list.length - 1; i >= 0 && list[i].correct; i--) streak += 1;
+  return { answered: list.length, correct: list.filter((a) => a.correct).length, streak };
 }

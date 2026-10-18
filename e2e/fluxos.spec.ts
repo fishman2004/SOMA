@@ -149,3 +149,26 @@ test("corrigir uma prova oficial pelo cartão-resposta", async ({ page }) => {
   await expect(page.getByText("1 de 2 (50%)")).toBeVisible();
   await expect(page.getByText("Suas provas corrigidas")).toBeVisible();
 });
+
+test("errar uma questão e treinar com questões gêmeas", async ({ page }) => {
+  await page.goto("/praticar/porcentagem");
+  await page.locator("label", { hasText: "R$ 84,00" }).click();
+  await page.getByRole("button", { name: "Confirmar resposta" }).click();
+  await page.getByRole("link", { name: /Treinar com questões gêmeas/ }).click();
+
+  await expect(page.locator("h1:visible")).toHaveText("Aumento seguido de desconto");
+  await expect(page.getByText("Nenhuma respondida ainda")).toBeVisible();
+  const first = await page.locator("main:visible").innerText();
+
+  await answerAny(page);
+  await expect(page.getByText(/de 1 certas$/)).toBeVisible();
+  await expect(page.locator("main:visible").getByText("Salva no seu caderno de erros")).toHaveCount(0);
+
+  await page.getByRole("button", { name: "Outra questão gêmea" }).click();
+  await expect(page.getByRole("button", { name: "Confirmar resposta" })).toBeVisible();
+  expect(await page.locator("main:visible").innerText()).not.toBe(first);
+
+  // As gêmeas não entram no caderno: só a questão fixa errada aparece.
+  await page.goto("/erros");
+  await expect(page.locator("main:visible").getByRole("link", { name: "Refazer", exact: true })).toHaveCount(1);
+});

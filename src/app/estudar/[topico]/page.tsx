@@ -4,8 +4,8 @@ import { AppShell } from "@/components/AppShell";
 import { BackLink, Card, PageTitle, SectionTitle, SourceBadge } from "@/components/ui";
 import { TopicAction, TopicSteps } from "@/components/views/TopicProgress";
 import Link from "next/link";
-import { CardsIcon, ChevronRightIcon, SparkIcon } from "@/components/icons";
-import { getFlashcardsForTopic, getTopic, getTopics, isTopicAvailable } from "@/content";
+import { CardsIcon, ChevronRightIcon, InfinityIcon, SparkIcon } from "@/components/icons";
+import { getFlashcardsForTopic, getTopic, getTopics, getTwinGenerators, isTopicAvailable } from "@/content";
 
 export function generateStaticParams() {
   return getTopics().map((t) => ({ topico: t.id }));
@@ -39,6 +39,7 @@ export default async function TopicPage({ params }: PageProps<"/estudar/[topico]
 
   const { content } = topic;
   const cardCount = getFlashcardsForTopic(topic.id).length;
+  const twins = getTwinGenerators(topic.id);
 
   return (
     <AppShell footer={<TopicAction topicId={topic.id} />}>
@@ -107,6 +108,29 @@ export default async function TopicPage({ params }: PageProps<"/estudar/[topico]
           </span>
           <ChevronRightIcon size={20} className="text-muted" />
         </Link>
+      ) : null}
+
+      {twins.length > 0 ? (
+        <section className="flex flex-col gap-2.5">
+          <div className="flex items-center gap-2">
+            <InfinityIcon size={22} className="text-primary" />
+            <SectionTitle>Questões infinitas</SectionTitle>
+          </div>
+          <p className="text-[15px] text-muted">A mesma ideia com números novos a cada vez. Treine quantas quiser.</p>
+          <ul className="flex flex-col gap-2">
+            {twins.map((g) => (
+              <li key={g.id}>
+                <Link
+                  href={`/gemea/${g.id}`}
+                  className="flex min-h-12 items-center justify-between gap-3 rounded-xl border border-line bg-surface px-4 py-2.5 hover:border-primary-tint"
+                >
+                  <span className="text-[15px] font-bold">{g.name}</span>
+                  <ChevronRightIcon size={18} className="shrink-0 text-muted" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       ) : null}
     </AppShell>
   );

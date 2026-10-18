@@ -23,6 +23,8 @@ Esta é a **v0.1**: uma fatia vertical de Matemática que entrega o ciclo comple
 | Sobre | `/sobre` | Missão, como o SOMA ensina, privacidade e origem do conteúdo (com link para as provas oficiais do INEP) |
 | Revisão de conteúdo | `/revisao-conteudo` | Para revisores: conferir cada questão, cartão, explicação e técnica, comentar e baixar a revisão |
 | Provas oficiais | `/provas` | Link para as provas do INEP e cartão-resposta: marque suas respostas, cole o gabarito oficial e veja a correção |
+| Questões infinitas | `/gemea` | 20 moldes que geram questões novas (números diferentes a cada vez) para treinar a mesma ideia |
+| Questão gêmea | `/gemea/[molde]` | Treino sem fim de um molde, com sequência de acertos; aparece também depois de um erro e no caderno de erros |
 | Simulado | `/simulado` | Questões misturadas por tópico, cronômetro opcional, correção só no final e relatório por tópico |
 | Cartões | `/cartoes` | Revisão espaçada dos cartões de memória vencidos e novos |
 | Cartões do tópico | `/cartoes/[topico]` | Revisa os cartões de um tópico específico |
@@ -120,6 +122,7 @@ A revisão fica salva no navegador de quem revisa, separada do progresso de estu
 - **Conquistas:** 9 marcos calculados a partir do progresso (sem nada guardado à parte), que premiam hábitos de aprendizagem: registrar a causa de um erro, corrigi-lo, levar um cartão à caixa 3, dominar um tópico. Regras em `src/lib/achievements.ts`.
 - **Técnicas de cálculo:** cada técnica é programada passo a passo em `src/lib/mental-math.ts` e testada contra a conta tradicional em milhares de casos sorteados. Os textos (por que funciona, de onde vem) ficam em `src/content/data/tecnicas.json`. O treino tem 10 contas; o relógio só corre com a conta na tela. +1 XP por conta certa.
 - **Cartão-resposta de provas oficiais:** o SOMA não copia as provas do INEP. O estudante resolve a prova oficial, marca as respostas e cola o gabarito; o SOMA lê só as letras (aceita "1 A 2 C", "ACEBD", anuladas com X) e corrige, ignorando anuladas (`src/lib/answer-sheet.ts`).
+- **Questões gêmeas:** cada molde em `src/content/twins.ts` sorteia números "bonitos" e monta enunciado, resposta, raciocínio e erros previsíveis. `twins.test.ts` confere 2.500 questões por molde com uma conta independente, feita a partir do texto gerado. As gêmeas valem XP e entram na meta semanal, mas não no caderno de erros nem no domínio do tópico (`getTwinStats`, em `learning.ts`). Aparecem marcadas como "geradas pelo SOMA · aguardando revisão".
 - **Desafio do dia:** as questões são sorteadas a partir da data, então todo mundo recebe as mesmas no mesmo dia. Vale o primeiro resultado do dia. Não existe sequência que zera. Regras em `src/lib/daily.ts`.
 - **Cópia de segurança:** em Progresso, o estudante baixa um arquivo com o progresso e pode restaurá-lo em outro aparelho. O arquivo é conferido antes de ser aceito (`src/lib/backup.ts`).
 - **Meta semanal:** 5 dias de estudo por semana. Perder um dia não zera nada.

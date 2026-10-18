@@ -6,7 +6,7 @@ import { countPendingErrors, getContinueTopicId, getTopicSteps, getWeekSummary }
 import { useProgress } from "@/lib/progress-store";
 import { getReviewQueue, getUnlockedTopics } from "@/lib/spaced-repetition";
 import { DAILY_SIZE, dayKey } from "@/lib/daily";
-import { ArrowRightIcon, CardsIcon, CheckIcon, ChevronRightIcon, ClockIcon, RedoIcon, SheetIcon, SparkIcon, TargetIcon } from "../icons";
+import { ArrowRightIcon, CardsIcon, CheckIcon, ChevronRightIcon, ClockIcon, InfinityIcon, RedoIcon, SheetIcon, SparkIcon, TargetIcon } from "../icons";
 import { Card, Segments, Skeleton } from "../ui";
 
 const STEP_TEXT = {
@@ -137,6 +137,13 @@ export function HomeView() {
             tone="error"
             icon={<SheetIcon size={22} />}
             text={progressSheets > 0 ? `${progressSheets} corrigida${progressSheets === 1 ? "" : "s"}` : "Corrija as do INEP"}
+          />
+          <Tile
+            href="/gemea"
+            title="Questões infinitas"
+            tone="primary"
+            icon={<InfinityIcon size={22} />}
+            text="Números novos a cada vez"
           />
         </div>
       </section>

@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { getQuestion, getTopic } from "@/content";
+import { getQuestion, getTopic, getTwinGeneratorFor } from "@/content";
 import { correctAnswerText, givenAnswerText } from "@/lib/answers";
 import { relativeDay } from "@/lib/dates";
 import { causeLabel, getErrorEntries, type ErrorEntry } from "@/lib/learning";
 import { useProgress } from "@/lib/progress-store";
-import { CheckIcon, RedoIcon } from "../icons";
+import { CheckIcon, InfinityIcon, RedoIcon } from "../icons";
 import { Chip, Skeleton, buttonSmall } from "../ui";
 
 type Tab = "pendente" | "resolvido";
@@ -18,6 +18,7 @@ function ErrorCard({ entry }: { entry: ErrorEntry }) {
   const topic = getTopic(entry.topicId);
   const cause = causeLabel(entry.lastWrong.cause);
   const resolved = entry.status === "resolvido";
+  const twin = getTwinGeneratorFor(question.id);
 
   return (
     <article className="flex flex-col gap-2.5 rounded-2xl border border-line bg-surface p-4">
@@ -59,10 +60,21 @@ function ErrorCard({ entry }: { entry: ErrorEntry }) {
           </Link>
         </div>
       ) : (
-        <Link href={`/revisar/${question.id}`} className={buttonSmall}>
-          <RedoIcon size={16} strokeWidth={2.4} />
-          Refazer
-        </Link>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+          <Link href={`/revisar/${question.id}`} className={buttonSmall}>
+            <RedoIcon size={16} strokeWidth={2.4} />
+            Refazer
+          </Link>
+          {twin ? (
+            <Link
+              href={`/gemea/${twin.id}`}
+              className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-bold text-primary"
+            >
+              <InfinityIcon size={18} />
+              Treinar com gêmeas
+            </Link>
+          ) : null}
+        </div>
       )}
     </article>
   );
