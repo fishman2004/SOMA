@@ -78,7 +78,7 @@ describe("contas dos gabaritos", () => {
     if (q.kind === "numerica") return String(q.answer);
     return q.alternatives.find((a) => a.id === q.correctId)!.text;
   };
-  const brl = (n: number) => `R$ ${n.toFixed(2).replace(".", ",")}`;
+  const brl = (n: number) => `R$ ${n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   const pct = (n: number) => `${Math.round(n * 100)}%`;
 
   it("porc-001: aumento de 25% seguido de desconto de 20%", () => {
@@ -168,6 +168,58 @@ describe("contas dos gabaritos", () => {
   });
   it("gt-005: média de 320, 480 e 400 ingressos", () => {
     expect(answerOf("gt-005")).toBe(String((320 + 480 + 400) / 3));
+  });
+
+  /* Segunda leva de questões */
+  it("porc-006: R$ 2.000,00 com aumento de 8%", () => {
+    expect(answerOf("porc-006")).toBe(brl(2000 * 1.08));
+  });
+  it("porc-007: de R$ 2.500 para R$ 2.000", () => {
+    expect(answerOf("porc-007")).toBe(String(((2500 - 2000) / 2500) * 100));
+  });
+  it("porc-008: 25% de 40%", () => {
+    expect(answerOf("porc-008")).toBe(pct(0.25 * 0.4));
+  });
+  it("rp-006: 1 parte de concentrado para 4 de água, em 10 litros", () => {
+    expect(answerOf("rp-006")).toBe(`${10 / (1 + 4)} litros`);
+  });
+  it("rp-007: 3 km na escala 1:25.000, em cm", () => {
+    expect(answerOf("rp-007")).toBe(String((3 * 100_000) / 25_000));
+  });
+  it("rp-008: R$ 1.500 na razão 3.000 : 2.000, parte de Ana", () => {
+    expect(answerOf("rp-008")).toBe(brl((1500 * 3000) / (3000 + 2000)));
+  });
+  it("r3-006: 12 L em 3 min, 200 L", () => {
+    expect(answerOf("r3-006")).toBe(String((3 * 200) / 12));
+  });
+  it("r3-007: 90 km/h em 2 h, a 120 km/h", () => {
+    const hours = (90 * 2) / 120;
+    expect(answerOf("r3-007")).toBe(`${Math.floor(hours)} h ${Math.round((hours % 1) * 60)} min`);
+  });
+  it("r3-008: 600 folhetos com 3 impressoras em 2 h; 2 impressoras em 4 h", () => {
+    const perPrinterHour = 600 / (3 * 2);
+    expect(answerOf("r3-008")).toBe(String(perPrinterHour * 2 * 4));
+  });
+  it("f1-006: C(50) com C(x) = 12x + 300", () => {
+    expect(answerOf("f1-006")).toBe(brl(12 * 50 + 300));
+  });
+  it("f1-007: taxa entre (2, 7) e (5, 16)", () => {
+    expect(answerOf("f1-007")).toBe(String((16 - 7) / (5 - 2)));
+  });
+  it("f1-008: A = 100 + x, B = 40 + 1,5x", () => {
+    const tie = (100 - 40) / (1.5 - 1);
+    expect(100 + (tie + 1)).toBeLessThan(40 + 1.5 * (tie + 1)); // depois do empate, A é mais barata
+    expect(answerOf("f1-008")).toBe(`Acima de ${tie} km`);
+  });
+  it("gt-006: nota que falta para média 8 em 5 provas", () => {
+    expect(answerOf("gt-006")).toBe(String(8 * 5 - (6 + 8 + 7 + 9)));
+  });
+  it("gt-007: de 450 para 360", () => {
+    expect(answerOf("gt-007")).toBe(String(((450 - 360) / 450) * 100));
+  });
+  it("gt-008: mediana de 4, 9, 5, 12, 6, 5, 8", () => {
+    const sorted = [4, 9, 5, 12, 6, 5, 8].sort((a, b) => a - b);
+    expect(answerOf("gt-008")).toBe(`${sorted[Math.floor(sorted.length / 2)]} minutos`);
   });
 
   /* Técnicas de cálculo rápido */

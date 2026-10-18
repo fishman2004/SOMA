@@ -1237,6 +1237,122 @@
       }
     },
     {
+      "id": "porc-006",
+      "topicId": "porcentagem",
+      "kind": "multipla-escolha",
+      "statement": "Um salário de R$ 2.000,00 teve um aumento de 8%.",
+      "prompt": "Qual é o novo salário?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "R$ 2.008,00"
+        },
+        {
+          "id": "B",
+          "text": "R$ 160,00"
+        },
+        {
+          "id": "C",
+          "text": "R$ 2.160,00"
+        },
+        {
+          "id": "D",
+          "text": "R$ 2.080,00"
+        },
+        {
+          "id": "E",
+          "text": "R$ 2.800,00"
+        }
+      ],
+      "correctId": "C",
+      "difficulty": "facil",
+      "reasoning": [
+        "Aumento de 8%: fator 1,08",
+        "2.000 × 1,08 = 2.160"
+      ],
+      "explanation": "O novo salário é o antigo mais 8% dele: 2.000 + 160 = 2.160.",
+      "trap": {
+        "alternativeId": "B",
+        "explanation": "R$ 160,00 é só o valor do aumento. A pergunta pede o salário novo: 2.000 + 160."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "porc-007",
+      "topicId": "porcentagem",
+      "kind": "numerica",
+      "statement": "Uma TV que custava R$ 2.500,00 está sendo vendida por R$ 2.000,00.",
+      "prompt": "Qual foi o percentual de desconto?",
+      "answer": 20,
+      "unit": "%",
+      "difficulty": "media",
+      "reasoning": [
+        "Desconto: 2.500 − 2.000 = 500",
+        "500 ÷ 2.500 = 0,20 = 20%"
+      ],
+      "explanation": "O desconto é comparado com o preço antigo, que é a base.",
+      "commonMistakes": [
+        {
+          "value": 25,
+          "explanation": "25% vem de 500 ÷ 2.000: dividir pelo preço novo. A base do desconto é o preço antigo, 2.500."
+        }
+      ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "porc-008",
+      "topicId": "porcentagem",
+      "kind": "multipla-escolha",
+      "statement": "Em uma cidade, 40% dos moradores usam ônibus. Desses, 25% usam ônibus todos os dias.",
+      "prompt": "Que porcentagem de todos os moradores usa ônibus todos os dias?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "65%"
+        },
+        {
+          "id": "B",
+          "text": "15%"
+        },
+        {
+          "id": "C",
+          "text": "10%"
+        },
+        {
+          "id": "D",
+          "text": "25%"
+        },
+        {
+          "id": "E",
+          "text": "30%"
+        }
+      ],
+      "correctId": "C",
+      "difficulty": "media",
+      "reasoning": [
+        "25% de 40%",
+        "0,25 × 0,40 = 0,10 = 10%"
+      ],
+      "explanation": "“Porcentagem de uma porcentagem” se resolve multiplicando: é uma parte de uma parte.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "65% soma as porcentagens, mas os 25% são de um grupo menor (os 40% que usam ônibus). Multiplique: 0,25 × 0,40."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
       "id": "rp-005",
       "topicId": "razao-e-proporcao",
       "kind": "numerica",
@@ -1261,6 +1377,124 @@
           "explanation": "Dividir 2,5 por 200 inverte a escala. A medida real é maior que a do desenho."
         }
       ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "rp-006",
+      "topicId": "razao-e-proporcao",
+      "kind": "multipla-escolha",
+      "statement": "Para fazer um suco, mistura-se 1 parte de concentrado para 4 partes de água.",
+      "prompt": "Quantos litros de concentrado vão em 10 litros de suco pronto?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "2,5 litros"
+        },
+        {
+          "id": "B",
+          "text": "2 litros"
+        },
+        {
+          "id": "C",
+          "text": "4 litros"
+        },
+        {
+          "id": "D",
+          "text": "8 litros"
+        },
+        {
+          "id": "E",
+          "text": "1 litro"
+        }
+      ],
+      "correctId": "B",
+      "difficulty": "media",
+      "reasoning": [
+        "A mistura tem 1 + 4 = 5 partes",
+        "10 ÷ 5 = 2 litros por parte",
+        "Concentrado: 1 parte = 2 litros"
+      ],
+      "explanation": "O suco pronto é a soma das partes. Primeiro descubra quanto vale cada parte.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "2,5 litros vem de 10 ÷ 4. Mas o suco pronto tem 5 partes (1 de concentrado + 4 de água), não 4."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "rp-007",
+      "topicId": "razao-e-proporcao",
+      "kind": "numerica",
+      "statement": "Um mapa foi feito na escala 1 : 25.000. Uma trilha tem 3 km de comprimento real.",
+      "prompt": "Quantos centímetros a trilha mede no mapa?",
+      "answer": 12,
+      "unit": "cm",
+      "difficulty": "media",
+      "reasoning": [
+        "3 km = 300.000 cm",
+        "300.000 ÷ 25.000 = 12 cm"
+      ],
+      "explanation": "Converta para a mesma unidade antes de usar a escala. No mapa, a medida é 25.000 vezes menor.",
+      "commonMistakes": [
+        {
+          "value": 1.2,
+          "explanation": "1,2 cm aparece ao converter 3 km para 30.000 cm. O certo é 3 km = 300.000 cm (1 km = 100.000 cm)."
+        }
+      ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "rp-008",
+      "topicId": "razao-e-proporcao",
+      "kind": "multipla-escolha",
+      "statement": "Ana investiu R$ 3.000,00 e Bruno investiu R$ 2.000,00 em um negócio. Eles combinaram dividir o lucro em partes proporcionais ao que cada um investiu. O lucro foi de R$ 1.500,00.",
+      "prompt": "Quanto Ana recebe?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "R$ 750,00"
+        },
+        {
+          "id": "B",
+          "text": "R$ 900,00"
+        },
+        {
+          "id": "C",
+          "text": "R$ 600,00"
+        },
+        {
+          "id": "D",
+          "text": "R$ 1.000,00"
+        },
+        {
+          "id": "E",
+          "text": "R$ 500,00"
+        }
+      ],
+      "correctId": "B",
+      "difficulty": "media",
+      "reasoning": [
+        "Razão 3.000 : 2.000 = 3 : 2",
+        "3 + 2 = 5 partes; 1.500 ÷ 5 = 300",
+        "Ana: 3 × 300 = 900"
+      ],
+      "explanation": "Bruno recebe 2 × 300 = R$ 600,00. Somando: 900 + 600 = 1.500.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "R$ 750,00 divide o lucro ao meio. O combinado foi dividir na proporção do investimento, 3 para 2."
+      },
       "source": {
         "origin": "soma",
         "label": "Questão autoral do SOMA",
@@ -1295,6 +1529,125 @@
       }
     },
     {
+      "id": "r3-006",
+      "topicId": "regra-de-tres",
+      "kind": "numerica",
+      "statement": "Uma torneira enche um balde de 12 litros em 3 minutos, sempre com a mesma vazão.",
+      "prompt": "Em quantos minutos ela enche uma caixa de 200 litros?",
+      "answer": 50,
+      "unit": "minutos",
+      "difficulty": "facil",
+      "reasoning": [
+        "Mais litros, mais tempo: relação direta",
+        "12/3 = 200/x",
+        "x = 3 × 200 ÷ 12 = 50 minutos"
+      ],
+      "explanation": "A torneira despeja 4 litros por minuto: 200 ÷ 4 = 50.",
+      "commonMistakes": [
+        {
+          "value": 0.18,
+          "explanation": "0,18 vem da regra de três inversa (3 × 12 ÷ 200). Encher mais litros leva mais tempo: a relação é direta."
+        }
+      ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "r3-007",
+      "topicId": "regra-de-tres",
+      "kind": "multipla-escolha",
+      "statement": "Com velocidade média de 90 km/h, uma viagem dura 2 horas.",
+      "prompt": "Quanto tempo dura a mesma viagem a 120 km/h?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "2 h 40 min"
+        },
+        {
+          "id": "B",
+          "text": "1 h 30 min"
+        },
+        {
+          "id": "C",
+          "text": "1 h 20 min"
+        },
+        {
+          "id": "D",
+          "text": "1 h 50 min"
+        },
+        {
+          "id": "E",
+          "text": "3 h"
+        }
+      ],
+      "correctId": "B",
+      "difficulty": "media",
+      "reasoning": [
+        "Mais velocidade, menos tempo: relação inversa",
+        "90 × 2 = 120 × x",
+        "x = 180 ÷ 120 = 1,5 h = 1 h 30 min"
+      ],
+      "explanation": "A distância é 180 km. A 120 km/h, ela é percorrida em 1,5 hora.",
+      "trap": {
+        "alternativeId": "A",
+        "explanation": "2 h 40 min vem de tratar a relação como direta. Andar mais rápido não pode aumentar o tempo."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "r3-008",
+      "topicId": "regra-de-tres",
+      "kind": "multipla-escolha",
+      "statement": "Uma gráfica imprime 600 folhetos em 2 horas usando 3 impressoras iguais.",
+      "prompt": "Quantos folhetos ela imprime em 4 horas usando 2 impressoras?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "800"
+        },
+        {
+          "id": "B",
+          "text": "1.200"
+        },
+        {
+          "id": "C",
+          "text": "1.800"
+        },
+        {
+          "id": "D",
+          "text": "400"
+        },
+        {
+          "id": "E",
+          "text": "900"
+        }
+      ],
+      "correctId": "A",
+      "difficulty": "dificil",
+      "reasoning": [
+        "Cada impressora faz 600 ÷ (2 × 3) = 100 folhetos por hora",
+        "4 horas × 2 impressoras = 8 impressoras-hora",
+        "8 × 100 = 800 folhetos"
+      ],
+      "explanation": "Mais horas e mais impressoras, mais folhetos: as duas grandezas são diretamente proporcionais ao total.",
+      "trap": {
+        "alternativeId": "C",
+        "explanation": "1.800 trata o número de impressoras como inversamente proporcional. Menos impressoras imprimem menos folhetos."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
       "id": "f1-005",
       "topicId": "funcoes-1-grau",
       "kind": "numerica",
@@ -1319,6 +1672,122 @@
           "explanation": "R$ 840,00 cobra a matrícula todo mês. Ela é paga uma única vez."
         }
       ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "f1-006",
+      "topicId": "funcoes-1-grau",
+      "kind": "multipla-escolha",
+      "statement": "O custo, em reais, para uma fábrica produzir x camisetas é C(x) = 12x + 300.",
+      "prompt": "Qual é o custo para produzir 50 camisetas?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "R$ 900,00"
+        },
+        {
+          "id": "B",
+          "text": "R$ 600,00"
+        },
+        {
+          "id": "C",
+          "text": "R$ 15.600,00"
+        },
+        {
+          "id": "D",
+          "text": "R$ 362,00"
+        },
+        {
+          "id": "E",
+          "text": "R$ 1.500,00"
+        }
+      ],
+      "correctId": "A",
+      "difficulty": "facil",
+      "reasoning": [
+        "C(50) = 12 × 50 + 300",
+        "600 + 300 = 900"
+      ],
+      "explanation": "R$ 300,00 é o custo fixo (b) e R$ 12,00 é o custo de cada camiseta (a).",
+      "trap": {
+        "alternativeId": "B",
+        "explanation": "R$ 600,00 é só o custo das camisetas. Falta somar o custo fixo de R$ 300,00."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "f1-007",
+      "topicId": "funcoes-1-grau",
+      "kind": "numerica",
+      "statement": "Uma função do 1º grau passa pelos pontos (2, 7) e (5, 16).",
+      "prompt": "Qual é a taxa de variação (o valor de a)?",
+      "answer": 3,
+      "difficulty": "media",
+      "reasoning": [
+        "a = (16 − 7) ÷ (5 − 2)",
+        "a = 9 ÷ 3 = 3"
+      ],
+      "explanation": "A taxa de variação é a mudança em y dividida pela mudança em x.",
+      "commonMistakes": [
+        {
+          "value": 9,
+          "explanation": "9 é quanto y mudou. Falta dividir por quanto x mudou: 9 ÷ 3 = 3."
+        }
+      ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "f1-008",
+      "topicId": "funcoes-1-grau",
+      "kind": "multipla-escolha",
+      "statement": "A locadora A cobra R$ 100,00 fixos mais R$ 1,00 por km rodado. A locadora B cobra R$ 40,00 fixos mais R$ 1,50 por km rodado.",
+      "prompt": "A partir de quantos quilômetros a locadora A fica mais barata?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "Acima de 40 km"
+        },
+        {
+          "id": "B",
+          "text": "Acima de 120 km"
+        },
+        {
+          "id": "C",
+          "text": "Acima de 60 km"
+        },
+        {
+          "id": "D",
+          "text": "Abaixo de 120 km"
+        },
+        {
+          "id": "E",
+          "text": "Acima de 240 km"
+        }
+      ],
+      "correctId": "B",
+      "difficulty": "dificil",
+      "reasoning": [
+        "Preços iguais: 100 + x = 40 + 1,5x",
+        "60 = 0,5x → x = 120 km",
+        "Depois de 120 km, B cresce mais rápido (R$ 1,50 por km): A fica mais barata"
+      ],
+      "explanation": "Compare as duas funções: o ponto onde elas se igualam separa as faixas em que cada uma é mais barata.",
+      "trap": {
+        "alternativeId": "C",
+        "explanation": "60 é a diferença dos valores fixos. Ainda falta dividir pela diferença por km, 0,5: 60 ÷ 0,5 = 120."
+      },
       "source": {
         "origin": "soma",
         "label": "Questão autoral do SOMA",
@@ -1366,6 +1835,207 @@
           "explanation": "1.200 é o total dos três dias. Para a média, divida por 3."
         }
       ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "gt-006",
+      "topicId": "graficos-e-tabelas",
+      "kind": "multipla-escolha",
+      "statement": "A tabela mostra as notas de Júlia nas quatro primeiras provas do ano.",
+      "table": {
+        "caption": "Notas de Júlia",
+        "headers": [
+          "Prova",
+          "Nota"
+        ],
+        "rows": [
+          [
+            "1ª",
+            "6"
+          ],
+          [
+            "2ª",
+            "8"
+          ],
+          [
+            "3ª",
+            "7"
+          ],
+          [
+            "4ª",
+            "9"
+          ]
+        ]
+      },
+      "prompt": "Que nota ela precisa tirar na 5ª prova para terminar com média 8?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "10"
+        },
+        {
+          "id": "B",
+          "text": "8"
+        },
+        {
+          "id": "C",
+          "text": "7,5"
+        },
+        {
+          "id": "D",
+          "text": "9"
+        },
+        {
+          "id": "E",
+          "text": "6"
+        }
+      ],
+      "correctId": "A",
+      "difficulty": "media",
+      "reasoning": [
+        "Média 8 em 5 provas: soma total de 8 × 5 = 40",
+        "Soma atual: 6 + 8 + 7 + 9 = 30",
+        "Falta: 40 − 30 = 10"
+      ],
+      "explanation": "Para atingir uma média, calcule a soma total necessária e veja quanto falta.",
+      "trap": {
+        "alternativeId": "B",
+        "explanation": "8 é a média desejada, não a nota que falta. Como as notas anteriores somam só 30, ela precisa de 10."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "gt-007",
+      "topicId": "graficos-e-tabelas",
+      "kind": "numerica",
+      "statement": "A tabela mostra as vendas de uma sorveteria no começo do ano.",
+      "table": {
+        "caption": "Sorvetes vendidos por mês",
+        "headers": [
+          "Mês",
+          "Vendas"
+        ],
+        "rows": [
+          [
+            "Janeiro",
+            "450"
+          ],
+          [
+            "Fevereiro",
+            "360"
+          ],
+          [
+            "Março",
+            "270"
+          ]
+        ]
+      },
+      "prompt": "Qual foi a queda percentual nas vendas de janeiro para fevereiro?",
+      "answer": 20,
+      "unit": "%",
+      "difficulty": "media",
+      "reasoning": [
+        "Queda: 450 − 360 = 90",
+        "90 ÷ 450 = 0,20 = 20%"
+      ],
+      "explanation": "A variação percentual usa como base o valor inicial, janeiro.",
+      "commonMistakes": [
+        {
+          "value": 25,
+          "explanation": "25% vem de 90 ÷ 360: dividir pelo valor de fevereiro. A base é janeiro, 450."
+        }
+      ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "gt-008",
+      "topicId": "graficos-e-tabelas",
+      "kind": "multipla-escolha",
+      "statement": "A tabela mostra quantos minutos sete estudantes levaram para resolver um exercício.",
+      "table": {
+        "caption": "Tempo para resolver o exercício (minutos)",
+        "headers": [
+          "Estudante",
+          "Tempo"
+        ],
+        "rows": [
+          [
+            "Ana",
+            "4"
+          ],
+          [
+            "Beto",
+            "9"
+          ],
+          [
+            "Caio",
+            "5"
+          ],
+          [
+            "Dani",
+            "12"
+          ],
+          [
+            "Edu",
+            "6"
+          ],
+          [
+            "Flora",
+            "5"
+          ],
+          [
+            "Gabi",
+            "8"
+          ]
+        ]
+      },
+      "prompt": "Qual é a mediana dos tempos?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "5 minutos"
+        },
+        {
+          "id": "B",
+          "text": "7 minutos"
+        },
+        {
+          "id": "C",
+          "text": "6 minutos"
+        },
+        {
+          "id": "D",
+          "text": "12 minutos"
+        },
+        {
+          "id": "E",
+          "text": "8 minutos"
+        }
+      ],
+      "correctId": "C",
+      "difficulty": "media",
+      "reasoning": [
+        "Em ordem: 4, 5, 5, 6, 8, 9, 12",
+        "São 7 valores: o do meio é o 4º",
+        "Mediana: 6 minutos"
+      ],
+      "explanation": "A mediana é o valor do meio quando os dados estão em ordem. Ela não é afetada por um valor muito alto, como os 12 minutos.",
+      "trap": {
+        "alternativeId": "B",
+        "explanation": "7 minutos é a média (49 ÷ 7). A mediana é o valor do meio com os dados em ordem crescente."
+      },
       "source": {
         "origin": "soma",
         "label": "Questão autoral do SOMA",
@@ -1869,6 +2539,17 @@
       "topicId": "tecnicas-de-calculo",
       "front": "No método das linhas, o que os cruzamentos do meio representam?",
       "back": "As dezenas: a soma das multiplicações cruzadas (dezena de um × unidade do outro).",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "gt-c6",
+      "topicId": "graficos-e-tabelas",
+      "front": "O que é a mediana de um conjunto de dados?",
+      "back": "O valor do meio quando os dados estão em ordem. Com quantidade par, é a média dos dois valores do meio.",
       "source": {
         "origin": "soma",
         "label": "Cartão autoral do SOMA",
