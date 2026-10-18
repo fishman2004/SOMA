@@ -31,6 +31,7 @@ export function normalizeProgress(value: Partial<ProgressState>): ProgressState 
     exams: value.exams ?? [],
     drills: value.drills ?? {},
     daily: value.daily ?? {},
+    sheets: value.sheets ?? [],
   };
 }
 

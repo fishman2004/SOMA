@@ -73,6 +73,19 @@ export interface ProgressState {
   drills: Record<string, DrillRecord>;
   /** Desafios do dia concluídos, pela data ("2026-10-18"). Veja `daily.ts`. */
   daily: Record<string, { correct: number; total: number; at: string }>;
+  /** Provas oficiais corrigidas pelo cartão-resposta (veja `answer-sheet.ts`). */
+  sheets: SheetRecord[];
+}
+
+export interface SheetRecord {
+  at: string;
+  /** Nome que o estudante deu, ex.: "ENEM 2023 · 2º dia · Matemática". */
+  label: string;
+  total: number;
+  correct: number;
+  /** Primeira questão do cartão (ex.: 136 para Matemática). */
+  first: number;
+  wrong: number[];
 }
 
 /** Resultado acumulado dos treinos de uma técnica. */
@@ -126,6 +139,7 @@ export const EMPTY_PROGRESS: ProgressState = {
   exams: [],
   drills: {},
   daily: {},
+  sheets: [],
 };
 
 /* ------------------------------------------------------------------ */
