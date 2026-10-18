@@ -3,7 +3,7 @@ import { AppShell } from "@/components/AppShell";
 import { LogoMark, SearchIcon } from "@/components/icons";
 import { HomeView } from "@/components/views/HomeView";
 
-const UPCOMING_AREAS = ["Linguagens", "Ciências Humanas", "Ciências da Natureza", "Redação"];
+const UPCOMING_AREAS = ["Linguagens", "Ciências Humanas", "Ciências da Natureza"];
 
 export default function HomePage() {
   return (
@@ -34,6 +34,15 @@ export default function HomePage() {
           Outras áreas
         </h2>
         <ul className="grid grid-cols-2 gap-2.5 md:grid-cols-4">
+          <li>
+            <Link
+              href="/redacao"
+              className="flex h-full flex-col rounded-[14px] border-2 border-primary-tint bg-surface p-3.5 text-sm hover:border-primary"
+            >
+              <span className="font-bold text-primary-strong">Redação</span>
+              <span className="text-muted">Laboratório</span>
+            </Link>
+          </li>
           {UPCOMING_AREAS.map((area) => (
             <li key={area} className="rounded-[14px] border border-dashed border-line-strong p-3.5 text-sm text-muted">
               {area}

@@ -1,0 +1,173 @@
+{
+  "intro": "A redação do ENEM pede um texto dissertativo-argumentativo: você defende um ponto de vista sobre um problema social e termina propondo uma solução. Aqui você escreve no seu ritmo, mede o tamanho do texto e confere sua redação competência por competência. O SOMA não dá nota automática: quem avalia é você, com um roteiro.",
+  "source": {
+    "origin": "soma",
+    "label": "Guia escrito pelo SOMA",
+    "reviewStatus": "aguardando-revisao"
+  },
+  "officialHint": "As regras completas e os critérios de correção são publicados pelo INEP na Cartilha do Participante de cada edição. Confira sempre a do seu ano.",
+  "structure": [
+    {
+      "id": "introducao",
+      "title": "Introdução",
+      "lines": "4 a 6 linhas",
+      "text": "Apresente o tema com um contexto (um fato, um dado, uma referência), deixe clara a sua tese, isto é, a opinião que você vai defender, e anuncie os dois argumentos."
+    },
+    {
+      "id": "desenvolvimento-1",
+      "title": "Desenvolvimento 1",
+      "lines": "7 a 9 linhas",
+      "text": "Comece com uma frase que resuma o primeiro argumento. Depois, sustente com um repertório (lei, dado, autor, fato histórico) e explique como ele prova a sua tese. Repertório sem explicação não convence."
+    },
+    {
+      "id": "desenvolvimento-2",
+      "title": "Desenvolvimento 2",
+      "lines": "7 a 9 linhas",
+      "text": "Mesma estrutura para o segundo argumento. Ligue os parágrafos com conectivos (\"Além disso\", \"Outrossim\") para o texto parecer uma linha de raciocínio, e não uma lista."
+    },
+    {
+      "id": "conclusao",
+      "title": "Conclusão",
+      "lines": "5 a 7 linhas",
+      "text": "Retome a tese em uma frase e apresente a proposta de intervenção completa, com os cinco elementos: quem age, o que faz, como faz, para quê, e um detalhe a mais sobre algum deles."
+    }
+  ],
+  "competencies": [
+    {
+      "id": 1,
+      "title": "Norma padrão da língua",
+      "summary": "Escrever de acordo com a norma formal do português: ortografia, acentuação, concordância, regência, pontuação e estrutura das frases.",
+      "checklist": [
+        "Reli procurando erros de acentuação e ortografia",
+        "Conferi a concordância de verbos com seus sujeitos",
+        "Não usei gírias, abreviações nem marcas de oralidade (\"tipo\", \"né\")",
+        "As frases longas têm vírgulas nos lugares certos e não ficaram truncadas"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Tema e tipo de texto",
+      "summary": "Entender a proposta, desenvolver o tema completo (sem fugir dele nem tangenciar) no formato dissertativo-argumentativo e usar repertório de outras áreas do conhecimento.",
+      "checklist": [
+        "As palavras-chave do tema aparecem na introdução e na conclusão",
+        "Defendo um ponto de vista, e não apenas descrevo o assunto",
+        "Usei pelo menos um repertório (dado, lei, autor, fato) ligado ao tema",
+        "Não copiei trechos dos textos motivadores"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Argumentação organizada",
+      "summary": "Selecionar e organizar informações, fatos e opiniões para defender o ponto de vista, com um projeto de texto claro do começo ao fim.",
+      "checklist": [
+        "A tese está clara na introdução",
+        "Cada parágrafo de desenvolvimento defende um argumento diferente",
+        "Expliquei por que cada repertório prova a minha tese",
+        "A conclusão retoma o que foi defendido, sem trazer ideia nova sem explicação"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Coesão",
+      "summary": "Ligar frases e parágrafos com conectivos e retomadas (pronomes, sinônimos), sem repetir palavras em excesso.",
+      "checklist": [
+        "Todo parágrafo começa com um conectivo ou expressão de ligação",
+        "Usei conectivos dentro dos parágrafos também",
+        "Troquei palavras repetidas por sinônimos ou pronomes",
+        "Os conectivos têm o sentido certo (\"porém\" para oposição, \"portanto\" para conclusão)"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Proposta de intervenção",
+      "summary": "Propor uma solução detalhada para o problema discutido, ligada aos argumentos e respeitando os direitos humanos.",
+      "checklist": [
+        "Agente: digo quem vai agir (governo, escola, mídia, ONGs...)",
+        "Ação: digo o que deve ser feito",
+        "Meio ou modo: digo como a ação vai acontecer",
+        "Finalidade: digo para que a ação serve",
+        "Detalhamento: explico melhor um dos elementos acima",
+        "A proposta respeita os direitos humanos"
+      ]
+    }
+  ],
+  "levels": [
+    "Não atende",
+    "Muito fraco",
+    "Fraco",
+    "Mediano",
+    "Bom",
+    "Excelente"
+  ],
+  "zeroCauses": [
+    "Fugir totalmente do tema",
+    "Não escrever um texto dissertativo-argumentativo (por exemplo, um poema ou uma narração)",
+    "Escrever até 7 linhas",
+    "Deixar a folha em branco",
+    "Escrever o nome, assinar ou fazer marcas que identifiquem o participante",
+    "Copiar os textos motivadores sem produção própria suficiente"
+  ],
+  "connectives": [
+    { "use": "Somar ideias", "words": ["Além disso", "Outrossim", "Ademais", "Também"] },
+    { "use": "Opor ideias", "words": ["Entretanto", "No entanto", "Contudo", "Todavia"] },
+    { "use": "Explicar a causa", "words": ["Isso ocorre porque", "Visto que", "Uma vez que", "Em virtude de"] },
+    { "use": "Mostrar a consequência", "words": ["Por conseguinte", "Dessa forma", "Consequentemente", "Assim"] },
+    { "use": "Concluir", "words": ["Portanto", "Logo", "Diante disso", "Em suma"] }
+  ],
+  "themes": [
+    {
+      "id": "desinformacao",
+      "title": "Os desafios para combater a desinformação nas redes sociais no Brasil",
+      "prompts": [
+        "Por que notícias falsas se espalham mais rápido que as verdadeiras?",
+        "Quem tem responsabilidade: plataformas, governo, escola, cada usuário?",
+        "Que ação concreta ajudaria as pessoas a checar uma informação?"
+      ]
+    },
+    {
+      "id": "leitura",
+      "title": "Caminhos para ampliar o hábito de leitura entre os jovens brasileiros",
+      "prompts": [
+        "O que afasta os jovens dos livros: preço, acesso, tempo, interesse?",
+        "Qual o papel das bibliotecas e da escola?",
+        "Como a tecnologia pode ajudar em vez de competir com a leitura?"
+      ]
+    },
+    {
+      "id": "desperdicio",
+      "title": "O desperdício de alimentos em um país que ainda convive com a fome",
+      "prompts": [
+        "Em que etapas o alimento se perde: colheita, transporte, mercado, casa?",
+        "Por que o desperdício e a fome existem ao mesmo tempo?",
+        "Quem poderia redistribuir o que sobra, e como?"
+      ]
+    },
+    {
+      "id": "telas",
+      "title": "Os efeitos do uso excessivo de telas na vida de crianças e adolescentes",
+      "prompts": [
+        "Quais efeitos aparecem no sono, nos estudos e nas relações?",
+        "Por que é tão difícil largar o celular?",
+        "Qual seria o papel da família, da escola e das empresas de tecnologia?"
+      ]
+    },
+    {
+      "id": "inclusao-trabalho",
+      "title": "Desafios para a inclusão de pessoas com deficiência no mercado de trabalho",
+      "prompts": [
+        "Quais barreiras existem: físicas, de formação, de preconceito?",
+        "Leis existem; por que nem sempre funcionam na prática?",
+        "Que ação mudaria a realidade dentro das empresas?"
+      ]
+    },
+    {
+      "id": "educacao-financeira",
+      "title": "A importância da educação financeira para os jovens brasileiros",
+      "prompts": [
+        "Por que tantos jovens começam a vida adulta endividados?",
+        "O que a escola ensina (ou não) sobre dinheiro?",
+        "Quem poderia ensinar, e de que forma, para chegar a todos?"
+      ]
+    }
+  ]
+}

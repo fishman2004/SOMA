@@ -146,3 +146,18 @@ export interface TechniqueText {
   origin: string;
   source: Source;
 }
+
+/* Laboratório de redação. */
+
+export interface EssayGuide {
+  intro: string;
+  source: Source;
+  officialHint: string;
+  structure: { id: string; title: string; lines: string; text: string }[];
+  competencies: { id: 1 | 2 | 3 | 4 | 5; title: string; summary: string; checklist: string[] }[];
+  /** Nome de cada nível, de 0 a 5. */
+  levels: string[];
+  zeroCauses: string[];
+  connectives: { use: string; words: string[] }[];
+  themes: { id: string; title: string; prompts: string[] }[];
+}

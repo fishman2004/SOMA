@@ -3,7 +3,7 @@
  * exige que todas as palavras da busca apareçam e dá mais peso ao título.
  */
 
-export type SearchKind = "topico" | "tecnica" | "gemea" | "cartao" | "questao";
+export type SearchKind = "pagina" | "topico" | "tecnica" | "gemea" | "cartao" | "questao";
 
 export interface SearchEntry {
   id: string;
@@ -25,7 +25,7 @@ export interface SearchResult extends SearchEntry {
 export const MIN_QUERY_LENGTH = 2;
 
 /** Ordem dos tipos em caso de empate: o que ensina antes do que testa. */
-const KIND_WEIGHT: Record<SearchKind, number> = { topico: 5, tecnica: 4, gemea: 3, cartao: 2, questao: 1 };
+const KIND_WEIGHT: Record<SearchKind, number> = { pagina: 6, topico: 5, tecnica: 4, gemea: 3, cartao: 2, questao: 1 };
 
 export function normalize(text: string): string {
   return text

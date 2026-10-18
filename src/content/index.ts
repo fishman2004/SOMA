@@ -1,8 +1,9 @@
 import matematicaData from "./data/matematica.json";
+import redacaoData from "./data/redacao.json";
 import tecnicasData from "./data/tecnicas.json";
 import { getTwinGenerator, isTwinId, resolveTwin, TWIN_GENERATORS, type TwinGenerator } from "./twins";
 import type { SearchEntry } from "@/lib/search";
-import type { Flashcard, Question, Subject, TechniqueText, Topic } from "./types";
+import type { EssayGuide, Flashcard, Question, Subject, TechniqueText, Topic } from "./types";
 
 export { isTwinId, makeTwin, randomSeed, type TwinGenerator } from "./twins";
 
@@ -98,6 +99,12 @@ export function getTechniqueText(id: string): TechniqueText | undefined {
   return getTechniqueTexts().find((t) => t.id === id);
 }
 
+/* Laboratório de redação. */
+
+export function getEssayGuide(): EssayGuide {
+  return redacaoData as EssayGuide;
+}
+
 /* Questões gêmeas. */
 
 export function getTwinGenerators(topicId?: string): TwinGenerator[] {
@@ -119,7 +126,15 @@ export function getTwinGeneratorFor(questionId: string): TwinGenerator | undefin
 /** Tudo o que pode ser encontrado na busca, já com o link de destino. */
 export function getSearchEntries(): SearchEntry[] {
   const topicName = (id: string) => getTopic(id)?.name;
-  const entries: SearchEntry[] = [];
+  const entries: SearchEntry[] = [
+    { title: "Laboratório de redação", href: "/redacao", text: "Redação ENEM: escrever, contar linhas, competências, proposta de intervenção, autoavaliação, temas de treino" },
+    { title: "Simulado", href: "/simulado", text: "Prova com cronômetro, questões misturadas e correção no final" },
+    { title: "Desafio do dia", href: "/desafio", text: "3 questões por dia, iguais para todo mundo" },
+    { title: "Provas oficiais", href: "/provas", text: "Provas anteriores do ENEM (INEP), cartão-resposta e correção pelo gabarito" },
+    { title: "Mapa de habilidades", href: "/mapa", text: "O que já está firme e o que treinar agora" },
+    { title: "Cartões de memória", href: "/cartoes", text: "Revisão espaçada, flashcards" },
+    { title: "Caderno de erros", href: "/erros", text: "Refazer as questões erradas" },
+  ].map((p) => ({ ...p, id: `pagina:${p.href}`, kind: "pagina" as const }));
 
   for (const topic of getTopics().filter(isTopicAvailable)) {
     const c = topic.content!;

@@ -28,6 +28,8 @@ Esta é a **v0.1**: uma fatia vertical de Matemática que entrega o ciclo comple
 | Mapa de habilidades | `/mapa` | As 20 ideias da trilha, cada uma nova, em treino, precisando de atenção ou firme, com a próxima sugerida |
 | Busca | `/buscar` | Encontra tópicos, técnicas, questões infinitas, cartões e questões, sem acento e sem servidor (`src/lib/search.ts`) |
 | Questão avulsa | `/questao/[questao]` | Abre uma questão encontrada na busca, como prática |
+| Laboratório de redação | `/redacao` | Guia das 5 competências, o que zera a redação, temas de treino e lista das redações salvas |
+| Escrever redação | `/redacao/escrever` | Editor com salvamento automático, linhas estimadas (de 30), cronômetro, conectivos e autoavaliação por competência |
 | Simulado | `/simulado` | Questões misturadas por tópico, cronômetro opcional, correção só no final e relatório por tópico |
 | Cartões | `/cartoes` | Revisão espaçada dos cartões de memória vencidos e novos |
 | Cartões do tópico | `/cartoes/[topico]` | Revisa os cartões de um tópico específico |
@@ -127,6 +129,7 @@ A revisão fica salva no navegador de quem revisa, separada do progresso de estu
 - **Cartão-resposta de provas oficiais:** o SOMA não copia as provas do INEP. O estudante resolve a prova oficial, marca as respostas e cola o gabarito; o SOMA lê só as letras (aceita "1 A 2 C", "ACEBD", anuladas com X) e corrige, ignorando anuladas (`src/lib/answer-sheet.ts`).
 - **Questões gêmeas:** cada molde em `src/content/twins.ts` sorteia números "bonitos" e monta enunciado, resposta, raciocínio e erros previsíveis. `twins.test.ts` confere 2.500 questões por molde com uma conta independente, feita a partir do texto gerado. As gêmeas valem XP e entram na meta semanal, mas não no caderno de erros nem no domínio do tópico (`getTwinStats`, em `learning.ts`). Aparecem marcadas como "geradas pelo SOMA · aguardando revisão".
 - **Mapa de habilidades:** uma habilidade fica *firme* quando o estudante acerta 3 gêmeas seguidas (em algum momento) ou quando a última tentativa de todas as questões fixas dela está certa; *precisa de atenção* quando a última tentativa de alguma questão fixa está errada. A sugestão segue a trilha: atenção, depois treino, depois nova (`getSkillStatus` e `pickNextSkill`).
+- **Redação:** o SOMA não dá nota automática. Ele mede o texto (`getTextStats`: palavras, parágrafos e linhas estimadas a ~72 caracteres por linha) e avisa quando está com até 7 linhas, curto ou acima de 30 (`getLengthStatus`). A autoavaliação usa níveis de 0 a 5 por competência (40 pontos cada) e só mostra o total com as 5 avaliadas (`getSelfScore`). Regras em `src/lib/essay.ts`; o guia em `src/content/data/redacao.json`. As redações ficam num armazenamento separado do progresso e podem ser baixadas como .txt.
 - **Desafio do dia:** as questões são sorteadas a partir da data, então todo mundo recebe as mesmas no mesmo dia. Vale o primeiro resultado do dia. Não existe sequência que zera. Regras em `src/lib/daily.ts`.
 - **Cópia de segurança:** em Progresso, o estudante baixa um arquivo com o progresso e pode restaurá-lo em outro aparelho. O arquivo é conferido antes de ser aceito (`src/lib/backup.ts`).
 - **Meta semanal:** 5 dias de estudo por semana. Perder um dia não zera nada.
@@ -141,6 +144,6 @@ Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind 
 
 ## Próximos passos sugeridos
 
-- Revisão humana das 45 questões, dos 31 cartões, das explicações e dos textos das técnicas (inclusive as notas históricas)
+- Revisão humana das 45 questões, dos 31 cartões, das explicações, dos textos das técnicas (inclusive as notas históricas), dos 20 moldes de questões gêmeas e do guia de redação
 - Mais questões por tópico (o ideal é ter questões novas para revisar depois de alguns dias)
 - Publicação gratuita (ex.: Vercel) para testar com estudantes reais

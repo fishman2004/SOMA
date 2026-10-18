@@ -7,6 +7,7 @@ import { MIN_QUERY_LENGTH, search, type SearchEntry, type SearchKind } from "@/l
 import { BookIcon, CardsIcon, ChevronRightIcon, InfinityIcon, SearchIcon, SparkIcon, TargetIcon } from "../icons";
 
 const KIND: Record<SearchKind, { label: string; Icon: typeof BookIcon; tone: string }> = {
+  pagina: { label: "Seção do SOMA", Icon: ChevronRightIcon, tone: "bg-primary text-on-strong" },
   topico: { label: "Tópico", Icon: BookIcon, tone: "bg-primary-soft text-primary" },
   tecnica: { label: "Técnica", Icon: SparkIcon, tone: "bg-primary-soft text-primary" },
   gemea: { label: "Questões infinitas", Icon: InfinityIcon, tone: "bg-success-soft text-success" },
@@ -14,7 +15,7 @@ const KIND: Record<SearchKind, { label: string; Icon: typeof BookIcon; tone: str
   questao: { label: "Questão", Icon: TargetIcon, tone: "border border-line bg-ground text-muted" },
 };
 
-const SUGGESTIONS = ["desconto", "regra de três", "média", "método chinês", "escala", "raiz", "vezes 11"];
+const SUGGESTIONS = ["redação", "desconto", "regra de três", "média", "método chinês", "escala", "raiz", "vezes 11"];
 
 export function SearchView({ entries }: { entries: SearchEntry[] }) {
   const params = useSearchParams();
@@ -62,7 +63,7 @@ export function SearchView({ entries }: { entries: SearchEntry[] }) {
 
       {!active ? (
         <div className="flex flex-col gap-2.5">
-          <p className="text-[15px] text-muted">Busque tópicos, técnicas, cartões e questões. Algumas ideias:</p>
+          <p className="text-[15px] text-muted">Busque seções, tópicos, técnicas, cartões e questões. Algumas ideias:</p>
           <ul className="flex flex-wrap gap-2">
             {SUGGESTIONS.map((s) => (
               <li key={s}>

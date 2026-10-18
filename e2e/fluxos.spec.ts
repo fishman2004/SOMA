@@ -203,3 +203,21 @@ test("buscar e abrir uma questão avulsa", async ({ page }) => {
   await page.goto("/buscar?q=girafa");
   await expect(page.getByText("Nada encontrado para “girafa”.")).toBeVisible();
 });
+
+test("laboratório de redação: escrever, medir e se autoavaliar", async ({ page }) => {
+  await page.goto("/redacao");
+  await page.getByRole("button", { name: /desperdício de alimentos/ }).click();
+  const main = page.locator("main:visible");
+  await expect(main.getByLabel("Tema", { exact: true })).toHaveValue(/desperdício de alimentos/);
+
+  await main.getByLabel("Seu texto").fill("Um texto curto demais.");
+  await expect(page.getByText(/Até 7 linhas/)).toBeVisible();
+
+  for (let c = 1; c <= 5; c++) {
+    await main.getByRole("radiogroup").nth(c - 1).getByText("Bom", { exact: true }).click();
+  }
+  await expect(page.getByText("Sua autoavaliação: 800 de 1000")).toBeVisible();
+
+  await page.goto("/redacao");
+  await expect(page.locator("main:visible").getByRole("link", { name: /desperdício de alimentos/ })).toContainText("autoavaliação 800");
+});

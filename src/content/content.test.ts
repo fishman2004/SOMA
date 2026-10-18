@@ -276,3 +276,15 @@ describe("índice da busca", () => {
     expect(first?.kind).toBe("tecnica");
   });
 });
+
+describe("guia de redação", () => {
+  it("tem as 5 competências, 6 níveis e itens de conferência com ids únicos", async () => {
+    const { getEssayGuide } = await import("./index");
+    const guide = getEssayGuide();
+    expect(guide.competencies.map((c) => c.id)).toEqual([1, 2, 3, 4, 5]);
+    expect(guide.levels).toHaveLength(6);
+    expect(guide.source.reviewStatus).not.toBe("revisado");
+    expect(new Set(guide.themes.map((t) => t.id)).size).toBe(guide.themes.length);
+    for (const c of guide.competencies) expect(c.checklist.length).toBeGreaterThanOrEqual(3);
+  });
+});
