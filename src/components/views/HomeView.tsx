@@ -66,103 +66,72 @@ export function HomeView() {
         </section>
       ) : null}
 
-      <Link
-        href="/desafio"
-        className={`flex items-center gap-3.5 rounded-2xl border p-4 ${
-          dailyDone ? "border-success/40 bg-success-soft" : "border-line bg-surface hover:border-line-strong"
-        }`}
-      >
-        <span
-          className={`flex size-11 shrink-0 items-center justify-center rounded-xl ${
-            dailyDone ? "bg-success text-on-strong" : "bg-primary-soft text-primary"
-          }`}
-        >
-          {dailyDone ? <CheckIcon size={22} /> : <TargetIcon size={22} />}
-        </span>
-        <span className="flex flex-1 flex-col gap-0.5">
-          <span className="text-base font-bold">Desafio do dia</span>
-          <span className="text-sm text-muted">
-            {dailyDone
+      <section aria-labelledby="para-hoje" className="flex flex-col gap-2.5">
+        <h2 id="para-hoje" className="pt-1 font-display text-lg font-bold">
+          Para hoje
+        </h2>
+        <Shortcut
+          href="/desafio"
+          title="Desafio do dia"
+          tone={dailyDone ? "done" : "primary"}
+          icon={dailyDone ? <CheckIcon size={22} /> : <TargetIcon size={22} />}
+          text={
+            dailyDone
               ? `Feito: ${dailyDone.correct} de ${dailyDone.total}. Amanhã tem outro.`
-              : `${DAILY_SIZE} questões de tópicos diferentes, iguais para todo mundo hoje.`}
-          </span>
-        </span>
-        <ChevronRightIcon size={20} className="text-muted" />
-      </Link>
-
-      <Link
-        href="/erros"
-        className="flex items-center gap-3.5 rounded-2xl border border-line bg-surface p-4 hover:border-line-strong"
-      >
-        <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-error-soft text-error">
-          <RedoIcon size={22} />
-        </span>
-        <span className="flex flex-1 flex-col gap-0.5">
-          <span className="text-base font-bold">Revisão</span>
-          <span className="text-sm text-muted">
-            {pending === 0
+              : `${DAILY_SIZE} questões de tópicos diferentes, iguais para todo mundo hoje.`
+          }
+        />
+        <Shortcut
+          href="/erros"
+          title="Revisão de erros"
+          tone="error"
+          icon={<RedoIcon size={22} />}
+          text={
+            pending === 0
               ? "Nenhum erro pendente. Quando errar, a questão aparece aqui."
               : pending === 1
                 ? "1 erro esperando para ser refeito"
-                : `${pending} erros esperando para serem refeitos`}
-          </span>
-        </span>
-        <ChevronRightIcon size={20} className="text-muted" />
-      </Link>
-
-      <Link
-        href="/cartoes"
-        className="flex items-center gap-3.5 rounded-2xl border border-line bg-surface p-4 hover:border-line-strong"
-      >
-        <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary">
-          <CardsIcon size={22} />
-        </span>
-        <span className="flex flex-1 flex-col gap-0.5">
-          <span className="text-base font-bold">Cartões de memória</span>
-          <span className="text-sm text-muted">
-            {cardsToReview === 0
+                : `${pending} erros esperando para serem refeitos`
+          }
+        />
+        <Shortcut
+          href="/cartoes"
+          title="Cartões de memória"
+          tone="primary"
+          icon={<CardsIcon size={22} />}
+          text={
+            cardsToReview === 0
               ? getUnlockedTopics(state).length === 0
                 ? "Abra um tópico para liberar os cartões dele."
                 : "Nenhum cartão para hoje. Você está em dia!"
               : cardsToReview === 1
                 ? "1 cartão para revisar hoje"
-                : `${cardsToReview} cartões para revisar hoje`}
-          </span>
-        </span>
-        <ChevronRightIcon size={20} className="text-muted" />
-      </Link>
+                : `${cardsToReview} cartões para revisar hoje`
+          }
+        />
+      </section>
 
-      <Link
-        href="/simulado"
-        className="flex items-center gap-3.5 rounded-2xl border border-line bg-surface p-4 hover:border-line-strong"
-      >
-        <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-success-soft text-success">
-          <ClockIcon size={22} />
-        </span>
-        <span className="flex flex-1 flex-col gap-0.5">
-          <span className="text-base font-bold">Simulado</span>
-          <span className="text-sm text-muted">
-            {lastExam
-              ? `Último: ${lastExam.correct} de ${lastExam.total}. Que tal outro?`
-              : "Questões misturadas, com correção só no final."}
-          </span>
-        </span>
-        <ChevronRightIcon size={20} className="text-muted" />
-      </Link>
-
-      <Link
-        href="/tecnicas"
-        className="flex items-center gap-3.5 rounded-2xl border border-line bg-surface p-4 hover:border-line-strong"
-      >
-        <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary">
-          <SparkIcon size={22} />
-        </span>
-        <span className="flex flex-1 flex-col gap-0.5">
-          <span className="text-base font-bold">Técnicas de cálculo rápido</span>
-          <span className="text-sm text-muted">Método das linhas, vezes 11 de cabeça e outros truques que funcionam.</span>
-        </span>
-        <ChevronRightIcon size={20} className="text-muted" />
-      </Link>
+      <section aria-labelledby="treinar-mais" className="flex flex-col gap-2.5">
+        <h2 id="treinar-mais" className="pt-1 font-display text-lg font-bold">
+          Treinar mais
+        </h2>
+        <div className="grid grid-cols-2 gap-2.5">
+          <Tile
+            href="/simulado"
+            title="Simulado"
+            tone="success"
+            icon={<ClockIcon size={22} />}
+            text={lastExam ? `Último: ${lastExam.correct} de ${lastExam.total}` : "Como na prova"}
+          />
+          <Tile
+            href="/tecnicas"
+            title="Cálculo rápido"
+            tone="primary"
+            icon={<SparkIcon size={22} />}
+            text="10 técnicas para treinar"
+          />
+        </div>
+      </section>
 
       <Card>
         <div className="flex items-baseline justify-between">
@@ -187,5 +156,73 @@ export function HomeView() {
         </p>
       </Card>
     </>
+  );
+}
+
+type Tone = "primary" | "success" | "error" | "done";
+
+const TONE_ICON: Record<Tone, string> = {
+  primary: "bg-primary-soft text-primary",
+  success: "bg-success-soft text-success",
+  error: "bg-error-soft text-error",
+  done: "bg-success text-on-strong",
+};
+
+/** Atalho em linha: ícone, título, texto e seta. */
+function Shortcut({
+  href,
+  title,
+  text,
+  icon,
+  tone,
+}: {
+  href: string;
+  title: string;
+  text: string;
+  icon: React.ReactNode;
+  tone: Tone;
+}) {
+  return (
+    <Link
+      href={href}
+      className={`flex items-center gap-3.5 rounded-2xl border p-4 ${
+        tone === "done" ? "border-success/40 bg-success-soft" : "border-line bg-surface hover:border-line-strong"
+      }`}
+    >
+      <span className={`flex size-11 shrink-0 items-center justify-center rounded-xl ${TONE_ICON[tone]}`}>{icon}</span>
+      <span className="flex flex-1 flex-col gap-0.5">
+        <span className="text-base font-bold">{title}</span>
+        <span className="text-sm text-muted">{text}</span>
+      </span>
+      <ChevronRightIcon size={20} className="text-muted" />
+    </Link>
+  );
+}
+
+/** Atalho compacto, para grade de duas colunas. */
+function Tile({
+  href,
+  title,
+  text,
+  icon,
+  tone,
+}: {
+  href: string;
+  title: string;
+  text: string;
+  icon: React.ReactNode;
+  tone: Tone;
+}) {
+  return (
+    <Link
+      href={href}
+      className="flex flex-col gap-2.5 rounded-2xl border border-line bg-surface p-4 hover:border-line-strong"
+    >
+      <span className={`flex size-11 items-center justify-center rounded-xl ${TONE_ICON[tone]}`}>{icon}</span>
+      <span className="flex flex-col gap-0.5">
+        <span className="text-base font-bold">{title}</span>
+        <span className="text-sm text-muted">{text}</span>
+      </span>
+    </Link>
   );
 }
