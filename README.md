@@ -26,6 +26,8 @@ Esta é a **v0.1**: uma fatia vertical de Matemática que entrega o ciclo comple
 | Questões infinitas | `/gemea` | 20 moldes que geram questões novas (números diferentes a cada vez) para treinar a mesma ideia |
 | Questão gêmea | `/gemea/[molde]` | Treino sem fim de um molde, com sequência de acertos; aparece também depois de um erro e no caderno de erros |
 | Mapa de habilidades | `/mapa` | As 20 ideias da trilha, cada uma nova, em treino, precisando de atenção ou firme, com a próxima sugerida |
+| Busca | `/buscar` | Encontra tópicos, técnicas, questões infinitas, cartões e questões, sem acento e sem servidor (`src/lib/search.ts`) |
+| Questão avulsa | `/questao/[questao]` | Abre uma questão encontrada na busca, como prática |
 | Simulado | `/simulado` | Questões misturadas por tópico, cronômetro opcional, correção só no final e relatório por tópico |
 | Cartões | `/cartoes` | Revisão espaçada dos cartões de memória vencidos e novos |
 | Cartões do tópico | `/cartoes/[topico]` | Revisa os cartões de um tópico específico |

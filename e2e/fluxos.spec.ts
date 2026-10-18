@@ -186,3 +186,20 @@ test("mapa de habilidades mostra o que precisa de atenção", async ({ page }) =
   await main.getByRole("link", { name: "Reforçar esta habilidade" }).click();
   await expect(page.locator("h1:visible")).toHaveText("Aumento seguido de desconto");
 });
+
+test("buscar e abrir uma questão avulsa", async ({ page }) => {
+  await page.goto("/");
+  await page.locator("main:visible").getByRole("link", { name: "Buscar" }).or(page.getByRole("complementary").getByRole("link", { name: "Buscar" })).first().click();
+  const box = page.getByRole("searchbox", { name: "Buscar no SOMA" });
+  await box.fill("metodo chines");
+  await expect(page.getByRole("list", { name: "Resultados da busca" }).getByRole("link").first()).toContainText("Técnica");
+
+  await box.fill("celular desconto");
+  await page.getByRole("list", { name: "Resultados da busca" }).getByRole("link", { name: /Questão/ }).first().click();
+  await expect(page.locator("h1:visible")).toHaveText("Questão avulsa");
+  await answerAny(page);
+  await expect(page.getByRole("link", { name: "Praticar Porcentagem" })).toBeVisible();
+
+  await page.goto("/buscar?q=girafa");
+  await expect(page.getByText("Nada encontrado para “girafa”.")).toBeVisible();
+});

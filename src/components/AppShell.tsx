@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { BookIcon, BookmarkIcon, ChartIcon, HomeIcon, LogoMark } from "./icons";
+import { BookIcon, BookmarkIcon, ChartIcon, HomeIcon, LogoMark, SearchIcon } from "./icons";
 
 export type NavKey = "inicio" | "estudar" | "erros" | "progresso";
 
@@ -66,6 +66,13 @@ function SideNav({ active }: { active: NavKey }) {
           })}
         </ul>
       </nav>
+      <Link
+        href="/buscar"
+        className="flex min-h-11 items-center gap-3 rounded-xl border border-line bg-surface px-3 text-[15px] text-muted hover:border-primary-tint hover:text-ink"
+      >
+        <SearchIcon size={20} />
+        Buscar
+      </Link>
       <Link href="/sobre" className="mt-auto inline-flex min-h-11 items-center px-3 text-sm text-muted hover:text-ink">
         Sobre o SOMA
       </Link>

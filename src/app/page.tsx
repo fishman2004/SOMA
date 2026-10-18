@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
-import { LogoMark } from "@/components/icons";
+import { LogoMark, SearchIcon } from "@/components/icons";
 import { HomeView } from "@/components/views/HomeView";
 
 const UPCOMING_AREAS = ["Linguagens", "Ciências Humanas", "Ciências da Natureza", "Redação"];
@@ -13,7 +13,13 @@ export default function HomePage() {
           <LogoMark />
           <span className="font-display text-xl font-bold tracking-[0.08em]">SOMA</span>
         </div>
-        <span className="text-[13px] text-muted">Matemática · ENEM</span>
+        <Link
+          href="/buscar"
+          className="inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded-xl px-2 text-[15px] font-bold text-primary hover:bg-surface"
+        >
+          <SearchIcon size={20} />
+          Buscar
+        </Link>
       </header>
 
       <div className="flex flex-col gap-1 pt-2">

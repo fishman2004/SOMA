@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { TECHNIQUE_ALGORITHMS } from "@/lib/mental-math";
-import { getAllFlashcards, getAllQuestions, getAllSubjects, getTechniqueTexts, getTopic } from "./index";
+import { search } from "@/lib/search";
+import { getAllFlashcards, getAllQuestions, getAllSubjects, getSearchEntries, getTechniqueTexts, getTopic } from "./index";
 
 /**
  * Testes de qualidade do conteúdo. Rodam sempre que alguém altera
@@ -258,5 +259,20 @@ describe("cobertura das contas", () => {
       .map((q) => q.id)
       .filter((id) => !source.includes(`answerOf("${id}")`));
     expect(missing).toEqual([]);
+  });
+});
+
+describe("índice da busca", () => {
+  it("tem ids únicos e as questões abrem como questão avulsa", () => {
+    const entries = getSearchEntries();
+    expect(new Set(entries.map((e) => e.id)).size).toBe(entries.length);
+    for (const e of entries.filter((x) => x.kind === "questao")) {
+      expect(e.href.startsWith("/questao/")).toBe(true);
+    }
+  });
+
+  it("encontra a técnica pelo apelido, sem acento", () => {
+    const [first] = search(getSearchEntries(), "metodo chines");
+    expect(first?.kind).toBe("tecnica");
   });
 });
