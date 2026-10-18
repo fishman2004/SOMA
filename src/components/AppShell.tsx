@@ -66,6 +66,9 @@ function SideNav({ active }: { active: NavKey }) {
           })}
         </ul>
       </nav>
+      <Link href="/sobre" className="mt-auto inline-flex min-h-11 items-center px-3 text-sm text-muted hover:text-ink">
+        Sobre o SOMA
+      </Link>
     </aside>
   );
 }

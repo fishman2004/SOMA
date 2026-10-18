@@ -13,7 +13,8 @@ Plataforma gratuita de estudos para o ENEM. Veja o README para visão geral e ro
 - Toda questão nova de Matemática precisa da conta do gabarito em `src/content/content.test.ts`.
 - Cores e fontes vêm dos tokens em `src/app/globals.css` (ex.: `bg-primary`, `text-muted`). Não use hexadecimais soltos em componentes novos.
 - Acessibilidade: alvos de toque com no mínimo 44px, elementos nativos (`button`, `a`, `input`), foco visível e contraste AA.
-- Não colete dados pessoais. O progresso fica no navegador (`src/lib/progress-store.ts`).
+- Não colete dados pessoais. O progresso fica no navegador (`src/lib/progress-store.ts`, sobre `src/lib/local-store.ts`). Campos novos no progresso precisam de valor padrão em `normalizeProgress` (`src/lib/backup.ts`).
+- Arquivos de revisão (`soma-revisao-*.json`) trazem vereditos e comentários de revisores: aplique os ajustes pedidos e só marque `"revisado"` itens com veredito `"ok"` de uma pessoa.
 
 ## Antes de concluir uma alteração
 

@@ -20,6 +20,8 @@ Esta é a **v0.1**: uma fatia vertical de Matemática que entrega o ciclo comple
 | Técnicas | `/tecnicas` | 10 técnicas de cálculo rápido (método das linhas, vezes 11, quadrados terminados em 5, método védico perto de 100, noves fora...) |
 | Técnica | `/tecnicas/[tecnica]` | Passo a passo com os números do estudante, por que funciona, origem e treino cronometrado |
 | Desafio do dia | `/desafio` | 3 questões de tópicos diferentes, iguais para todo mundo no mesmo dia |
+| Sobre | `/sobre` | Missão, como o SOMA ensina, privacidade e origem do conteúdo (com link para as provas oficiais do INEP) |
+| Revisão de conteúdo | `/revisao-conteudo` | Para revisores: conferir cada questão, cartão, explicação e técnica, comentar e baixar a revisão |
 | Simulado | `/simulado` | Questões misturadas por tópico, cronômetro opcional, correção só no final e relatório por tópico |
 | Cartões | `/cartoes` | Revisão espaçada dos cartões de memória vencidos e novos |
 | Cartões do tópico | `/cartoes/[topico]` | Revisa os cartões de um tópico específico |
@@ -78,6 +80,15 @@ Princípios por trás dessa divisão:
    - Múltipla escolha: `"kind": "multipla-escolha"`, com `alternatives`, `correctId` e, se quiser, `trap`.
    - Resposta numérica: `"kind": "numerica"`, com `answer`, `tolerance`, `prefix` ou `unit` e `commonMistakes` (erros previsíveis com explicação própria).
 5. Adicione a conta do gabarito em `src/content/content.test.ts` e rode `npm test`.
+
+## Como revisar o conteúdo
+
+1. Abra `/revisao-conteudo` (há um link em **Sobre o SOMA**).
+2. Para cada item, marque **Está certo** ou **Precisa de ajuste** e, se quiser, escreva um comentário.
+3. Clique em **Baixar revisão** e envie o arquivo `soma-revisao-AAAA-MM-DD.json` para quem mantém o conteúdo.
+4. Quem mantém aplica os ajustes e, só então, troca `"reviewStatus"` para `"revisado"` no JSON.
+
+A revisão fica salva no navegador de quem revisa, separada do progresso de estudo.
 
 ## Regras de aprendizagem (v0.1)
 

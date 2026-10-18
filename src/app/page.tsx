@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
 import { LogoMark } from "@/components/icons";
 import { HomeView } from "@/components/views/HomeView";
@@ -36,6 +37,12 @@ export default function HomePage() {
           ))}
         </ul>
       </section>
+
+      <p className="pt-2 text-center text-sm text-muted">
+        <Link href="/sobre" className="inline-flex min-h-11 items-center font-bold text-primary underline underline-offset-2">
+          Sobre o SOMA
+        </Link>
+      </p>
     </AppShell>
   );
 }
