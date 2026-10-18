@@ -111,6 +111,8 @@ export interface Topic {
   order: number;
   /** Ausente quando o tópico ainda está em preparação. */
   content?: TopicContent;
+  /** Página interativa extra do tópico (ex.: "/tecnicas"). */
+  lab?: { href: string; title: string; description: string };
   source?: Source;
 }
 
@@ -130,4 +132,17 @@ export interface Subject {
   topics: Topic[];
   questions: Question[];
   flashcards: Flashcard[];
+}
+
+/** Texto de uma técnica de cálculo rápido. Os cálculos ficam em `src/lib/mental-math.ts`. */
+export interface TechniqueText {
+  id: string;
+  name: string;
+  /** Apelido popular, ex.: "o “método chinês”". */
+  nickname?: string;
+  tagline: string;
+  when: string;
+  why: string;
+  origin: string;
+  source: Source;
 }

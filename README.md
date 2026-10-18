@@ -17,13 +17,15 @@ Esta é a **v0.1**: uma fatia vertical de Matemática que entrega o ciclo comple
 | Caderno de erros | `/erros` | Erros para refazer e erros resolvidos |
 | Refazer | `/revisar/[questao]` | Refaz uma questão do caderno |
 | Progresso | `/progresso` | Domínio por tópico, questões da semana, cartões aprendidos, conquistas, simulados e XP |
+| Técnicas | `/tecnicas` | 10 técnicas de cálculo rápido (método das linhas, vezes 11, quadrados terminados em 5, método védico perto de 100, noves fora...) |
+| Técnica | `/tecnicas/[tecnica]` | Passo a passo com os números do estudante, por que funciona, origem e treino cronometrado |
 | Simulado | `/simulado` | Questões misturadas por tópico, cronômetro opcional, correção só no final e relatório por tópico |
 | Cartões | `/cartoes` | Revisão espaçada dos cartões de memória vencidos e novos |
 | Cartões do tópico | `/cartoes/[topico]` | Revisa os cartões de um tópico específico |
 
 No celular, a navegação fica embaixo; no computador, vira um menu lateral. O app segue o **modo claro ou escuro** do aparelho e pode ser **adicionado à tela inicial** do celular (manifesto e ícones em `src/app/manifest.ts` e `public/icons/`).
 
-A trilha de Matemática tem **5 tópicos com 25 questões**: 20 de múltipla escolha e 5 de **resposta numérica**, em que o estudante digita o número (aceita vírgula, ponto e "R$"). Os tópicos são Porcentagem, Razão e proporção, Regra de três, Funções do 1º grau e Leitura de gráficos e tabelas. As questões de tabela mostram os dados numa tabela acessível.
+A trilha de Matemática tem **6 tópicos com 30 questões**: 22 de múltipla escolha e 8 de **resposta numérica**, em que o estudante digita o número (aceita vírgula, ponto e "R$"). Os tópicos são Porcentagem, Razão e proporção, Regra de três, Funções do 1º grau, Leitura de gráficos e tabelas e **Técnicas de cálculo rápido**. As questões de tabela mostram os dados numa tabela acessível.
 
 ## Como rodar no seu computador
 
@@ -87,6 +89,7 @@ Princípios por trás dessa divisão:
 - **XP mede esforço, não domínio:** +5 por resposta, +5 por acertar de primeira, +5 por registrar a causa de um erro, +10 por corrigir um erro e +2 por cartão revisado.
 - **Simulado:** as questões são sorteadas equilibrando os tópicos escolhidos (5, 10 ou 15). Com cronômetro, são 3 minutos por questão e o simulado é entregue quando o tempo acaba. As respondidas viram tentativas (as erradas vão para o caderno de erros); as em branco não contam. Regras em `src/lib/exam.ts`.
 - **Conquistas:** 9 marcos calculados a partir do progresso (sem nada guardado à parte), que premiam hábitos de aprendizagem: registrar a causa de um erro, corrigi-lo, levar um cartão à caixa 3, dominar um tópico. Regras em `src/lib/achievements.ts`.
+- **Técnicas de cálculo:** cada técnica é programada passo a passo em `src/lib/mental-math.ts` e testada contra a conta tradicional em milhares de casos sorteados. Os textos (por que funciona, de onde vem) ficam em `src/content/data/tecnicas.json`. O treino tem 10 contas; o relógio só corre com a conta na tela. +1 XP por conta certa.
 - **Meta semanal:** 5 dias de estudo por semana. Perder um dia não zera nada.
 
 ## Conteúdo e direitos autorais
@@ -99,7 +102,7 @@ Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind 
 
 ## Próximos passos sugeridos
 
-- Revisão humana das 25 questões, dos 25 cartões e das explicações
+- Revisão humana das 30 questões, dos 30 cartões, das explicações e dos textos das técnicas (inclusive as notas históricas)
 - Mais questões por tópico (o ideal é ter questões novas para revisar depois de alguns dias)
 - Publicação gratuita (ex.: Vercel) para testar com estudantes reais
 - Funcionamento offline (service worker)

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { bestWeekStudyDays, getAchievements } from "./achievements";
-import { EMPTY_PROGRESS, recordAttempt, setAttemptCause, type Attempt, type ProgressState } from "./learning";
+import { EMPTY_PROGRESS, recordAttempt, recordDrill, setAttemptCause, type Attempt, type ProgressState } from "./learning";
 import { reviewCard } from "./spaced-repetition";
 
 const topics = [{ id: "t", questionIds: ["q1", "q2"] }];
@@ -55,5 +55,12 @@ describe("conquistas", () => {
     // quinta a terça: atravessa duas semanas, no máximo 4 dias em uma
     for (const day of [15, 16, 17, 18, 19, 20]) split = recordAttempt(split, attempt("q1", true, new Date(2026, 9, day, 10)));
     expect(bestWeekStudyDays(split)).toBe(4);
+  });
+});
+
+describe("conquista de cálculo", () => {
+  it("vem com um treino perfeito", () => {
+    const s = recordDrill(EMPTY_PROGRESS, "linhas", { correct: 10, seconds: 90, at: "2026-10-18T10:00:00Z" });
+    expect(earned(s)).toContain("calculista");
   });
 });

@@ -6,7 +6,7 @@
  * ajudam a aprender (refletir sobre o erro, corrigir, revisar com espaço),
  * nunca tempo de tela ou cliques.
  */
-import { getErrorEntries, getTopicMastery, type ProgressState } from "./learning";
+import { DRILL_SIZE, getErrorEntries, getTopicMastery, type ProgressState } from "./learning";
 
 export interface TopicRef {
   id: string;
@@ -75,6 +75,12 @@ export function getAchievements(
       title: "Memória em dia",
       description: "Levar um cartão de memória até a caixa 3.",
       earned: Object.values(state.cards).some((c) => c.box >= 3),
+    },
+    {
+      id: "calculista",
+      title: "Calculista",
+      description: `Acertar ${DRILL_SIZE} de ${DRILL_SIZE} em um treino de técnica de cálculo.`,
+      earned: Object.values(state.drills).some((d) => d.bestCorrect >= DRILL_SIZE),
     },
     {
       id: "primeiro-simulado",

@@ -38,9 +38,9 @@ function getSnapshot(): ProgressState {
   cachedRaw = raw;
   try {
     const parsed: unknown = raw ? JSON.parse(raw) : null;
-    // Progresso salvo por versões anteriores pode não ter `cards` ou `exams`.
+    // Progresso salvo por versões anteriores pode não ter `cards`, `exams` ou `drills`.
     cachedState = isProgressState(parsed)
-      ? { ...parsed, cards: parsed.cards ?? {}, exams: parsed.exams ?? [] }
+      ? { ...parsed, cards: parsed.cards ?? {}, exams: parsed.exams ?? [], drills: parsed.drills ?? {} }
       : EMPTY_PROGRESS;
   } catch {
     cachedState = EMPTY_PROGRESS;

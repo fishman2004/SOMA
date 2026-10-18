@@ -10,6 +10,7 @@ import {
   getXp,
   markTopicVisited,
   recordAttempt,
+  recordDrill,
   setAttemptCause,
   type Attempt,
   type ProgressState,
@@ -179,5 +180,22 @@ describe("continuar de onde parou", () => {
   it("sugere o último tópico estudado que não foi dominado", () => {
     const s = withAttempts({ ...attempt("b1", false, "2026-10-12T10:00:00"), topicId: "b" });
     expect(getContinueTopicId(s, topics)).toBe("b");
+  });
+});
+
+describe("treinos de técnicas", () => {
+  it("guarda o melhor treino: mais acertos, depois menos tempo", () => {
+    let s = recordDrill(EMPTY_PROGRESS, "vezes-11", { correct: 8, seconds: 40, at: "2026-10-18T10:00:00Z" });
+    s = recordDrill(s, "vezes-11", { correct: 10, seconds: 60, at: "2026-10-18T10:05:00Z" });
+    s = recordDrill(s, "vezes-11", { correct: 10, seconds: 50, at: "2026-10-18T10:10:00Z" });
+    s = recordDrill(s, "vezes-11", { correct: 9, seconds: 20, at: "2026-10-18T10:15:00Z" });
+    expect(s.drills["vezes-11"]).toEqual({
+      sessions: 4,
+      totalCorrect: 37,
+      bestCorrect: 10,
+      bestSeconds: 50,
+      lastAt: "2026-10-18T10:15:00Z",
+    });
+    expect(getXp(s).xp).toBe(37);
   });
 });

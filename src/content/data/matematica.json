@@ -163,6 +163,44 @@
         "label": "Explicação autoral do SOMA",
         "reviewStatus": "aguardando-revisao"
       }
+    },
+    {
+      "id": "tecnicas-de-calculo",
+      "name": "Técnicas de cálculo rápido",
+      "description": "Truques que funcionam, e por quê",
+      "order": 6,
+      "content": {
+        "keyIdea": "Truques de cálculo mental não são mágica: são as propriedades da multiplicação usadas a seu favor. Entender o porquê ajuda a lembrar do truque e a saber quando ele vale.",
+        "formulas": [
+          {
+            "label": "Distributiva",
+            "expression": "a × (b + c) = a × b + a × c"
+          },
+          {
+            "label": "Produto notável",
+            "expression": "(m − d)(m + d) = m² − d²"
+          },
+          {
+            "label": "Trocar a ordem",
+            "expression": "x% de y = y% de x"
+          }
+        ],
+        "warning": "No ENEM, conferir a resposta vale tanto quanto calcular rápido. Use uma estimativa ou o noves fora para pegar erros.",
+        "example": {
+          "statement": "Quanto é 49 × 6?",
+          "solution": "50 × 6 − 6 = 300 − 6 = 294"
+        }
+      },
+      "lab": {
+        "href": "/tecnicas",
+        "title": "Laboratório de técnicas",
+        "description": "10 truques com passo a passo, o porquê de cada um e treino cronometrado"
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Explicação autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
     }
   ],
   "questions": [
@@ -1333,6 +1371,177 @@
         "label": "Questão autoral do SOMA",
         "reviewStatus": "aguardando-revisao"
       }
+    },
+    {
+      "id": "tc-001",
+      "topicId": "tecnicas-de-calculo",
+      "kind": "numerica",
+      "statement": "Para multiplicar um número de dois algarismos por 11, some os algarismos e coloque o resultado no meio.",
+      "prompt": "Quanto é 74 × 11?",
+      "answer": 814,
+      "difficulty": "facil",
+      "reasoning": [
+        "7 + 4 = 11: passou de 9",
+        "O 1 fica no meio e o outro 1 “vai” para a frente: 7 + 1 = 8",
+        "8 | 1 | 4 → 814"
+      ],
+      "explanation": "Quando a soma do meio passa de 9, o algarismo da frente vai um, como na conta armada.",
+      "commonMistakes": [
+        {
+          "value": 7114,
+          "explanation": "7.114 aparece quando o 11 é escrito inteiro no meio. Só o 1 fica no meio; o outro 1 vai para a frente: 814."
+        }
+      ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "tc-002",
+      "topicId": "tecnicas-de-calculo",
+      "kind": "numerica",
+      "statement": "Para elevar ao quadrado um número terminado em 5, multiplique o que vem antes do 5 pelo número seguinte e escreva 25 no final.",
+      "prompt": "Quanto é 65²?",
+      "answer": 4225,
+      "difficulty": "facil",
+      "reasoning": [
+        "Antes do 5 vem o 6",
+        "6 × 7 = 42",
+        "Escreva 25 no final: 4.225"
+      ],
+      "explanation": "65² = 4.225. Confira: 65 × 65 = 4.225.",
+      "commonMistakes": [
+        {
+          "value": 3625,
+          "explanation": "3.625 vem de 6 × 6. O truque multiplica pelo número seguinte: 6 × 7 = 42."
+        }
+      ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "tc-003",
+      "topicId": "tecnicas-de-calculo",
+      "kind": "multipla-escolha",
+      "statement": "Uma loja vende um fone de ouvido por R$ 49,00.",
+      "prompt": "Quanto custam 8 fones?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "R$ 382,00"
+        },
+        {
+          "id": "B",
+          "text": "R$ 400,00"
+        },
+        {
+          "id": "C",
+          "text": "R$ 408,00"
+        },
+        {
+          "id": "D",
+          "text": "R$ 392,00"
+        },
+        {
+          "id": "E",
+          "text": "R$ 432,00"
+        }
+      ],
+      "correctId": "D",
+      "difficulty": "facil",
+      "reasoning": [
+        "49 = 50 − 1",
+        "50 × 8 = 400",
+        "Tire 1 × 8 = 8: 400 − 8 = 392"
+      ],
+      "explanation": "Arredondar para 50 e compensar no final deixa a conta fácil de fazer de cabeça.",
+      "trap": {
+        "alternativeId": "C",
+        "explanation": "R$ 408,00 soma os R$ 8 em vez de subtrair. Como 49 é 50 − 1, a compensação é tirar 8."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "tc-004",
+      "topicId": "tecnicas-de-calculo",
+      "kind": "numerica",
+      "statement": "Em uma sala com 50 pessoas, 18% usam óculos.",
+      "prompt": "Quantas pessoas usam óculos?",
+      "answer": 9,
+      "unit": "pessoas",
+      "difficulty": "facil",
+      "reasoning": [
+        "18% de 50 = 50% de 18",
+        "50% é a metade: 18 ÷ 2 = 9"
+      ],
+      "explanation": "Trocar a ordem da porcentagem transforma uma conta chata numa metade.",
+      "commonMistakes": [
+        {
+          "value": 36,
+          "explanation": "36 é o dobro de 18. 50% é a metade, não o dobro."
+        }
+      ],
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "tc-005",
+      "topicId": "tecnicas-de-calculo",
+      "kind": "multipla-escolha",
+      "statement": "Um estudante calculou 43 × 27 = 1.171 e resolveu conferir a conta com o noves fora.",
+      "prompt": "O que ele deve concluir?",
+      "alternatives": [
+        {
+          "id": "A",
+          "text": "A conta está errada, porque os noves fora não batem"
+        },
+        {
+          "id": "B",
+          "text": "A conta está certa, porque os noves fora batem"
+        },
+        {
+          "id": "C",
+          "text": "Não dá para saber: noves fora só serve para somas"
+        },
+        {
+          "id": "D",
+          "text": "A conta está certa, porque 1.171 é ímpar"
+        },
+        {
+          "id": "E",
+          "text": "A conta está errada, porque 1.171 não é múltiplo de 9"
+        }
+      ],
+      "correctId": "A",
+      "difficulty": "media",
+      "reasoning": [
+        "43 → 4 + 3 = 7; 27 → 2 + 7 = 9 → 0",
+        "7 × 0 = 0",
+        "1.171 → 1 + 1 + 7 + 1 = 10 → 1",
+        "0 ≠ 1: a conta está errada (o certo é 1.161)"
+      ],
+      "explanation": "Se os noves fora não batem, com certeza há erro. Se batessem, a conta provavelmente estaria certa.",
+      "trap": {
+        "alternativeId": "B",
+        "explanation": "Os noves fora dão 0 de um lado e 1 do outro: não batem. Confira a soma dos algarismos com calma."
+      },
+      "source": {
+        "origin": "soma",
+        "label": "Questão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
     }
   ],
   "flashcards": [
@@ -1605,6 +1814,61 @@
       "topicId": "graficos-e-tabelas",
       "front": "O que um eixo vertical que não começa no zero pode causar?",
       "back": "Pode exagerar visualmente as diferenças entre os valores.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "tc-c1",
+      "topicId": "tecnicas-de-calculo",
+      "front": "Como fazer 52 × 11 de cabeça?",
+      "back": "Some os algarismos (5 + 2 = 7) e coloque no meio: 572.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "tc-c2",
+      "topicId": "tecnicas-de-calculo",
+      "front": "Qual o atalho para 75²?",
+      "back": "7 × 8 = 56, e escreva 25 no fim: 5.625.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "tc-c3",
+      "topicId": "tecnicas-de-calculo",
+      "front": "Por que 8% de 25 é fácil?",
+      "back": "Porque é igual a 25% de 8, que é 8 ÷ 4 = 2.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "tc-c4",
+      "topicId": "tecnicas-de-calculo",
+      "front": "Como calcular 99 × 7 rápido?",
+      "back": "100 × 7 − 7 = 693.",
+      "source": {
+        "origin": "soma",
+        "label": "Cartão autoral do SOMA",
+        "reviewStatus": "aguardando-revisao"
+      }
+    },
+    {
+      "id": "tc-c5",
+      "topicId": "tecnicas-de-calculo",
+      "front": "No método das linhas, o que os cruzamentos do meio representam?",
+      "back": "As dezenas: a soma das multiplicações cruzadas (dezena de um × unidade do outro).",
       "source": {
         "origin": "soma",
         "label": "Cartão autoral do SOMA",

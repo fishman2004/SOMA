@@ -69,6 +69,42 @@ export interface ProgressState {
   cards: Record<string, CardState>;
   /** Histórico de simulados concluídos (veja `exam.ts`). */
   exams: ExamSummary[];
+  /** Recordes dos treinos de técnicas de cálculo, por técnica. */
+  drills: Record<string, DrillRecord>;
+}
+
+/** Resultado acumulado dos treinos de uma técnica. */
+export interface DrillRecord {
+  sessions: number;
+  /** Total de contas certas em todos os treinos. */
+  totalCorrect: number;
+  /** Melhor treino: mais acertos e, no empate, menos tempo. */
+  bestCorrect: number;
+  bestSeconds: number;
+  lastAt: string;
+}
+
+/** Quantidade de contas em um treino de técnica. */
+export const DRILL_SIZE = 10;
+
+export function recordDrill(
+  state: ProgressState,
+  techniqueId: string,
+  result: { correct: number; seconds: number; at: string },
+): ProgressState {
+  const prev = state.drills[techniqueId];
+  const isBest =
+    !prev ||
+    result.correct > prev.bestCorrect ||
+    (result.correct === prev.bestCorrect && result.seconds < prev.bestSeconds);
+  const next: DrillRecord = {
+    sessions: (prev?.sessions ?? 0) + 1,
+    totalCorrect: (prev?.totalCorrect ?? 0) + result.correct,
+    bestCorrect: isBest ? result.correct : prev.bestCorrect,
+    bestSeconds: isBest ? result.seconds : prev.bestSeconds,
+    lastAt: result.at,
+  };
+  return { ...state, drills: { ...state.drills, [techniqueId]: next } };
 }
 
 /** Resumo de um simulado concluído. */
@@ -86,6 +122,7 @@ export const EMPTY_PROGRESS: ProgressState = {
   visitedTopics: [],
   cards: {},
   exams: [],
+  drills: {},
 };
 
 /* ------------------------------------------------------------------ */
@@ -319,6 +356,7 @@ export const XP_RULES = {
   causeRegistered: 5, // refletir sobre a causa de um erro
   errorFixed: 10, // acertar uma questão que tinha errado
   cardReview: 2, // revisar um cartão de memória
+  drillCorrect: 1, // acertar uma conta no treino de técnicas
 } as const;
 
 export const XP_PER_LEVEL = 100;
@@ -342,6 +380,9 @@ export function getXp(state: ProgressState): XpSummary {
   }
   for (const card of Object.values(state.cards)) {
     xp += card.reviews * XP_RULES.cardReview;
+  }
+  for (const drill of Object.values(state.drills)) {
+    xp += drill.totalCorrect * XP_RULES.drillCorrect;
   }
   return { xp, level: Math.floor(xp / XP_PER_LEVEL) + 1, intoLevel: xp % XP_PER_LEVEL };
 }

@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { getAllFlashcards, getAllQuestions, getAllSubjects, getTopic } from "./index";
+import { TECHNIQUE_ALGORITHMS } from "@/lib/mental-math";
+import { getAllFlashcards, getAllQuestions, getAllSubjects, getTechniqueTexts, getTopic } from "./index";
 
 /**
  * Testes de qualidade do conteúdo. Rodam sempre que alguém altera
@@ -21,6 +22,17 @@ describe("integridade do conteúdo", () => {
       expect(getTopic(c.topicId), `${c.id}: tópico inexistente`).toBeDefined();
       expect(c.front.trim().length, `${c.id}: frente vazia`).toBeGreaterThan(0);
       expect(c.back.trim().length, `${c.id}: verso vazio`).toBeGreaterThan(0);
+    }
+  });
+
+  it("toda técnica tem texto e cálculo, e vice-versa", () => {
+    const texts = getTechniqueTexts().map((t) => t.id).sort();
+    const algorithms = TECHNIQUE_ALGORITHMS.map((t) => t.id).sort();
+    expect(texts).toEqual(algorithms);
+    for (const t of getTechniqueTexts()) {
+      for (const field of [t.name, t.tagline, t.when, t.why, t.origin]) {
+        expect(field.trim().length, `${t.id}: texto vazio`).toBeGreaterThan(0);
+      }
     }
   });
 
@@ -156,6 +168,26 @@ describe("contas dos gabaritos", () => {
   });
   it("gt-005: média de 320, 480 e 400 ingressos", () => {
     expect(answerOf("gt-005")).toBe(String((320 + 480 + 400) / 3));
+  });
+
+  /* Técnicas de cálculo rápido */
+  it("tc-001: 74 × 11", () => {
+    expect(answerOf("tc-001")).toBe(String(74 * 11));
+  });
+  it("tc-002: 65²", () => {
+    expect(answerOf("tc-002")).toBe(String(65 * 65));
+  });
+  it("tc-003: 8 fones de R$ 49,00", () => {
+    expect(answerOf("tc-003")).toBe(brl(49 * 8));
+  });
+  it("tc-004: 18% de 50 pessoas", () => {
+    expect(answerOf("tc-004")).toBe(String((18 * 50) / 100));
+  });
+  it("tc-005: noves fora de 43 × 27 = 1.171 não bate", () => {
+    const nf = (n: number) => n % 9;
+    expect(43 * 27).not.toBe(1171);
+    expect(nf(nf(43) * nf(27))).not.toBe(nf(1171));
+    expect(answerOf("tc-005")).toMatch(/^A conta está errada/);
   });
 
   it("gt-004: maior taxa entre 18/24, 21/30 e 27/40", () => {

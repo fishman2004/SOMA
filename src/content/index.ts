@@ -1,5 +1,6 @@
 import matematicaData from "./data/matematica.json";
-import type { Flashcard, Question, Subject, Topic } from "./types";
+import tecnicasData from "./data/tecnicas.json";
+import type { Flashcard, Question, Subject, TechniqueText, Topic } from "./types";
 
 export type * from "./types";
 
@@ -75,4 +76,18 @@ export function getAvailableTopicRefs(subjectId: string = PILOT_SUBJECT_ID) {
   return getTopics(subjectId)
     .filter(isTopicAvailable)
     .map((t) => ({ id: t.id, questionIds: getQuestionIds(t.id) }));
+}
+
+/* Técnicas de cálculo rápido (textos). */
+
+export function getTechniquesIntro(): string {
+  return tecnicasData.intro;
+}
+
+export function getTechniqueTexts(): TechniqueText[] {
+  return tecnicasData.techniques as TechniqueText[];
+}
+
+export function getTechniqueText(id: string): TechniqueText | undefined {
+  return getTechniqueTexts().find((t) => t.id === id);
 }

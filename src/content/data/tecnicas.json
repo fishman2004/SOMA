@@ -1,0 +1,98 @@
+{
+  "intro": "Truques de cálculo mental não são mágica: são propriedades da multiplicação usadas a seu favor. Para cada técnica, veja o passo a passo, entenda por que ela funciona e treine contra o relógio.",
+  "techniques": [
+    {
+      "id": "linhas",
+      "name": "Multiplicação por linhas",
+      "nickname": "o “método chinês”",
+      "tagline": "Multiplique desenhando: conte os cruzamentos.",
+      "when": "Ótimo para entender a multiplicação e para números com algarismos pequenos. Com algarismos grandes (7, 8, 9), o desenho fica cheio demais.",
+      "why": "Em 23 × 12 = (20 + 3) × (10 + 2), o grupo da esquerda conta 2 × 1 (dezena × dezena = centenas), os grupos do meio contam 2 × 2 e 3 × 1 (dezenas) e o da direita conta 3 × 2 (unidades). É a propriedade distributiva, desenhada.",
+      "origin": "Ficou famoso na internet como “método chinês” ou “japonês”, mas a origem exata é incerta. A ideia é a mesma da conta armada que aprendemos na escola: cada grupo de cruzamentos é uma das multiplicações parciais.",
+      "source": { "origin": "soma", "label": "Explicação autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+    },
+    {
+      "id": "vezes-11",
+      "name": "Vezes 11 de cabeça",
+      "tagline": "Some os algarismos e coloque no meio.",
+      "when": "Qualquer número de 2 algarismos vezes 11.",
+      "why": "11 = 10 + 1. Então 63 × 11 = 630 + 63. Na soma, o 6 e o 3 ficam nas pontas e a casa do meio recebe 6 + 3.",
+      "origin": "Truque clássico de cálculo mental, presente em livros e competições de matemática do mundo todo.",
+      "source": { "origin": "soma", "label": "Explicação autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+    },
+    {
+      "id": "quadrado-final-5",
+      "name": "Quadrado de número terminado em 5",
+      "tagline": "35² = 3 × 4, depois 25: 1.225.",
+      "when": "Áreas, estimativas e qualquer número terminado em 5 elevado ao quadrado.",
+      "why": "Um número terminado em 5 é 10n + 5. Ao quadrado: 100n² + 100n + 25 = 100 · n · (n + 1) + 25. Por isso é n vezes o número seguinte, com 25 no fim.",
+      "origin": "Aparece no livro “Vedic Mathematics” (1965), do indiano Bharati Krishna Tirtha, e é conhecido em várias tradições de cálculo mental.",
+      "source": { "origin": "soma", "label": "Explicação autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+    },
+    {
+      "id": "vezes-5",
+      "name": "Vezes 5 é metade de vezes 10",
+      "tagline": "468 × 5 = 4.680 ÷ 2 = 2.340.",
+      "when": "Preços, quantidades e qualquer conta com 5, 50 ou 500.",
+      "why": "5 = 10 ÷ 2. Multiplicar por 10 é fácil (acrescenta um zero) e dividir por 2 também. Juntas, as duas contas fáceis substituem uma difícil.",
+      "origin": "Truque clássico de cálculo mental, usado no comércio há muito tempo.",
+      "source": { "origin": "soma", "label": "Explicação autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+    },
+    {
+      "id": "dobrar-e-dividir",
+      "name": "Dobrar e dividir ao meio",
+      "tagline": "16 × 25 = 8 × 50 = 4 × 100.",
+      "when": "Contas com 25 ou 50, que viram 100 depois de dobradas.",
+      "why": "Se um fator dobra e o outro cai pela metade, o produto não muda: (a ÷ 2) × (2 · b) = a × b. O objetivo é chegar a um número redondo, como 100.",
+      "origin": "Multiplicar usando dobros é uma ideia antiga: era assim no antigo Egito, como mostra o Papiro de Rhind (cerca de 1550 a.C.). Uma variante com dobrar e dividir ao meio ficou conhecida como “multiplicação do camponês russo”.",
+      "source": { "origin": "soma", "label": "Explicação autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+    },
+    {
+      "id": "arredondar-e-compensar",
+      "name": "Arredondar e compensar",
+      "tagline": "49 × 6 = 50 × 6 − 6 = 294.",
+      "when": "Números terminados em 7, 8 ou 9 e preços como R$ 9,99 ou R$ 19,90.",
+      "why": "49 = 50 − 1. Pela propriedade distributiva, 49 × 6 = 50 × 6 − 1 × 6. Multiplicar o número redondo é fácil; depois é só tirar o que sobrou.",
+      "origin": "Estratégia comum de cálculo mental, usada no comércio e ensinada em muitas escolas.",
+      "source": { "origin": "soma", "label": "Explicação autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+    },
+    {
+      "id": "diferenca-de-quadrados",
+      "name": "Diferença de quadrados",
+      "tagline": "47 × 53 = 50² − 3² = 2.491.",
+      "when": "Dois números à mesma distância de uma dezena redonda: 38 × 42, 67 × 73.",
+      "why": "Se os números ficam à mesma distância d de um meio m, eles são m − d e m + d. Multiplicando: (m − d)(m + d) = m² − d², um produto notável da álgebra.",
+      "origin": "É o produto notável (a − b)(a + b) = a² − b². Usar quadrados para facilitar multiplicações é uma ideia muito antiga.",
+      "source": { "origin": "soma", "label": "Explicação autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+    },
+    {
+      "id": "perto-de-100",
+      "name": "Números perto de 100",
+      "nickname": "método védico",
+      "tagline": "97 × 96: faltam 3 e 4 → 93 | 12.",
+      "when": "Dois números de 90 a 99. A mesma ideia vale perto de 10, 1.000 e outras potências de 10.",
+      "why": "Com a = 100 − x e b = 100 − y: a × b = 10.000 − 100x − 100y + xy = 100 · (a − y) + x · y. A primeira parte são as centenas e a segunda, os dois últimos algarismos.",
+      "origin": "É o método Nikhilam, do livro “Vedic Mathematics” (1965), de Bharati Krishna Tirtha. Apesar do nome, historiadores não encontraram esses métodos nos Vedas antigos: eles foram organizados no século 20.",
+      "source": { "origin": "soma", "label": "Explicação autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+    },
+    {
+      "id": "porcentagem-invertida",
+      "name": "Porcentagem invertida",
+      "tagline": "8% de 25 = 25% de 8 = 2.",
+      "when": "Quando um dos números é 10, 20, 25 ou 50. Aparece muito em questões do ENEM.",
+      "why": "x% de y = x × y ÷ 100 = y% de x. A ordem da multiplicação não muda o resultado, então você escolhe o lado mais fácil.",
+      "origin": "Vem de uma propriedade simples da multiplicação (a comutativa) e ficou popular como “truque” nas redes sociais.",
+      "source": { "origin": "soma", "label": "Explicação autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+    },
+    {
+      "id": "noves-fora",
+      "name": "Noves fora",
+      "nickname": "para conferir contas",
+      "tagline": "Some os algarismos para achar erros.",
+      "when": "Para conferir uma multiplicação: 34 × 26 = 884? Noves fora: 7 × 8 = 56 → 2, e 884 → 2. Bateu! Atenção: se bater, a conta provavelmente está certa, mas não é garantia. Trocar dois algarismos de lugar, por exemplo, passa despercebido.",
+      "why": "Todo número deixa na divisão por 9 o mesmo resto que a soma dos seus algarismos, porque 10, 100, 1.000... deixam resto 1. E os restos se multiplicam: se a × b = c, o noves fora de (noves fora de a) × (noves fora de b) tem que ser igual ao noves fora de c.",
+      "origin": "Usado há séculos para conferir contas. Era ensinado na Europa medieval, por exemplo no Liber Abaci (1202), de Fibonacci, que aprendeu com matemáticos árabes. A expressão “noves fora” vem dessa técnica.",
+      "source": { "origin": "soma", "label": "Explicação autoral do SOMA", "reviewStatus": "aguardando-revisao" }
+    }
+  ]
+}
