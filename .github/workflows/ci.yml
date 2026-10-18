@@ -1,0 +1,25 @@
+# Verificação automática: a cada envio para o GitHub, roda os testes,
+# o lint e o build. Se algo quebrar, aparece um X vermelho no commit.
+name: Verificação
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Testes
+        run: npm test
+      - name: Lint
+        run: npm run lint
+      - name: Build
+        run: npm run build
