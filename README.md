@@ -25,6 +25,7 @@ Esta é a **v0.1**: uma fatia vertical de Matemática que entrega o ciclo comple
 | Provas oficiais | `/provas` | Link para as provas do INEP e cartão-resposta: marque suas respostas, cole o gabarito oficial e veja a correção |
 | Questões infinitas | `/gemea` | 20 moldes que geram questões novas (números diferentes a cada vez) para treinar a mesma ideia |
 | Questão gêmea | `/gemea/[molde]` | Treino sem fim de um molde, com sequência de acertos; aparece também depois de um erro e no caderno de erros |
+| Mapa de habilidades | `/mapa` | As 20 ideias da trilha, cada uma nova, em treino, precisando de atenção ou firme, com a próxima sugerida |
 | Simulado | `/simulado` | Questões misturadas por tópico, cronômetro opcional, correção só no final e relatório por tópico |
 | Cartões | `/cartoes` | Revisão espaçada dos cartões de memória vencidos e novos |
 | Cartões do tópico | `/cartoes/[topico]` | Revisa os cartões de um tópico específico |
@@ -123,6 +124,7 @@ A revisão fica salva no navegador de quem revisa, separada do progresso de estu
 - **Técnicas de cálculo:** cada técnica é programada passo a passo em `src/lib/mental-math.ts` e testada contra a conta tradicional em milhares de casos sorteados. Os textos (por que funciona, de onde vem) ficam em `src/content/data/tecnicas.json`. O treino tem 10 contas; o relógio só corre com a conta na tela. +1 XP por conta certa.
 - **Cartão-resposta de provas oficiais:** o SOMA não copia as provas do INEP. O estudante resolve a prova oficial, marca as respostas e cola o gabarito; o SOMA lê só as letras (aceita "1 A 2 C", "ACEBD", anuladas com X) e corrige, ignorando anuladas (`src/lib/answer-sheet.ts`).
 - **Questões gêmeas:** cada molde em `src/content/twins.ts` sorteia números "bonitos" e monta enunciado, resposta, raciocínio e erros previsíveis. `twins.test.ts` confere 2.500 questões por molde com uma conta independente, feita a partir do texto gerado. As gêmeas valem XP e entram na meta semanal, mas não no caderno de erros nem no domínio do tópico (`getTwinStats`, em `learning.ts`). Aparecem marcadas como "geradas pelo SOMA · aguardando revisão".
+- **Mapa de habilidades:** uma habilidade fica *firme* quando o estudante acerta 3 gêmeas seguidas (em algum momento) ou quando a última tentativa de todas as questões fixas dela está certa; *precisa de atenção* quando a última tentativa de alguma questão fixa está errada. A sugestão segue a trilha: atenção, depois treino, depois nova (`getSkillStatus` e `pickNextSkill`).
 - **Desafio do dia:** as questões são sorteadas a partir da data, então todo mundo recebe as mesmas no mesmo dia. Vale o primeiro resultado do dia. Não existe sequência que zera. Regras em `src/lib/daily.ts`.
 - **Cópia de segurança:** em Progresso, o estudante baixa um arquivo com o progresso e pode restaurá-lo em outro aparelho. O arquivo é conferido antes de ser aceito (`src/lib/backup.ts`).
 - **Meta semanal:** 5 dias de estudo por semana. Perder um dia não zera nada.

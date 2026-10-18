@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
+import { ChevronRightIcon, MapIcon } from "@/components/icons";
 import { Chip, PageTitle } from "@/components/ui";
 import { TopicStatus } from "@/components/views/TopicStatus";
 import { getSubject, getTopics, isTopicAvailable } from "@/content";
@@ -49,6 +50,20 @@ export default function TrailPage() {
           );
         })}
       </ol>
+
+      <Link
+        href="/mapa"
+        className="flex items-center gap-3.5 rounded-2xl border border-line bg-surface p-4 hover:border-line-strong"
+      >
+        <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary">
+          <MapIcon size={22} />
+        </span>
+        <span className="flex flex-1 flex-col gap-0.5">
+          <span className="text-base font-bold">Mapa de habilidades</span>
+          <span className="text-sm text-muted">As ideias de cada tópico e quais já estão firmes</span>
+        </span>
+        <ChevronRightIcon size={20} className="text-muted" />
+      </Link>
     </AppShell>
   );
 }

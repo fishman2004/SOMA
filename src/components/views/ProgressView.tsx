@@ -2,7 +2,7 @@
 
 import { getAllFlashcards, getAvailableTopicRefs, getQuestionIds, getTopics, isTopicAvailable } from "@/content";
 import { getAchievements } from "@/lib/achievements";
-import { CheckIcon } from "../icons";
+import { CheckIcon, ChevronRightIcon, MapIcon } from "../icons";
 import Link from "next/link";
 import { relativeDay } from "@/lib/dates";
 import { formatDuration } from "@/lib/exam";
@@ -106,6 +106,20 @@ export function ProgressView() {
           </p>
         </details>
       </Card>
+
+      <Link
+        href="/mapa"
+        className="flex items-center gap-3.5 rounded-2xl border-2 border-primary-tint bg-primary-soft p-4 hover:border-primary"
+      >
+        <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary text-on-strong">
+          <MapIcon size={22} />
+        </span>
+        <span className="flex flex-1 flex-col gap-0.5">
+          <span className="text-base font-bold text-primary-strong">Mapa de habilidades</span>
+          <span className="text-sm text-ink">Veja ideia por ideia o que já está firme e o que treinar agora</span>
+        </span>
+        <ChevronRightIcon size={20} className="text-primary" />
+      </Link>
 
       {causes.length > 0 ? (
         <Card className="gap-3 p-[18px]">

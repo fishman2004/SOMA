@@ -9,6 +9,8 @@ import {
   getErrorEntries,
   getTopicMastery,
   getTopicSteps,
+  getSkillStatus,
+  pickNextSkill,
   getTwinStats,
   getWeekSummary,
   getXp,
@@ -263,5 +265,48 @@ describe("questões gêmeas no progresso", () => {
     expect(getErrorEntries(s)).toEqual([]);
     expect(getTwinStats(s, "raiz")).toEqual({ answered: 3, correct: 2, streak: 2 });
     expect(getTwinStats(s, "media")).toEqual({ answered: 1, correct: 0, streak: 0 });
+  });
+});
+
+describe("mapa de habilidades", () => {
+  const skill = { generatorId: "raiz", sourceIds: ["f1", "f2"] };
+  const twin = (n: number, correct: boolean, minute: number) =>
+    attempt(`gemea:raiz:${n}`, correct, `2026-10-12T10:${String(minute).padStart(2, "0")}:00`, { mode: "gemea" });
+
+  it("começa como nova", () => {
+    expect(getSkillStatus(EMPTY_PROGRESS, skill)).toEqual({ level: "nova", answered: 0, bestTwinStreak: 0 });
+  });
+
+  it("fica treinando com respostas sem sinal firme", () => {
+    const s = withAttempts(attempt("f1", true, "2026-10-12T10:00:00"));
+    expect(getSkillStatus(s, skill).level).toBe("treinando");
+  });
+
+  it("pede atenção quando a última tentativa de uma questão fixa está errada", () => {
+    const s = withAttempts(attempt("f1", false, "2026-10-12T10:00:00"), twin(1, true, 1), twin(2, true, 2), twin(3, true, 3));
+    expect(getSkillStatus(s, skill).level).toBe("atencao");
+  });
+
+  it("fica firme com 3 gêmeas seguidas, mesmo que a sequência tenha quebrado depois", () => {
+    const s = withAttempts(twin(1, true, 1), twin(2, true, 2), twin(3, true, 3), twin(4, false, 4));
+    expect(getSkillStatus(s, skill)).toEqual({ level: "firme", answered: 4, bestTwinStreak: 3 });
+  });
+
+  it("fica firme quando todas as questões fixas estão certas na última tentativa", () => {
+    const s = withAttempts(
+      attempt("f1", false, "2026-10-12T10:00:00"),
+      attempt("f1", true, "2026-10-13T10:00:00"),
+      attempt("f2", true, "2026-10-13T10:01:00"),
+    );
+    expect(getSkillStatus(s, skill).level).toBe("firme");
+  });
+});
+
+describe("próxima habilidade", () => {
+  it("prioriza atenção, depois treino, depois nova", () => {
+    expect(pickNextSkill([{ id: "a", level: "nova" }, { id: "b", level: "treinando" }, { id: "c", level: "atencao" }] as const)?.id).toBe("c");
+    expect(pickNextSkill([{ id: "a", level: "nova" }, { id: "b", level: "treinando" }] as const)?.id).toBe("b");
+    expect(pickNextSkill([{ id: "a", level: "firme" }, { id: "b", level: "nova" }] as const)?.id).toBe("b");
+    expect(pickNextSkill([{ id: "a", level: "firme" }] as const)).toBeUndefined();
   });
 });

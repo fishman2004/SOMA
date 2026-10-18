@@ -172,3 +172,17 @@ test("errar uma questão e treinar com questões gêmeas", async ({ page }) => {
   await page.goto("/erros");
   await expect(page.locator("main:visible").getByRole("link", { name: "Refazer", exact: true })).toHaveCount(1);
 });
+
+test("mapa de habilidades mostra o que precisa de atenção", async ({ page }) => {
+  await page.goto("/praticar/porcentagem");
+  await page.locator("label", { hasText: "R$ 84,00" }).click();
+  await page.getByRole("button", { name: "Confirmar resposta" }).click();
+  await expect(page.getByRole("heading", { name: /Ainda não/ })).toBeVisible();
+
+  await page.goto("/mapa");
+  const main = page.locator("main:visible");
+  await expect(main.getByRole("heading", { name: "0 de 20 habilidades firmes" })).toBeVisible();
+  await expect(main.locator("p", { hasText: "Sugestão agora:" })).toContainText("Aumento seguido de desconto");
+  await main.getByRole("link", { name: "Reforçar esta habilidade" }).click();
+  await expect(page.locator("h1:visible")).toHaveText("Aumento seguido de desconto");
+});

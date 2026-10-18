@@ -511,3 +511,78 @@ export function getTwinStats(state: ProgressState, generatorId: string) {
   for (let i = list.length - 1; i >= 0 && list[i].correct; i--) streak += 1;
   return { answered: list.length, correct: list.filter((a) => a.correct).length, streak };
 }
+
+/* Mapa de habilidades. */
+
+/**
+ * Uma habilidade é uma ideia que pode ser treinada (um molde de questões
+ * gêmeas) e as questões fixas que a cobram.
+ * - nova: nada respondido ainda;
+ * - atencao: a última tentativa de alguma questão fixa está errada;
+ * - treinando: já respondeu, mas ainda sem sinal firme;
+ * - firme: acertou 3 gêmeas seguidas em algum momento, ou respondeu todas
+ *   as questões fixas e a última tentativa de cada uma está certa.
+ */
+export type SkillLevel = "nova" | "atencao" | "treinando" | "firme";
+
+export const SKILL_LABELS: Record<SkillLevel, string> = {
+  nova: "Nova",
+  atencao: "Precisa de atenção",
+  treinando: "Treinando",
+  firme: "Firme",
+};
+
+export interface SkillStatus {
+  level: SkillLevel;
+  /** Respostas somadas (questões fixas e gêmeas). */
+  answered: number;
+  bestTwinStreak: number;
+}
+
+export function getSkillStatus(
+  state: ProgressState,
+  skill: { generatorId: string; sourceIds: string[] },
+): SkillStatus {
+  const prefix = `gemea:${skill.generatorId}:`;
+  const sources = new Set(skill.sourceIds);
+  const twins = state.attempts.filter((a) => a.questionId.startsWith(prefix)).sort((x, y) => x.at.localeCompare(y.at));
+  const fixed = state.attempts.filter((a) => sources.has(a.questionId));
+
+  let bestTwinStreak = 0;
+  let run = 0;
+  for (const a of twins) {
+    run = a.correct ? run + 1 : 0;
+    bestTwinStreak = Math.max(bestTwinStreak, run);
+  }
+
+  const latest = new Map<string, Attempt>();
+  for (const a of fixed) {
+    const prev = latest.get(a.questionId);
+    if (!prev || a.at > prev.at) latest.set(a.questionId, a);
+  }
+
+  const answered = twins.length + fixed.length;
+  let level: SkillLevel;
+  if (answered === 0) level = "nova";
+  else if ([...latest.values()].some((a) => !a.correct)) level = "atencao";
+  else if (
+    bestTwinStreak >= TWIN_STREAK_GOAL ||
+    (latest.size === sources.size && sources.size > 0)
+  )
+    level = "firme";
+  else level = "treinando";
+
+  return { level, answered, bestTwinStreak };
+}
+
+/**
+ * Próxima habilidade sugerida, na ordem da trilha: primeiro a que precisa
+ * de atenção, depois a que está em treino e, por fim, uma nova.
+ */
+export function pickNextSkill<T extends { level: SkillLevel }>(skills: readonly T[]): T | undefined {
+  for (const level of ["atencao", "treinando", "nova"] as const) {
+    const found = skills.find((s) => s.level === level);
+    if (found) return found;
+  }
+  return undefined;
+}

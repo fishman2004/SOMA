@@ -120,6 +120,15 @@ export const InfinityIcon = (p: IconProps) => (
   </Base>
 );
 
+export const MapIcon = (p: IconProps) => (
+  <Base {...p}>
+    <circle cx="6" cy="6" r="2.5" />
+    <circle cx="18" cy="12" r="2.5" />
+    <circle cx="7" cy="18" r="2.5" />
+    <path d="M8.3 7.2 15.7 10.8M15.8 13.3 9.2 16.8" />
+  </Base>
+);
+
 export function LogoMark({ size = 32 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" focusable="false">
