@@ -99,6 +99,14 @@ export const SparkIcon = (p: IconProps) => (
   </Base>
 );
 
+export const TargetIcon = (p: IconProps) => (
+  <Base {...p}>
+    <circle cx="12" cy="12" r="8.5" />
+    <circle cx="12" cy="12" r="4.5" />
+    <circle cx="12" cy="12" r="0.8" fill="currentColor" />
+  </Base>
+);
+
 export function LogoMark({ size = 32 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" aria-hidden="true" focusable="false">

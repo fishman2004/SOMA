@@ -19,6 +19,7 @@ Esta é a **v0.1**: uma fatia vertical de Matemática que entrega o ciclo comple
 | Progresso | `/progresso` | Domínio por tópico, questões da semana, cartões aprendidos, conquistas, simulados e XP |
 | Técnicas | `/tecnicas` | 10 técnicas de cálculo rápido (método das linhas, vezes 11, quadrados terminados em 5, método védico perto de 100, noves fora...) |
 | Técnica | `/tecnicas/[tecnica]` | Passo a passo com os números do estudante, por que funciona, origem e treino cronometrado |
+| Desafio do dia | `/desafio` | 3 questões de tópicos diferentes, iguais para todo mundo no mesmo dia |
 | Simulado | `/simulado` | Questões misturadas por tópico, cronômetro opcional, correção só no final e relatório por tópico |
 | Cartões | `/cartoes` | Revisão espaçada dos cartões de memória vencidos e novos |
 | Cartões do tópico | `/cartoes/[topico]` | Revisa os cartões de um tópico específico |
@@ -90,6 +91,8 @@ Princípios por trás dessa divisão:
 - **Simulado:** as questões são sorteadas equilibrando os tópicos escolhidos (5, 10 ou 15). Com cronômetro, são 3 minutos por questão e o simulado é entregue quando o tempo acaba. As respondidas viram tentativas (as erradas vão para o caderno de erros); as em branco não contam. Regras em `src/lib/exam.ts`.
 - **Conquistas:** 9 marcos calculados a partir do progresso (sem nada guardado à parte), que premiam hábitos de aprendizagem: registrar a causa de um erro, corrigi-lo, levar um cartão à caixa 3, dominar um tópico. Regras em `src/lib/achievements.ts`.
 - **Técnicas de cálculo:** cada técnica é programada passo a passo em `src/lib/mental-math.ts` e testada contra a conta tradicional em milhares de casos sorteados. Os textos (por que funciona, de onde vem) ficam em `src/content/data/tecnicas.json`. O treino tem 10 contas; o relógio só corre com a conta na tela. +1 XP por conta certa.
+- **Desafio do dia:** as questões são sorteadas a partir da data, então todo mundo recebe as mesmas no mesmo dia. Vale o primeiro resultado do dia. Não existe sequência que zera. Regras em `src/lib/daily.ts`.
+- **Cópia de segurança:** em Progresso, o estudante baixa um arquivo com o progresso e pode restaurá-lo em outro aparelho. O arquivo é conferido antes de ser aceito (`src/lib/backup.ts`).
 - **Meta semanal:** 5 dias de estudo por semana. Perder um dia não zera nada.
 
 ## Conteúdo e direitos autorais

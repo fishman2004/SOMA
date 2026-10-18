@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useSyncExternalStore } from "react";
+import { isProgressShape, normalizeProgress } from "./backup";
 import { EMPTY_PROGRESS, type ProgressState } from "./learning";
 
 /**
@@ -17,12 +18,6 @@ const CHANGE_EVENT = "soma:progress-change";
 let cachedRaw: string | null | undefined;
 let cachedState: ProgressState = EMPTY_PROGRESS;
 
-function isProgressState(value: unknown): value is ProgressState {
-  if (typeof value !== "object" || value === null) return false;
-  const v = value as Partial<ProgressState>;
-  return v.version === 1 && Array.isArray(v.attempts) && Array.isArray(v.visitedTopics);
-}
-
 function readRaw(): string | null {
   try {
     return window.localStorage.getItem(STORAGE_KEY);
@@ -38,10 +33,8 @@ function getSnapshot(): ProgressState {
   cachedRaw = raw;
   try {
     const parsed: unknown = raw ? JSON.parse(raw) : null;
-    // Progresso salvo por versões anteriores pode não ter `cards`, `exams` ou `drills`.
-    cachedState = isProgressState(parsed)
-      ? { ...parsed, cards: parsed.cards ?? {}, exams: parsed.exams ?? [], drills: parsed.drills ?? {} }
-      : EMPTY_PROGRESS;
+    // Progresso salvo por versões anteriores pode não ter os campos novos.
+    cachedState = isProgressShape(parsed) ? normalizeProgress(parsed) : EMPTY_PROGRESS;
   } catch {
     cachedState = EMPTY_PROGRESS;
   }
@@ -94,5 +87,8 @@ export function useProgress() {
 
   const reset = useCallback(() => write(EMPTY_PROGRESS), []);
 
-  return { state, ready, update, reset };
+  /** Troca todo o progresso (usado ao restaurar uma cópia). */
+  const replace = useCallback((next: ProgressState) => write(next), []);
+
+  return { state, ready, update, reset, replace };
 }

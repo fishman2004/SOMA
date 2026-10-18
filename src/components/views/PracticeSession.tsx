@@ -17,10 +17,19 @@ export function PracticeSession({
   topicId,
   topicName,
   questions,
+  backHref,
+  onFinish,
+  allowRestart = true,
 }: {
-  topicId: string;
+  topicId?: string;
+  /** Nome exibido no topo (o tópico, ou "Desafio do dia"). */
   topicName: string;
   questions: Question[];
+  /** Para onde o link do topo leva. Padrão: a página do tópico. */
+  backHref?: string;
+  /** Chamado uma vez, ao terminar a última questão. */
+  onFinish?: (results: boolean[]) => void;
+  allowRestart?: boolean;
 }) {
   const [index, setIndex] = useState(0);
   const [results, setResults] = useState<boolean[]>([]);
@@ -36,7 +45,7 @@ export function PracticeSession({
     <header className="sticky top-0 z-10 flex flex-col gap-2 border-b border-line bg-ground px-5 pb-3 pt-2">
       <div className="flex items-center justify-between">
         <Link
-          href={`/estudar/${topicId}`}
+          href={backHref ?? (topicId ? `/estudar/${topicId}` : "/")}
           className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-bold text-primary hover:text-primary-strong"
         >
           <ChevronLeftIcon size={18} />
@@ -77,9 +86,11 @@ export function PracticeSession({
                 <ArrowRightIcon size={18} />
               </Link>
             )}
-            <button type="button" onClick={restart} className={buttonSecondary}>
-              Praticar de novo
-            </button>
+            {allowRestart ? (
+              <button type="button" onClick={restart} className={buttonSecondary}>
+                Praticar de novo
+              </button>
+            ) : null}
             <Link href="/estudar" className="inline-flex min-h-11 items-center justify-center font-bold text-primary">
               Voltar para a trilha
             </Link>
@@ -108,8 +119,10 @@ export function PracticeSession({
               type="button"
               className={buttonPrimary}
               onClick={() => {
-                setResults((r) => [...r, correct]);
+                const all = [...results, correct];
+                setResults(all);
                 setIndex((i) => i + 1);
+                if (isLast) onFinish?.(all);
                 window.scrollTo({ top: 0 });
               }}
             >

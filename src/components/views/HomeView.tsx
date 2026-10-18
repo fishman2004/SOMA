@@ -5,7 +5,8 @@ import { getAllFlashcards, getAvailableTopicRefs, getQuestionIds, getTopic } fro
 import { countPendingErrors, getContinueTopicId, getTopicSteps, getWeekSummary } from "@/lib/learning";
 import { useProgress } from "@/lib/progress-store";
 import { getReviewQueue, getUnlockedTopics } from "@/lib/spaced-repetition";
-import { ArrowRightIcon, CardsIcon, ChevronRightIcon, ClockIcon, RedoIcon, SparkIcon } from "../icons";
+import { DAILY_SIZE, dayKey } from "@/lib/daily";
+import { ArrowRightIcon, CardsIcon, CheckIcon, ChevronRightIcon, ClockIcon, RedoIcon, SparkIcon, TargetIcon } from "../icons";
 import { Card, Segments, Skeleton } from "../ui";
 
 const STEP_TEXT = {
@@ -39,6 +40,7 @@ export function HomeView() {
   const cardQueue = getReviewQueue(state, getAllFlashcards());
   const cardsToReview = cardQueue.due.length + cardQueue.fresh.length;
   const lastExam = state.exams[state.exams.length - 1];
+  const dailyDone = state.daily[dayKey()];
 
   return (
     <>
@@ -63,6 +65,30 @@ export function HomeView() {
           </Link>
         </section>
       ) : null}
+
+      <Link
+        href="/desafio"
+        className={`flex items-center gap-3.5 rounded-2xl border p-4 ${
+          dailyDone ? "border-success/40 bg-success-soft" : "border-line bg-surface hover:border-line-strong"
+        }`}
+      >
+        <span
+          className={`flex size-11 shrink-0 items-center justify-center rounded-xl ${
+            dailyDone ? "bg-success text-on-strong" : "bg-primary-soft text-primary"
+          }`}
+        >
+          {dailyDone ? <CheckIcon size={22} /> : <TargetIcon size={22} />}
+        </span>
+        <span className="flex flex-1 flex-col gap-0.5">
+          <span className="text-base font-bold">Desafio do dia</span>
+          <span className="text-sm text-muted">
+            {dailyDone
+              ? `Feito: ${dailyDone.correct} de ${dailyDone.total}. Amanhã tem outro.`
+              : `${DAILY_SIZE} questões de tópicos diferentes, iguais para todo mundo hoje.`}
+          </span>
+        </span>
+        <ChevronRightIcon size={20} className="text-muted" />
+      </Link>
 
       <Link
         href="/erros"

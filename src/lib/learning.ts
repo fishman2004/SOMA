@@ -71,6 +71,8 @@ export interface ProgressState {
   exams: ExamSummary[];
   /** Recordes dos treinos de técnicas de cálculo, por técnica. */
   drills: Record<string, DrillRecord>;
+  /** Desafios do dia concluídos, pela data ("2026-10-18"). Veja `daily.ts`. */
+  daily: Record<string, { correct: number; total: number; at: string }>;
 }
 
 /** Resultado acumulado dos treinos de uma técnica. */
@@ -123,6 +125,7 @@ export const EMPTY_PROGRESS: ProgressState = {
   cards: {},
   exams: [],
   drills: {},
+  daily: {},
 };
 
 /* ------------------------------------------------------------------ */

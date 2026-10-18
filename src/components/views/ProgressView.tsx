@@ -18,6 +18,7 @@ import {
 } from "@/lib/learning";
 import { useProgress } from "@/lib/progress-store";
 import { Card, SectionTitle, Skeleton } from "../ui";
+import { BackupPanel } from "./BackupPanel";
 
 const LEVEL_STEPS: Record<MasteryLevel, number> = {
   "nao-iniciado": 0,
@@ -34,7 +35,7 @@ const LEVEL_COLOR: Record<MasteryLevel, string> = {
 };
 
 export function ProgressView() {
-  const { state, ready, reset } = useProgress();
+  const { state, ready } = useProgress();
 
   if (!ready) {
     return (
@@ -215,20 +216,7 @@ export function ProgressView() {
         </div>
       </section>
 
-      <div className="flex flex-col gap-1 pt-2">
-        <p className="text-[13px] text-muted">
-          Seu progresso fica salvo só neste navegador. Nenhum dado pessoal é enviado.
-        </p>
-        <button
-          type="button"
-          onClick={() => {
-            if (window.confirm("Apagar todo o seu progresso neste navegador? Isso não pode ser desfeito.")) reset();
-          }}
-          className="inline-flex min-h-11 items-center self-start text-sm font-bold text-error-strong underline underline-offset-2"
-        >
-          Apagar meu progresso
-        </button>
-      </div>
+      <BackupPanel />
     </>
   );
 }
