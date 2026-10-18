@@ -47,7 +47,12 @@ Depois abra <http://localhost:3000> no navegador. Para simular um celular, use a
 npm test         # roda os testes das regras de aprendizagem e do conteúdo
 npm run lint     # procura problemas no código
 npm run build    # gera a versão de produção (também confere os tipos)
+npm run test:e2e # percorre os fluxos principais num navegador (rode depois do build)
 ```
+
+Na primeira vez que for rodar `test:e2e`, instale o navegador de testes com `npx playwright install chromium`.
+
+A cada envio para o GitHub, a verificação automática roda testes, lint, build e os fluxos no navegador, no celular e no computador. O resultado aparece na aba **Actions** do repositório.
 
 ## Como o projeto está organizado
 
