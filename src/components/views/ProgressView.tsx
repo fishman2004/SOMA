@@ -11,6 +11,8 @@ import {
   getTopicMastery,
   getWeekSummary,
   getXp,
+  CAUSE_TIPS,
+  getCauseStats,
   MASTERY_LABELS,
   WEEKLY_GOAL_DAYS,
   XP_PER_LEVEL,
@@ -55,6 +57,7 @@ export function ProgressView() {
   const startedCards = Object.keys(state.cards).length;
   const learnedCards = countLearnedCards(state);
   const recentExams = [...state.exams].reverse().slice(0, 3);
+  const causes = getCauseStats(state);
   const achievements = getAchievements(state, getAvailableTopicRefs(), WEEKLY_GOAL_DAYS);
 
   return (
@@ -103,6 +106,30 @@ export function ProgressView() {
           </p>
         </details>
       </Card>
+
+      {causes.length > 0 ? (
+        <Card className="gap-3 p-[18px]">
+          <SectionTitle>Por que você erra</SectionTitle>
+          <ul className="flex flex-col gap-2">
+            {causes.slice(0, 3).map((c) => (
+              <li key={c.cause} className="flex flex-col gap-1">
+                <div className="flex justify-between gap-2 text-[15px]">
+                  <span className="font-bold">{c.label}</span>
+                  <span className="text-muted">{c.count === 1 ? "1 vez" : `${c.count} vezes`}</span>
+                </div>
+                <div className="h-2 overflow-hidden rounded-full bg-track" aria-hidden="true">
+                  <div className="h-full rounded-full bg-error" style={{ width: `${(c.count / causes[0].count) * 100}%` }} />
+                </div>
+              </li>
+            ))}
+          </ul>
+          {CAUSE_TIPS[causes[0].cause] ? (
+            <p className="rounded-xl bg-primary-soft px-3.5 py-3 text-[15px] leading-relaxed text-primary-strong">
+              <strong>Dica:</strong> {CAUSE_TIPS[causes[0].cause]}
+            </p>
+          ) : null}
+        </Card>
+      ) : null}
 
       <Card className="gap-3 p-[18px]">
         <div className="flex items-baseline justify-between">

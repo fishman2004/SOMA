@@ -43,6 +43,11 @@ test("estudar um tópico, praticar e ver o resumo", async ({ page }) => {
   await page.getByRole("link", { name: "Ir para o caderno de erros" }).click();
   await expect(page.getByText("Causa:").first()).toBeVisible();
   await expect(page.getByText("Errei o cálculo")).toBeVisible();
+
+  // O Progresso mostra a causa mais comum, com uma dica.
+  await page.goto("/progresso");
+  await expect(page.getByRole("heading", { name: "Por que você erra" })).toBeVisible();
+  await expect(page.getByText(/^Dica:/)).toBeVisible();
 });
 
 test("refazer um erro e vê-lo resolvido", async ({ page }) => {

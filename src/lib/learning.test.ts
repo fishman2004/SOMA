@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
+  CAUSE_TIPS,
   causeLabel,
+  ERROR_CAUSES,
+  getCauseStats,
   EMPTY_PROGRESS,
   getContinueTopicId,
   getErrorEntries,
@@ -225,5 +228,26 @@ describe("escolha das questões da prática", () => {
       s = recordAttempt(s, attempt(q.id, true, `2026-10-1${i}T10:00:00`));
     });
     expect(pickPracticeQuestions(s, qs, 3).map((q) => q.id)).toEqual(["q1", "q2", "q3"]);
+  });
+});
+
+describe("causas de erro mais comuns", () => {
+  it("conta e ordena as causas apontadas", () => {
+    let s = EMPTY_PROGRESS;
+    const add = (id: string, at: string, cause?: "li-rapido" | "errei-conta") => {
+      s = recordAttempt(s, attempt(id, false, at, { cause }));
+    };
+    add("q1", "2026-10-12T10:00:00", "li-rapido");
+    add("q2", "2026-10-12T10:01:00", "errei-conta");
+    add("q3", "2026-10-12T10:02:00", "li-rapido");
+    add("q4", "2026-10-12T10:03:00");
+    expect(getCauseStats(s)).toEqual([
+      { cause: "li-rapido", label: "Li rápido demais", count: 2 },
+      { cause: "errei-conta", label: "Errei o cálculo", count: 1 },
+    ]);
+  });
+
+  it("toda causa oferecida tem uma dica", () => {
+    for (const c of ERROR_CAUSES) expect(CAUSE_TIPS[c.id], c.id).toBeTruthy();
   });
 });

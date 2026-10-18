@@ -200,6 +200,28 @@ export function countPendingErrors(state: ProgressState, topicId?: string): numb
   ).length;
 }
 
+/** Quantas vezes cada causa foi apontada nos erros, da mais comum para a menos comum. */
+export function getCauseStats(state: ProgressState): { cause: ErrorCause; label: string; count: number }[] {
+  const counts = new Map<ErrorCause, number>();
+  for (const a of state.attempts) {
+    if (!a.correct && a.cause) counts.set(a.cause, (counts.get(a.cause) ?? 0) + 1);
+  }
+  return [...counts.entries()]
+    .map(([cause, count]) => ({ cause, label: causeLabel(cause) ?? cause, count }))
+    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+}
+
+/** Dica prática para cada causa de erro. */
+export const CAUSE_TIPS: Partial<Record<ErrorCause, string>> = {
+  "nao-lembrava": "Revise a ideia-chave do tópico e use os cartões de memória: eles voltam no dia certo.",
+  "montei-errado": "Antes de calcular, escreva o que a questão dá e o que ela pede. Na regra de três, decida se é direta ou inversa.",
+  "errei-conta": "Confira com uma estimativa ou com o noves fora. As técnicas de cálculo rápido ajudam a errar menos.",
+  "unidade-ou-base": "Sublinhe as unidades e pergunte: a porcentagem é sobre qual valor? Converta tudo antes de calcular.",
+  "li-rapido": "Leia a pergunta final duas vezes antes de responder. Muitas alternativas erradas respondem outra pergunta.",
+  chutei: "Tudo bem chutar às vezes, mas registre o que faltou: depois, refaça a questão pelo caderno de erros.",
+  "somei-percentuais": "Aumentos e descontos seguidos se multiplicam: use os fatores (1,25 × 0,80).",
+};
+
 /* ------------------------------------------------------------------ */
 /* Domínio por tópico                                                  */
 /* ------------------------------------------------------------------ */

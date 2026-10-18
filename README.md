@@ -54,6 +54,15 @@ Na primeira vez que for rodar `test:e2e`, instale o navegador de testes com `npx
 
 A cada envio para o GitHub, a verificação automática roda testes, lint, build e os fluxos no navegador, no celular e no computador. O resultado aparece na aba **Actions** do repositório.
 
+## Como publicar na internet (Vercel, gratuito)
+
+1. Crie uma conta em [vercel.com](https://vercel.com) usando **Continue with GitHub**.
+2. Clique em **Add New… → Project** e importe o repositório **SOMA**.
+3. A Vercel reconhece o Next.js sozinha: não mude nada e clique em **Deploy**.
+4. Em cerca de 2 minutos, o SOMA ganha um endereço público (ex.: `soma-xxxx.vercel.app`).
+
+Depois disso, cada envio para o branch `main` publica a versão nova automaticamente. Se usar um domínio próprio, defina a variável de ambiente `NEXT_PUBLIC_SITE_URL` com o endereço completo (ex.: `https://soma.exemplo.com.br`) para a imagem de compartilhamento apontar para ele.
+
 ## Como o projeto está organizado
 
 ```
@@ -106,6 +115,7 @@ A revisão fica salva no navegador de quem revisa, separada do progresso de estu
 - **Cartões de memória (caixas de Leitner):** cada cartão fica numa caixa de 1 a 5. "Fácil" sobe de caixa, "Difícil" mantém e "Errei" volta para a caixa 1 e repete na mesma sessão. As revisões voltam em 1, 3, 7, 16 e 35 dias. Cartões novos só aparecem de tópicos já abertos ou praticados, no máximo 10 por dia. Regras em `src/lib/spaced-repetition.ts`.
 - **XP mede esforço, não domínio:** +5 por resposta, +5 por acertar de primeira, +5 por registrar a causa de um erro, +10 por corrigir um erro e +2 por cartão revisado.
 - **Simulado:** as questões são sorteadas equilibrando os tópicos escolhidos (5, 10 ou 15). Com cronômetro, são 3 minutos por questão e o simulado é entregue quando o tempo acaba. As respondidas viram tentativas (as erradas vão para o caderno de erros); as em branco não contam. Regras em `src/lib/exam.ts`.
+- **Por que você erra:** em Progresso, as causas de erro mais apontadas pelo estudante aparecem com uma dica prática para a mais comum (`getCauseStats` e `CAUSE_TIPS`).
 - **Conquistas:** 9 marcos calculados a partir do progresso (sem nada guardado à parte), que premiam hábitos de aprendizagem: registrar a causa de um erro, corrigi-lo, levar um cartão à caixa 3, dominar um tópico. Regras em `src/lib/achievements.ts`.
 - **Técnicas de cálculo:** cada técnica é programada passo a passo em `src/lib/mental-math.ts` e testada contra a conta tradicional em milhares de casos sorteados. Os textos (por que funciona, de onde vem) ficam em `src/content/data/tecnicas.json`. O treino tem 10 contas; o relógio só corre com a conta na tela. +1 XP por conta certa.
 - **Desafio do dia:** as questões são sorteadas a partir da data, então todo mundo recebe as mesmas no mesmo dia. Vale o primeiro resultado do dia. Não existe sequência que zera. Regras em `src/lib/daily.ts`.
