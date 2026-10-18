@@ -4,6 +4,7 @@ import "@fontsource/atkinson-hyperlegible/700.css";
 import "@fontsource/space-grotesk/500.css";
 import "@fontsource/space-grotesk/700.css";
 import "./globals.css";
+import { OfflineBanner, ServiceWorkerRegistration } from "@/components/ServiceWorker";
 
 export const metadata: Metadata = {
   title: {
@@ -26,7 +27,11 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR" className="h-full antialiased">
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full">
+        <OfflineBanner />
+        {children}
+        <ServiceWorkerRegistration />
+      </body>
     </html>
   );
 }

@@ -24,7 +24,7 @@ Esta é a **v0.1**: uma fatia vertical de Matemática que entrega o ciclo comple
 | Cartões | `/cartoes` | Revisão espaçada dos cartões de memória vencidos e novos |
 | Cartões do tópico | `/cartoes/[topico]` | Revisa os cartões de um tópico específico |
 
-No celular, a navegação fica embaixo; no computador, vira um menu lateral. O app segue o **modo claro ou escuro** do aparelho e pode ser **adicionado à tela inicial** do celular (manifesto e ícones em `src/app/manifest.ts` e `public/icons/`).
+No celular, a navegação fica embaixo; no computador, vira um menu lateral. Depois de aberto uma vez, o SOMA **funciona sem internet** nas telas já visitadas (service worker em `public/sw.js`: rede primeiro, cópia salva quando não há conexão). O app segue o **modo claro ou escuro** do aparelho e pode ser **adicionado à tela inicial** do celular (manifesto e ícones em `src/app/manifest.ts` e `public/icons/`).
 
 A trilha de Matemática tem **6 tópicos com 45 questões**: 32 de múltipla escolha e 13 de **resposta numérica**, em que o estudante digita o número (aceita vírgula, ponto e "R$"). Os tópicos são Porcentagem, Razão e proporção, Regra de três, Funções do 1º grau, Leitura de gráficos e tabelas e **Técnicas de cálculo rápido**. As questões de tabela mostram os dados numa tabela acessível.
 
@@ -108,4 +108,3 @@ Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind 
 - Revisão humana das 45 questões, dos 31 cartões, das explicações e dos textos das técnicas (inclusive as notas históricas)
 - Mais questões por tópico (o ideal é ter questões novas para revisar depois de alguns dias)
 - Publicação gratuita (ex.: Vercel) para testar com estudantes reais
-- Funcionamento offline (service worker)
