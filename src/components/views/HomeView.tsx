@@ -6,7 +6,7 @@ import { countPendingErrors, getContinueTopicId, getTopicSteps, getWeekSummary }
 import { useProgress } from "@/lib/progress-store";
 import { getReviewQueue, getUnlockedTopics } from "@/lib/spaced-repetition";
 import { DAILY_SIZE, dayKey } from "@/lib/daily";
-import { ArrowRightIcon, CardsIcon, CheckIcon, ChevronRightIcon, ClockIcon, RedoIcon, SparkIcon, TargetIcon } from "../icons";
+import { ArrowRightIcon, CardsIcon, CheckIcon, ChevronRightIcon, ClockIcon, RedoIcon, SheetIcon, SparkIcon, TargetIcon } from "../icons";
 import { Card, Segments, Skeleton } from "../ui";
 
 const STEP_TEXT = {
@@ -41,6 +41,7 @@ export function HomeView() {
   const cardsToReview = cardQueue.due.length + cardQueue.fresh.length;
   const lastExam = state.exams[state.exams.length - 1];
   const dailyDone = state.daily[dayKey()];
+  const progressSheets = state.sheets.length;
 
   return (
     <>
@@ -129,6 +130,13 @@ export function HomeView() {
             tone="primary"
             icon={<SparkIcon size={22} />}
             text="10 técnicas para treinar"
+          />
+          <Tile
+            href="/provas"
+            title="Provas oficiais"
+            tone="error"
+            icon={<SheetIcon size={22} />}
+            text={progressSheets > 0 ? `${progressSheets} corrigida${progressSheets === 1 ? "" : "s"}` : "Corrija as do INEP"}
           />
         </div>
       </section>

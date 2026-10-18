@@ -136,3 +136,16 @@ test("a segunda rodada de prática traz as questões que faltam", async ({ page 
   }
   expect(second.filter((s) => !seen.includes(s)).length).toBeGreaterThan(0);
 });
+
+test("corrigir uma prova oficial pelo cartão-resposta", async ({ page }) => {
+  await page.goto("/provas");
+  await page.getByLabel("Primeira questão").fill("136");
+  await page.getByRole("button", { name: "Abrir cartão-resposta" }).click();
+  await page.getByRole("button", { name: "Questão 136, alternativa A" }).click();
+  await page.getByRole("button", { name: "Questão 137, alternativa C" }).click();
+  await page.getByLabel("Gabarito oficial").fill("136 A 137 B 138 X");
+  await expect(page.getByText("3 respostas lidas")).toBeVisible();
+  await page.getByRole("button", { name: "Corrigir" }).click();
+  await expect(page.getByText("1 de 2 (50%)")).toBeVisible();
+  await expect(page.getByText("Suas provas corrigidas")).toBeVisible();
+});
