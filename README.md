@@ -97,6 +97,7 @@ A revisão fica salva no navegador de quem revisa, separada do progresso de estu
 
 ## Regras de aprendizagem (v0.1)
 
+- **Prática em rodadas:** cada prática tem até 5 questões. Primeiro entram as nunca respondidas; depois, as erradas na última tentativa e as vistas há mais tempo (`pickPracticeQuestions`).
 - **Caderno de erros:** toda questão errada entra. Ela fica "resolvida" quando a tentativa mais recente acerta.
 - **Domínio do tópico:**
   - *Praticando*: começou o tópico.

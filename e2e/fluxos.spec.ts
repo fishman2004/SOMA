@@ -110,3 +110,24 @@ test("desafio do dia fica registrado", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByText(/^Feito:/)).toBeVisible();
 });
+
+test("a segunda rodada de prática traz as questões que faltam", async ({ page }) => {
+  await page.goto("/praticar/porcentagem");
+  const seen: string[] = [];
+  for (let i = 0; i < 5; i++) {
+    seen.push(await page.locator("main p").first().innerText());
+    await answerAny(page);
+    await page.getByRole("button", { name: i === 4 ? "Ver resumo" : "Próxima questão" }).click();
+  }
+  await page.getByRole("button", { name: "Praticar outra rodada" }).click();
+  await expect(page.getByText(/^Questão 1 de 5$/)).toBeVisible();
+
+  // Na segunda rodada aparecem questões que ainda não tinham sido vistas.
+  const second: string[] = [];
+  for (let i = 0; i < 5; i++) {
+    second.push(await page.locator("main p").first().innerText());
+    await answerAny(page);
+    await page.getByRole("button", { name: i === 4 ? "Ver resumo" : "Próxima questão" }).click();
+  }
+  expect(second.filter((s) => !seen.includes(s)).length).toBeGreaterThan(0);
+});

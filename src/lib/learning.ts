@@ -274,6 +274,45 @@ export function getTopicMastery(
 }
 
 /* ------------------------------------------------------------------ */
+/* Escolha das questões de uma prática                                 */
+/* ------------------------------------------------------------------ */
+
+/** Quantidade de questões em uma sessão de prática de tópico. */
+export const PRACTICE_SIZE = 5;
+
+/**
+ * Escolhe as questões de uma prática, na ordem do tópico:
+ * 1. questões nunca respondidas;
+ * 2. depois, as que estão erradas na tentativa mais recente;
+ * 3. por fim, as respondidas há mais tempo (revisão espaçada simples).
+ */
+export function pickPracticeQuestions<T extends { id: string }>(
+  state: ProgressState,
+  questions: T[],
+  size: number = PRACTICE_SIZE,
+): T[] {
+  const byQuestion = attemptsByQuestion(state);
+  const position = new Map(questions.map((q, i) => [q.id, i]));
+  const rank = (q: T): [number, string] => {
+    const list = byQuestion.get(q.id);
+    if (!list || list.length === 0) return [0, ""];
+    const latest = list[list.length - 1];
+    return [latest.correct ? 2 : 1, latest.at];
+  };
+  const chosen = [...questions]
+    .sort((a, b) => {
+      const [ga, ta] = rank(a);
+      const [gb, tb] = rank(b);
+      if (ga !== gb) return ga - gb;
+      if (ta !== tb) return ta.localeCompare(tb);
+      return position.get(a.id)! - position.get(b.id)!;
+    })
+    .slice(0, size);
+  // Mantém a ordem original do tópico, que vai do mais simples ao mais difícil.
+  return chosen.sort((a, b) => position.get(a.id)! - position.get(b.id)!);
+}
+
+/* ------------------------------------------------------------------ */
 /* Etapas de um tópico                                                 */
 /* ------------------------------------------------------------------ */
 

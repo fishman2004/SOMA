@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { getQuestionIds } from "@/content";
-import { countPendingErrors, getTopicSteps, markTopicVisited } from "@/lib/learning";
+import { countPendingErrors, getTopicSteps, markTopicVisited, PRACTICE_SIZE } from "@/lib/learning";
 import { useProgress } from "@/lib/progress-store";
 import { ArrowRightIcon } from "../icons";
 import { buttonPrimary } from "../ui";
@@ -66,7 +66,7 @@ export function TopicAction({ topicId }: { topicId: string }) {
 
   return (
     <Link href={`/praticar/${topicId}`} className={`${buttonPrimary} w-full`}>
-      {ready && steps.current === "concluido" ? "Praticar de novo" : "Praticar"} · {ids.length} questões
+      {ready && steps.current === "concluido" ? "Praticar de novo" : "Praticar"} · {Math.min(PRACTICE_SIZE, ids.length)} questões
       <ArrowRightIcon size={18} />
     </Link>
   );

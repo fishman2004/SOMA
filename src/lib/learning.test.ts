@@ -9,6 +9,7 @@ import {
   getWeekSummary,
   getXp,
   markTopicVisited,
+  pickPracticeQuestions,
   recordAttempt,
   recordDrill,
   setAttemptCause,
@@ -197,5 +198,32 @@ describe("treinos de técnicas", () => {
       lastAt: "2026-10-18T10:15:00Z",
     });
     expect(getXp(s).xp).toBe(37);
+  });
+});
+
+describe("escolha das questões da prática", () => {
+  const qs = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8"].map((id) => ({ id }));
+
+  it("começa pelas questões nunca respondidas, na ordem do tópico", () => {
+    expect(pickPracticeQuestions(EMPTY_PROGRESS, qs).map((q) => q.id)).toEqual(["q1", "q2", "q3", "q4", "q5"]);
+  });
+
+  it("depois de uma rodada, traz as que faltam e completa com erros", () => {
+    let s = EMPTY_PROGRESS;
+    s = recordAttempt(s, attempt("q1", true, "2026-10-12T10:00:00"));
+    s = recordAttempt(s, attempt("q2", false, "2026-10-12T10:01:00"));
+    s = recordAttempt(s, attempt("q3", true, "2026-10-12T10:02:00"));
+    s = recordAttempt(s, attempt("q4", false, "2026-10-12T10:03:00"));
+    s = recordAttempt(s, attempt("q5", true, "2026-10-12T10:04:00"));
+    // Faltam q6, q7, q8; depois, os erros q2 e q4.
+    expect(pickPracticeQuestions(s, qs).map((q) => q.id)).toEqual(["q2", "q4", "q6", "q7", "q8"]);
+  });
+
+  it("com tudo respondido e certo, traz as mais antigas", () => {
+    let s = EMPTY_PROGRESS;
+    qs.forEach((q, i) => {
+      s = recordAttempt(s, attempt(q.id, true, `2026-10-1${i}T10:00:00`));
+    });
+    expect(pickPracticeQuestions(s, qs, 3).map((q) => q.id)).toEqual(["q1", "q2", "q3"]);
   });
 });

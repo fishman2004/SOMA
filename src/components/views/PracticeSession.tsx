@@ -19,6 +19,7 @@ export function PracticeSession({
   questions,
   backHref,
   onFinish,
+  onRestart,
   allowRestart = true,
 }: {
   topicId?: string;
@@ -29,6 +30,8 @@ export function PracticeSession({
   backHref?: string;
   /** Chamado uma vez, ao terminar a última questão. */
   onFinish?: (results: boolean[]) => void;
+  /** Se informado, "Praticar de novo" chama esta função (ex.: para sortear outra rodada). */
+  onRestart?: () => void;
   allowRestart?: boolean;
 }) {
   const [index, setIndex] = useState(0);
@@ -37,6 +40,10 @@ export function PracticeSession({
   const total = questions.length;
 
   function restart() {
+    if (onRestart) {
+      onRestart();
+      return;
+    }
     setIndex(0);
     setResults([]);
   }
@@ -67,7 +74,7 @@ export function PracticeSession({
         {header}
         <div className="flex flex-col gap-4 px-5 pb-6 pt-6">
           <h1 className="font-display text-[28px] font-bold leading-tight">
-            Você acertou {correct} de {total} de primeira
+            Você acertou {correct} de {total}
           </h1>
           <p className="text-base leading-relaxed text-muted">
             {wrong === 0
@@ -88,7 +95,7 @@ export function PracticeSession({
             )}
             {allowRestart ? (
               <button type="button" onClick={restart} className={buttonSecondary}>
-                Praticar de novo
+                {onRestart ? "Praticar outra rodada" : "Praticar de novo"}
               </button>
             ) : null}
             <Link href="/estudar" className="inline-flex min-h-11 items-center justify-center font-bold text-primary">
